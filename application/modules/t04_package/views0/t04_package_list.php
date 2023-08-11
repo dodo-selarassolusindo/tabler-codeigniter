@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 $this->load->view('dist/_partials/header');
 ?>
+
         <!-- Page header -->
         <div class="page-header d-print-none">
             <div class="container-xl">
@@ -119,9 +120,8 @@ $this->load->view('dist/_partials/header');
                                 </table>
                             </div>
                             <div class="card-footer d-flex align-items-center">
-                                <p class="m-0 text-muted">Total: <span><?= $total_rows ?></span> data</p>
-                                    <?= $pagination ?>
-                            </div>
+                            <?= $pagination ?>
+                  </div>
                         </div>
                     </div>
 

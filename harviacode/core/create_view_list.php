@@ -107,9 +107,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                             <div class=\"card-footer d-flex align-items-center\">
                                 <p class=\"m-0 text-muted\">Total: <span><?= \$total_rows ?></span> data</p>
-                                <div class=\"col-md-6 text-right\">
                                     <?= \$pagination ?>
-                                </div>
                             </div>
                         </div>
                     </div>
