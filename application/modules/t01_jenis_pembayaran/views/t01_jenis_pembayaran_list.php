@@ -1,4 +1,3 @@
-
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $this->load->view('dist/_partials/header');
@@ -13,13 +12,13 @@ $this->load->view('dist/_partials/header');
                             List Data
                         </div>
                         <h2 class="page-title">
-                            T00_mata_uang
+                            T01_jenis_pembayaran
                         </h2>
                     </div>
                     <!-- Page title actions -->
                     <div class="col-auto ms-auto d-print-none">
                         <div class="btn-list">
-                            <a href="<?= site_url('t00_mata_uang/create') ?>" class="btn btn-primary d-none d-sm-inline-block">
+                            <a href="<?= site_url('t01_jenis_pembayaran/create') ?>" class="btn btn-primary d-none d-sm-inline-block">
                                 Tambah Data
                             </a>
                             <a href="<?= site_url() ?>" class="btn btn-secondary d-none d-sm-inline-block">
@@ -58,12 +57,12 @@ $this->load->view('dist/_partials/header');
                                     <div class="ms-auto text-muted">
                                         Cari Data:
                                         <div class="ms-2 d-inline-block">
-                                            <form action="<?= site_url('t00_mata_uang/index') ?>" method="get">
+                                            <form action="<?= site_url('t01_jenis_pembayaran/index') ?>" method="get">
                                                 <div class="input-group">
                                                     <input type="text" class="form-control form-control-sm" aria-label="Search invoice" name="q" value="<?= $q ?>">
                                                     <span class="input-group-btn">
                                                         <?php if ($q <> '') { ?>
-                                                        <a href="<?= site_url('t00_mata_uang') ?>" class="btn btn-default btn-sm">Reset</a>
+                                                        <a href="<?= site_url('t01_jenis_pembayaran') ?>" class="btn btn-default btn-sm">Reset</a>
                                                         <?php } ?>
                                                         <button class="btn btn-primary btn-sm" type="submit">Cari</button>
                                                     </span>
@@ -77,22 +76,18 @@ $this->load->view('dist/_partials/header');
                                 <table class="table card-table table-vcenter text-nowrap datatable">
                                     <tr>
                                         <th>No</th>
-		<th>Kode</th>
-		<th>Nama</th>
-		<th>Simbol</th><th>Proses Data</th>
-                                    </tr><?php foreach ($t00_mata_uang_data as $t00_mata_uang) { ?>
+		<th>Nama</th><th>Proses Data</th>
+                                    </tr><?php foreach ($t01_jenis_pembayaran_data as $t01_jenis_pembayaran) { ?>
                                                     <tr>
 			<td width="80px"><?php echo ++$start ?></td>
-			<td><?php echo $t00_mata_uang->kode ?></td>
-			<td><?php echo $t00_mata_uang->nama ?></td>
-			<td><?php echo $t00_mata_uang->simbol ?></td>
+			<td><?php echo $t01_jenis_pembayaran->nama ?></td>
 			<td style="text-align:center" width="200px">
 				<?php 
-				echo anchor(site_url('t00_mata_uang/read/'.$t00_mata_uang->id),'Read'); 
+				echo anchor(site_url('t01_jenis_pembayaran/read/'.$t01_jenis_pembayaran->id),'Read'); 
 				echo ' | '; 
-				echo anchor(site_url('t00_mata_uang/update/'.$t00_mata_uang->id),'Update'); 
+				echo anchor(site_url('t01_jenis_pembayaran/update/'.$t01_jenis_pembayaran->id),'Update'); 
 				echo ' | '; 
-				echo anchor(site_url('t00_mata_uang/delete/'.$t00_mata_uang->id),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
+				echo anchor(site_url('t01_jenis_pembayaran/delete/'.$t01_jenis_pembayaran->id),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
 				?>
 			</td>
 		</tr>

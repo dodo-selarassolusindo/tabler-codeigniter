@@ -215,7 +215,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                             Pembayaran
                                                         </a>
                                                         <div class="dropdown-menu">
-                                                            <a href="<?= site_url()?>/cards.html" class="dropdown-item">
+                                                            <a href="<?= site_url('t01_jenis_pembayaran') ?>" class="dropdown-item">
                                                                 Jenis Pembayaran
                                                             </a>
                                                             <a href="<?= site_url()?>/card-actions.html" class="dropdown-item">
@@ -223,7 +223,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                             </a>
                                                         </div>
                                                     </div>
-                                                    <a class="dropdown-item" href="<?= site_url('00_mata_uang') ?>">
+                                                    <a class="dropdown-item" href="<?= site_url('t04_package') ?>">
                                                         Package
                                                     </a>
                                                     <a class="dropdown-item" href="<?= site_url('00_mata_uang') ?>">
