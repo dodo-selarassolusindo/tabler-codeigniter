@@ -1,4 +1,42 @@
-<?php 
+<?php
+
+$string = "
+        <!-- Page header -->
+        <div class=\"page-header d-print-none\">
+            <div class=\"container-xl\">
+                <div class=\"row g-2 align-items-center\">
+                    <div class=\"col\">
+                        <!-- Page pre-title -->
+                        <div class=\"page-pretitle\">
+                            List Data
+                        </div>
+                        <h2 class=\"page-title\">
+                            Mata Uang
+                        </h2>
+                    </div>
+                    <!-- Page title actions -->
+                    <div class=\"col-auto ms-auto d-print-none\">
+                        <div class=\"btn-list\">
+                            <a href=\"<?= site_url('".$c_url."/create') ?>\" class=\"btn btn-primary d-none d-sm-inline-block\">
+                                Tambah Data
+                            </a>
+                            <a href=\"<?= site_url() ?>\" class=\"btn btn-secondary d-none d-sm-inline-block\">
+                                Kembali
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Message -->
+                    <?php if (\$this->session->userdata('message') <> '') { ?>
+                    <div class=\"alert alert-success alert-dismissible\" role=\"alert\">
+                        <h4 class=\"alert-title\">Wow! Everything worked!</h4>
+                        <div class=\"text-secondary\"><?= \$this->session->userdata('message') ?></div>
+                        <a class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"close\"></a>
+                    </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+";
 
 $string = "<!doctype html>
 <html>
@@ -29,7 +67,7 @@ $string = "<!doctype html>
                     <div class=\"input-group\">
                         <input type=\"text\" class=\"form-control\" name=\"q\" value=\"<?php echo \$q; ?>\">
                         <span class=\"input-group-btn\">
-                            <?php 
+                            <?php
                                 if (\$q <> '')
                                 {
                                     ?>
