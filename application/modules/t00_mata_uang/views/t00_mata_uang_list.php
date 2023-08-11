@@ -53,7 +53,7 @@ $this->load->view('dist/_partials/header');
                     <div class="col">
                         <!-- Page pre-title -->
                         <div class="page-pretitle">
-                            List
+                            List Data
                         </div>
                         <h2 class="page-title">
                             Mata Uang
@@ -62,14 +62,11 @@ $this->load->view('dist/_partials/header');
                     <!-- Page title actions -->
                     <div class="col-auto ms-auto d-print-none">
                         <div class="btn-list">
-                            <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-report">
-                                <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
-                                Create new report
+                            <a href="#1" class="btn btn-primary d-none d-sm-inline-block">
+                                Tambah Data
                             </a>
-                            <a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report" aria-label="Create new report">
-                                <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
+                            <a href="<?= site_url() ?>" class="btn btn-secondary d-none d-sm-inline-block">
+                                Kembali
                             </a>
                         </div>
                     </div>
@@ -90,16 +87,27 @@ $this->load->view('dist/_partials/header');
                             <div class="card-body border-bottom py-3">
                                 <div class="d-flex">
                                     <div class="text-muted">
-                                        Show
+                                        Tampil:
                                         <div class="mx-2 d-inline-block">
                                             <input type="text" class="form-control form-control-sm" value="8" size="3" aria-label="Invoices count">
                                         </div>
-                                        entries
+                                        data
                                     </div>
                                     <div class="ms-auto text-muted">
-                                        Search:
+                                        Cari Data:
                                         <div class="ms-2 d-inline-block">
-                                            <input type="text" class="form-control form-control-sm" aria-label="Search invoice">
+                                            <form action="<?php echo site_url('t00_mata_uang/index'); ?>" method="get">
+                                                <div class="input-group">
+                                                    <!-- <input type="text" class="form-control" name="q" value="<?php echo $q; ?>"> -->
+                                                    <input type="text" class="form-control form-control-sm" aria-label="Search invoice" name="q" value="<?= $q ?>">
+                                                    <span class="input-group-btn">
+                                                        <?php if ($q <> '') { ?>
+                                                        <a href="<?= site_url('t00_mata_uang') ?>" class="btn btn-default btn-sm">Reset</a>
+                                                        <?php } ?>
+                                                        <button class="btn btn-primary btn-sm" type="submit">Cari</button>
+                                                    </span>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -111,7 +119,7 @@ $this->load->view('dist/_partials/header');
                                 		<th>Kode</th>
                                 		<th>Nama</th>
                                 		<th>Simbol</th>
-                                		<th>Action</th>
+                                		<th>Proses Data</th>
                                     </tr>
                                     <?php foreach ($t00_mata_uang_data as $t00_mata_uang) { ?>
                                     <tr>
@@ -121,11 +129,11 @@ $this->load->view('dist/_partials/header');
                             			<td><?php echo $t00_mata_uang->simbol ?></td>
                             			<td style="text-align:center" width="200px">
                             				<?php
-                            				echo anchor(site_url('t00_mata_uang/read/'.$t00_mata_uang->id),'Read');
+                            				echo anchor(site_url('t00_mata_uang/read/'.$t00_mata_uang->id),'Lihat');
                             				echo ' | ';
-                            				echo anchor(site_url('t00_mata_uang/update/'.$t00_mata_uang->id),'Update');
+                            				echo anchor(site_url('t00_mata_uang/update/'.$t00_mata_uang->id),'Ubah');
                             				echo ' | ';
-                            				echo anchor(site_url('t00_mata_uang/delete/'.$t00_mata_uang->id),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
+                            				echo anchor(site_url('t00_mata_uang/delete/'.$t00_mata_uang->id),'Hapus','onclick="javasciprt: return confirm(\'Apakah Anda yakin akan menghapus data ini ?\')"');
                             				?>
                             			</td>
                             		</tr>
@@ -136,7 +144,7 @@ $this->load->view('dist/_partials/header');
                                 <!-- <div class="col-md-6">
                                     <a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
                                 </div> -->
-                                <p class="m-0 text-muted">Total Record <span><?php echo $total_rows ?></span></p>
+                                <p class="m-0 text-muted">Total: <span><?php echo $total_rows ?></span> data</p>
                                 <div class="col-md-6 text-right">
                                     <?php echo $pagination ?>
                                 </div>
