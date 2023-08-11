@@ -62,7 +62,7 @@ $this->load->view('dist/_partials/header');
                     <!-- Page title actions -->
                     <div class="col-auto ms-auto d-print-none">
                         <div class="btn-list">
-                            <a href="#1" class="btn btn-primary d-none d-sm-inline-block">
+                            <a href="<?= site_url('t00_mata_uang/create') ?>" class="btn btn-primary d-none d-sm-inline-block">
                                 Tambah Data
                             </a>
                             <a href="<?= site_url() ?>" class="btn btn-secondary d-none d-sm-inline-block">
@@ -70,6 +70,15 @@ $this->load->view('dist/_partials/header');
                             </a>
                         </div>
                     </div>
+                    <!-- Message -->
+                    <?php // echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
+                    <?php if ($this->session->userdata('message') <> '') { ?>
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <h4 class="alert-title">Wow! Everything worked!</h4>
+                        <div class="text-secondary"><?= $this->session->userdata('message') ?></div>
+                        <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
+                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>

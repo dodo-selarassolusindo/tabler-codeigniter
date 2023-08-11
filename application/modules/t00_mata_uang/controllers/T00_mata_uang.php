@@ -16,7 +16,7 @@ class T00_mata_uang extends CI_Controller
     {
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
-        
+
         if ($q <> '') {
             $config['base_url'] = base_url() . 't00_mata_uang/index.html?q=' . urlencode($q);
             $config['first_url'] = base_url() . 't00_mata_uang/index.html?q=' . urlencode($q);
@@ -40,10 +40,13 @@ class T00_mata_uang extends CI_Controller
             'total_rows' => $config['total_rows'],
             'start' => $start,
         );
+
+        $this->session->set_flashdata('message', 'Create Record Success');
+
         $this->load->view('t00_mata_uang/t00_mata_uang_list', $data);
     }
 
-    public function read($id) 
+    public function read($id)
     {
         $row = $this->T00_mata_uang_model->get_by_id($id);
         if ($row) {
@@ -60,7 +63,7 @@ class T00_mata_uang extends CI_Controller
         }
     }
 
-    public function create() 
+    public function create()
     {
         $data = array(
             'button' => 'Create',
@@ -72,8 +75,8 @@ class T00_mata_uang extends CI_Controller
 	);
         $this->load->view('t00_mata_uang/t00_mata_uang_form', $data);
     }
-    
-    public function create_action() 
+
+    public function create_action()
     {
         $this->_rules();
 
@@ -91,8 +94,8 @@ class T00_mata_uang extends CI_Controller
             redirect(site_url('t00_mata_uang'));
         }
     }
-    
-    public function update($id) 
+
+    public function update($id)
     {
         $row = $this->T00_mata_uang_model->get_by_id($id);
 
@@ -111,8 +114,8 @@ class T00_mata_uang extends CI_Controller
             redirect(site_url('t00_mata_uang'));
         }
     }
-    
-    public function update_action() 
+
+    public function update_action()
     {
         $this->_rules();
 
@@ -130,8 +133,8 @@ class T00_mata_uang extends CI_Controller
             redirect(site_url('t00_mata_uang'));
         }
     }
-    
-    public function delete($id) 
+
+    public function delete($id)
     {
         $row = $this->T00_mata_uang_model->get_by_id($id);
 
@@ -145,7 +148,7 @@ class T00_mata_uang extends CI_Controller
         }
     }
 
-    public function _rules() 
+    public function _rules()
     {
 	$this->form_validation->set_rules('kode', 'kode', 'trim|required');
 	$this->form_validation->set_rules('nama', 'nama', 'trim|required');
