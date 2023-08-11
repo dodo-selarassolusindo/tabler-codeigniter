@@ -41,7 +41,7 @@ class T00_mata_uang extends CI_Controller
             'start' => $start,
         );
 
-        $this->session->set_flashdata('message', 'Create Record Success');
+        // $this->session->set_flashdata('message', 'Create Record Success');
 
         $this->load->view('t00_mata_uang/t00_mata_uang_list', $data);
     }
