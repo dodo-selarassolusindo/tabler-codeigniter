@@ -83,7 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <?php foreach ($".$c_url."_data as \$$c_url) { ?>
                             <tr>";
                             $string2 .= "
-                                <td width=\"80px\"><?php echo ++\$start ?></td>";
+                                <td width=\"80px\"><?= ++\$start ?></td>";
                             foreach ($non_pk as $row) {
                                 $string2 .= "
                                 <td><?= $" . $c_url ."->". $row['column_name'] . " ?></td>";
@@ -120,7 +120,7 @@ $string = "<!doctype html>
 <html>
     <head>
         <title>harviacode.com - codeigniter crud generator</title>
-        <link rel=\"stylesheet\" href=\"<?php echo base_url('assets/bootstrap/css/bootstrap.min.css') ?>\"/>
+        <link rel=\"stylesheet\" href=\"<?= base_url('assets/bootstrap/css/bootstrap.min.css') ?>\"/>
         <style>
             body{
                 padding: 15px;
@@ -131,25 +131,25 @@ $string = "<!doctype html>
         <h2 style=\"margin-top:0px\">".ucfirst($table_name)." List</h2>
         <div class=\"row\" style=\"margin-bottom: 10px\">
             <div class=\"col-md-4\">
-                <?php echo anchor(site_url('".$c_url."/create'),'Create', 'class=\"btn btn-primary\"'); ?>
+                <?= anchor(site_url('".$c_url."/create'),'Create', 'class=\"btn btn-primary\"') ?>
             </div>
             <div class=\"col-md-4 text-center\">
                 <div style=\"margin-top: 8px\" id=\"message\">
-                    <?php echo \$this->session->userdata('message') <> '' ? \$this->session->userdata('message') : ''; ?>
+                    <?= \$this->session->userdata('message') <> '' ? \$this->session->userdata('message') : '' ?>
                 </div>
             </div>
             <div class=\"col-md-1 text-right\">
             </div>
             <div class=\"col-md-3 text-right\">
-                <form action=\"<?php echo site_url('$c_url/index'); ?>\" class=\"form-inline\" method=\"get\">
+                <form action=\"<?= site_url('$c_url/index') ?>\" class=\"form-inline\" method=\"get\">
                     <div class=\"input-group\">
-                        <input type=\"text\" class=\"form-control\" name=\"q\" value=\"<?php echo \$q; ?>\">
+                        <input type=\"text\" class=\"form-control\" name=\"q\" value=\"<?= \$q ?>\">
                         <span class=\"input-group-btn\">
                             <?php
                                 if (\$q <> '')
                                 {
                                     ?>
-                                    <a href=\"<?php echo site_url('$c_url'); ?>\" class=\"btn btn-default\">Reset</a>
+                                    <a href=\"<?= site_url('$c_url') ?>\" class=\"btn btn-default\">Reset</a>
                                     <?php
                                 }
                             ?>
@@ -173,9 +173,9 @@ $string .= "<?php
                 ?>
                 <tr>";
 
-$string .= "\n\t\t\t<td width=\"80px\"><?php echo ++\$start ?></td>";
+$string .= "\n\t\t\t<td width=\"80px\"><?= ++\$start ?></td>";
 foreach ($non_pk as $row) {
-    $string .= "\n\t\t\t<td><?php echo $" . $c_url ."->". $row['column_name'] . " ?></td>";
+    $string .= "\n\t\t\t<td><?= $" . $c_url ."->". $row['column_name'] . " ?></td>";
 }
 
 
@@ -196,19 +196,19 @@ $string .=  "\n\t\t</tr>
         </table>
         <div class=\"row\">
             <div class=\"col-md-6\">
-                <a href=\"#\" class=\"btn btn-primary\">Total Record : <?php echo \$total_rows ?></a>";
+                <a href=\"#\" class=\"btn btn-primary\">Total Record : <?= \$total_rows ?></a>";
 if ($export_excel == '1') {
-    $string .= "\n\t\t<?php echo anchor(site_url('".$c_url."/excel'), 'Excel', 'class=\"btn btn-primary\"'); ?>";
+    $string .= "\n\t\t<?= anchor(site_url('".$c_url."/excel'), 'Excel', 'class=\"btn btn-primary\"') ?>";
 }
 if ($export_word == '1') {
-    $string .= "\n\t\t<?php echo anchor(site_url('".$c_url."/word'), 'Word', 'class=\"btn btn-primary\"'); ?>";
+    $string .= "\n\t\t<?= anchor(site_url('".$c_url."/word'), 'Word', 'class=\"btn btn-primary\"') ?>";
 }
 if ($export_pdf == '1') {
-    $string .= "\n\t\t<?php echo anchor(site_url('".$c_url."/pdf'), 'PDF', 'class=\"btn btn-primary\"'); ?>";
+    $string .= "\n\t\t<?= anchor(site_url('".$c_url."/pdf'), 'PDF', 'class=\"btn btn-primary\"') ?>";
 }
 $string .= "\n\t    </div>
             <div class=\"col-md-6 text-right\">
-                <?php echo \$pagination ?>
+                <?= \$pagination ?>
             </div>
         </div>
     </body>

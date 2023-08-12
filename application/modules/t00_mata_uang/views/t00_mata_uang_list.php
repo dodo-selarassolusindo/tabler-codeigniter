@@ -76,7 +76,7 @@ $this->load->view('dist/_partials/header');
                             </tr>
                             <?php foreach ($t00_mata_uang_data as $t00_mata_uang) { ?>
                             <tr>
-                                <td width="80px"><?php echo ++$start ?></td>
+                                <td width="80px"><?= ++$start ?></td>
                                 <td><?= $t00_mata_uang->kode ?></td>
                                 <td><?= $t00_mata_uang->nama ?></td>
                                 <td><?= $t00_mata_uang->simbol ?></td>

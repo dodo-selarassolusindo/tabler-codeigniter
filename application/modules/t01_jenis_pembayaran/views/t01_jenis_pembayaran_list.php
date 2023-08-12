@@ -74,7 +74,7 @@ $this->load->view('dist/_partials/header');
                             </tr>
                             <?php foreach ($t01_jenis_pembayaran_data as $t01_jenis_pembayaran) { ?>
                             <tr>
-                                <td width="80px"><?php echo ++$start ?></td>
+                                <td width="80px"><?= ++$start ?></td>
                                 <td><?= $t01_jenis_pembayaran->nama ?></td>
                                 <td style="text-align:center" width="200px">
                                 <?php

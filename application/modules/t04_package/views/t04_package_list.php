@@ -86,7 +86,7 @@ $this->load->view('dist/_partials/header');
                             </tr>
                             <?php foreach ($t04_package_data as $t04_package) { ?>
                             <tr>
-                                <td width="80px"><?php echo ++$start ?></td>
+                                <td width="80px"><?= ++$start ?></td>
                                 <td><?= $t04_package->periode ?></td>
                                 <td><?= $t04_package->kode ?></td>
                                 <td><?= $t04_package->nama ?></td>
