@@ -12,7 +12,7 @@ $this->load->view('dist/_partials/header');
                     List Data
                 </div>
                 <h2 class="page-title">
-                    T04_package
+                    Package
                 </h2>
             </div>
             <!-- Page title actions -->
@@ -114,7 +114,7 @@ $this->load->view('dist/_partials/header');
                         </table>
                     </div>
                     <div class="card-footer d-flex align-items-center">
-                        <p class="m-0 text-muted">Jumlah Data: <span><?= $total_rows ?></span> data</p>
+                        <p class="m-0 text-muted">Menampilkan <span><?= count($t04_package_data) ?></span> dari <span><?= $total_rows ?></span> data</p>
                         <?= $pagination ?>
                     </div>
                 </div>

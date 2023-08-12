@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     List Data
                 </div>
                 <h2 class=\"page-title\">
-                    ".ucfirst($table_name)."
+                    ".ucwords(implode(' ', explode('_', substr($table_name, 4))))."
                 </h2>
             </div>
             <!-- Page title actions -->
@@ -103,7 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </table>
                     </div>
                     <div class=\"card-footer d-flex align-items-center\">
-                        <p class=\"m-0 text-muted\">Jumlah Data: <span><?= \$total_rows ?></span> data</p>
+                        <p class=\"m-0 text-muted\">Menampilkan <span><?= count($".$c_url."_data) ?></span> dari <span><?= \$total_rows ?></span> data</p>
                         <?= \$pagination ?>
                     </div>
                 </div>
