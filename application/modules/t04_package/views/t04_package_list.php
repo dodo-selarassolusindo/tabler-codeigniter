@@ -48,21 +48,14 @@ $this->load->view('dist/_partials/header');
                     <div class="card-body border-bottom py-3">
                         <div class="d-flex">
                             <div class="text-muted">
-                                Tampil:
-                                <div class="mx-2 d-inline-block">
-                                    <input type="text" class="form-control form-control-sm" value="8" size="3" aria-label="Invoices count">
-                                </div>
-                                data
-                            </div>
-                            <div class="ms-auto text-muted">
                                 Cari Data:
                                 <div class="ms-2 d-inline-block">
                                     <form action="<?= site_url('t04_package/index') ?>" method="get">
                                         <div class="input-group">
-                                            <input type="text" class="form-control form-control-sm" aria-label="Search invoice" name="q" value="<?= $q ?>">
+                                            <input type="text" class="form-control form-control-sm" name="q" value="<?= $q ?>">
                                             <span class="input-group-btn">
                                                 <?php if ($q <> '') { ?>
-                                                <a href="<?= site_url('t04_package') ?>" class="btn btn-default btn-sm">Reset</a>
+                                                <a href="<?= site_url('t04_package') ?>" class="btn btn-secondary btn-sm">Reset</a>
                                                 <?php } ?>
                                                 <button class="btn btn-primary btn-sm" type="submit">Cari</button>
                                             </span>
@@ -121,7 +114,7 @@ $this->load->view('dist/_partials/header');
                         </table>
                     </div>
                     <div class="card-footer d-flex align-items-center">
-                        <p class="m-0 text-muted">Total: <span><?= $total_rows ?></span> data</p>
+                        <p class="m-0 text-muted">Jumlah Data: <span><?= $total_rows ?></span> data</p>
                         <?= $pagination ?>
                     </div>
                 </div>
