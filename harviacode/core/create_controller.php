@@ -45,6 +45,7 @@ $string .= "\n\n    public function index()
         \$config['full_tag_open'] = '<ul class=\"pagination m-0 ms-auto\">';
         \$config['full_tag_close'] = '</ul>';
         \$config['attributes'] = array('class' => 'page-link');
+        \$config['num_links'] = 5;
         \$$c_url = \$this->" . $m . "->get_limit_data(\$config['per_page'], \$start, \$q);
 
         \$this->load->library('pagination');
