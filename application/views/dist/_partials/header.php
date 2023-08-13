@@ -253,7 +253,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <div class="dropdown-menu">
                                             <div class="dropdown-menu-columns">
                                                 <div class="dropdown-menu-column">
-                                                    <a class="dropdown-item" href="<?= site_url('00_mata_uang') ?>">
+                                                    <a class="dropdown-item" href="<?= site_url('t30_bkm') ?>">
                                                         BKM
                                                     </a>
                                                     <a class="dropdown-item" href="<?= site_url('00_mata_uang') ?>">

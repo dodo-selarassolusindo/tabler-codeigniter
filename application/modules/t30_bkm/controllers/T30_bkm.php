@@ -51,6 +51,15 @@ class T30_bkm extends CI_Controller
         $this->load->view('t30_bkm/t30_bkm_list', $data);
     }
 
+    public function import()
+    {
+        $data = array(
+            'button' => 'Proses',
+            'action' => site_url('t30_bkm/import_action'),
+        );
+        $this->load->view('t30_bkm/t30_bkm_import', $data);
+    }
+
     public function read($id)
     {
         $row = $this->T30_bkm_model->get_by_id($id);
