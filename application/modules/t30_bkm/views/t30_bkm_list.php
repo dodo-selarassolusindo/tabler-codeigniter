@@ -12,14 +12,17 @@ $this->load->view('dist/_partials/header');
                     List Data
                 </div>
                 <h2 class="page-title">
-                    Bkm
+                    BKM
                 </h2>
             </div>
             <!-- Page title actions -->
             <div class="col-auto ms-auto d-print-none">
                 <div class="btn-list">
-                    <a href="<?= site_url('t30_bkm/create') ?>" class="btn btn-primary d-none d-sm-inline-block">
+                    <!-- <a href="<?= site_url('t30_bkm/create') ?>" class="btn btn-primary d-none d-sm-inline-block">
                         Tambah Data
+                    </a> -->
+                    <a href="<?= site_url('t30_bkm/import') ?>" class="btn btn-primary d-none d-sm-inline-block">
+                        Import Data
                     </a>
                     <a href="<?= site_url() ?>" class="btn btn-secondary d-none d-sm-inline-block">
                         Kembali
