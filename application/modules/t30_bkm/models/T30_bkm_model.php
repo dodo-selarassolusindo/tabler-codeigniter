@@ -15,6 +15,13 @@ class T30_bkm_model extends CI_Model
         parent::__construct();
     }
 
+    // get data by nomor_bkm
+    function get_by_nomor_bkm($nomor_bkm)
+    {
+        $this->db->where('nomor', $nomor_bkm);
+        return $this->db->get($this->table)->row();
+    }
+
     // get all
     function get_all()
     {
@@ -28,7 +35,7 @@ class T30_bkm_model extends CI_Model
         $this->db->where($this->id, $id);
         return $this->db->get($this->table)->row();
     }
-    
+
     // get total rows
     function total_rows($q = NULL) {
         $this->db->like('id', $q);

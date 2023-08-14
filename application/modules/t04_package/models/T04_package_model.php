@@ -15,6 +15,15 @@ class T04_package_model extends CI_Model
         parent::__construct();
     }
 
+    function get_by_kode($kode)
+    {
+        $this->db
+            ->where('kode', $kode)
+            ->order_by('periode', 'desc')
+            ;
+        return $this->db->get($this->table)->row();
+    }
+
     // get all
     function get_all()
     {
@@ -28,7 +37,7 @@ class T04_package_model extends CI_Model
         $this->db->where($this->id, $id);
         return $this->db->get($this->table)->row();
     }
-    
+
     // get total rows
     function total_rows($q = NULL) {
         $this->db->like('id', $q);

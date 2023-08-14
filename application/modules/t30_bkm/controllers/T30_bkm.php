@@ -10,6 +10,11 @@ class T30_bkm extends CI_Controller
         parent::__construct();
         $this->load->model('T30_bkm_model');
         $this->load->library('form_validation');
+        $this->load->model('t31_bkm_detail/T31_bkm_detail_model');
+        $this->load->model('t07_kolom_payment/T07_kolom_payment_model');
+        $this->load->model('t04_package/T04_package_model');
+        $this->load->model('t05_agent/T05_agent_model');
+        $this->load->model('t33_bkm_detail_payment/T33_bkm_detail_payment_model');
     }
 
     public function index()
@@ -58,6 +63,245 @@ class T30_bkm extends CI_Controller
             'action' => site_url('t30_bkm/import_action'),
         );
         $this->load->view('t30_bkm/t30_bkm_import', $data);
+    }
+
+    public function import_action()
+    {
+        include APPPATH . 'third_party/PHPExcel/PHPExcel.php';
+
+        $config['upload_path'] = realpath('excel');
+        $config['allowed_types'] = 'xlsx|xls|csv';
+        $config['max_size'] = '10000';
+        $config['encrypt_name'] = true;
+
+        $this->load->library('upload', $config);
+
+        /**
+         * proses upload gagal
+         */
+        if (!$this->upload->do_upload()) {
+            $this->session->set_flashdata('message', 'Proses import data gagal ! ' . strip_tags($this->upload->display_errors()));
+            redirect('t30_bkm');
+        }
+
+        /**
+         * deklarasi kolom payment
+         */
+        $kolom_payment = $this->T07_kolom_payment_model->get_all();
+
+        /**
+         * deklarasi file excel
+         */
+        $data_upload = $this->upload->data();
+        $excelreader = new PHPExcel_Reader_Excel2007();
+        $loadexcel = $excelreader->load('excel/' . $data_upload['file_name']);
+        $sheet = $loadexcel->getActiveSheet()->toArray(null, true, false, true);
+        // pre($sheet); exit;
+        // pre($loadexcel); exit;
+
+        /**
+         * ambil data nomor BKM
+         */
+        $nomor_bkm = $sheet[2]['A'];
+
+        /**
+         * check duplikasi nomor BKM
+         */
+        if ($this->T30_bkm_model->get_by_nomor_bkm($nomor_bkm) > 0) {
+            /**
+             * nomor BKM sudah ada
+             */
+            $this->session->set_flashdata('message', 'Nomor BKM '.$nomor_bkm.' sudah ada, proses import data tidak dilanjutkan !');
+            redirect(site_url('t30_bkm'));
+        }
+
+        /**
+         * simpan data BKM sebagai data master
+         */
+        $data = array(
+            'nomor' => $sheet[2]['A'],
+            'tanggal' => date_ymd($sheet[4]['A']),
+            'rate_usd' => $sheet[3]['F'], // $spreadsheet->getActiveSheet()->getCellByColumnAndRow(6, 3)->getValue(),
+            'rate_aud' => $sheet[3]['H'], // $spreadsheet->getActiveSheet()->getCellByColumnAndRow(8, 3)->getValue(),
+        );
+        $this->T30_bkm_model->insert($data);
+
+        /**
+         * ambil id data bkm terbaru
+         */
+        $bkm = $this->db->insert_id();
+
+        /**
+         * deklarasi variabel
+         */
+        $data = array();
+        $dataBayar = array();
+        $startRow = 8;
+        $numRow = 1;
+
+        /**
+         * baca data per row
+         */
+        foreach($sheet as $row) {
+
+            /**
+             * pembacaan data dimulai pada row yang ada datanya
+             * hingga row kosong
+             */
+            if ($numRow >= $startRow) {
+
+                /**
+                 * jika kolom A kosong maka break
+                 */
+                if ($row['A'] == '') {
+                    break;
+                }
+
+                /**
+                 * ambil data kode package
+                 */
+                $kode_package = $row['C']; // $spreadsheet->getActiveSheet()->getCell('C'.$row)->getValue();
+
+                /**
+                 * mendapatkan row_set dari tabel t04_package dengan syarat ::
+                 *   - periode terbaru
+                 *   - berdasarkan kode package
+                 */
+                $package_row = $this->T04_package_model->get_by_kode($kode_package);
+
+                /**
+                 * id data package
+                 */
+                $package = $package_row->id;
+                // pre($package);
+
+                /**
+                 * data night
+                 */
+                $night = $row['D']; // $spreadsheet->getActiveSheet()->getCell('D'.$row)->getValue();
+
+                /**
+                 * mencari mata uang dan price berdasarkan kode package dan night
+                 */
+                switch ($night) {
+                    case 3:
+                        $mata_uang = $package_row->ln3n_mata_uang;
+                        $price = $package_row->ln3n_harga;
+                        break;
+                    case 6:
+                        $mata_uang = $package_row->ln6n_mata_uang;
+                        $price = $package_row->ln6n_harga;
+                        break;
+                    case 1:
+                        $mata_uang = $package_row->ln1n_mata_uang;
+                        $price = $package_row->ln1n_harga * $night;
+                        break;
+                    default:
+                        $mata_uang = $package_row->ln1n_mata_uang;
+                        $price = $package_row->ln1n_harga * $night;
+                }
+                // pre($mata_uang . ' - ' . $price);
+
+                /**
+                 * ambil data check out dan dicari data check ini
+                 * dengan rumus = data check out - night
+                 */
+                $check_out = date_ymd($row['E']); // date_ymd($spreadsheet->getActiveSheet()->getCell('E'.$row)->getValue());
+                $check_in = date_format(date_add(date_create($check_out), date_interval_create_from_date_string(-$night . ' days')), 'Y-m-d');
+                // pre($check_in . ' - ' . $check_out);
+
+                /**
+                 * id agent
+                 */
+                $agent_row = $this->T05_agent_model->get_by_nama($row['F']);
+
+                /**
+                 * jika agent tidak ada maka diisi kosong
+                 * tapi diubah
+                 */
+                // $agent = $agent_row ? $agent_row->id : -1;
+                // pre($agent);
+
+                /**
+                 * diubah, jika agent tidak ada di master tapi ada di excel
+                 * maka di master ditambahkan dengan yang ada di excel
+                 */
+                //
+                $agent = '-1';
+                if ($agent_row) {
+                    $agent = $agent_row->id;
+                } else {
+                    $data = array(
+                        'nama' => strtoupper($row['F']),
+                        'komisi' => 0,
+                    );
+                    $this->T05_agent_model->insert($data);
+                    $agent = $this->db->insert_id();
+                }
+
+                /**
+                 * simpan data bkm detail
+                 */
+                $data = array(
+                    'bkm' => $bkm,
+                    'name' => $row['B'],
+                    'package' => $package,
+                    'night' => $night,
+                    'check_in' => $check_in,
+                    'check_out' => $check_out,
+                    'mata_uang' => $mata_uang,
+                    'price' => $price,
+                    'agent' => $agent,
+                    'remarks' => $row['J'],
+                    'price_1' => $loadexcel->getActiveSheet()->getCell('G'.$numRow)->getFormattedValue(),
+                    'price_1_value' => $row['G'],
+                    'fee_tanas' => $loadexcel->getActiveSheet()->getCell('H'.$numRow)->getFormattedValue(),
+                    'fee_tanas_value' => $row['H'],
+                    'price_2' => $loadexcel->getActiveSheet()->getCell('I'.$numRow)->getFormattedValue(),
+                );
+                $this->T31_bkm_detail_model->insert($data);
+
+                $bkm_detail = $this->db->insert_id();
+
+                /**
+                 * simpan payment
+                 */
+                //
+                $startKolomPayment = 10; // kolom terakhir di J
+                $startKolomPayment = 74; // kolom terakhir di J
+
+                // $spreadsheet->getActiveSheet()->getCellByColumnAndRow(8, 3)->getValue()
+                foreach($kolom_payment as $rowData) {
+
+                    $jumlah = 0;
+                    // $notNull = false;
+                    // if (!is_null($loadexcel->getActiveSheet()->getCellByColumnAndRow($startKolomPayment + $rowData->urutan, $numRow)->getValue())) {
+                    if (!is_null($loadexcel->getActiveSheet()->getCell(chr($startKolomPayment + $rowData->urutan).$numRow)->getValue())) {
+                        // $notNull = true;
+                        // $jumlah = $loadexcel->getActiveSheet()->getCellByColumnAndRow($startKolomPayment + $rowData->urutan, $numRow)->getValue();
+                        $jumlah = $loadexcel->getActiveSheet()->getCell(chr($startKolomPayment + $rowData->urutan).$numRow)->getValue();
+                    }
+                    // pre($startKolomPayment + $rowData->urutan . ', ' . $numRow . ' :: ' . $notNull);
+                    // pre(chr($startKolomPayment + $rowData->urutan).$numRow . ' :: ' . $notNull);
+                    // pre($rowData->id . ' - ' . $rowData->urutan);
+                    $data = array(
+                        'bkm_detail' => $bkm_detail,
+                        'kolom_payment' => $rowData->id,
+                        'jumlah' => $jumlah,
+                    );
+                    // pre($data);
+                    $this->T33_bkm_detail_payment_model->insert($data);
+                }
+                // exit;
+
+            }
+            $numRow++;
+
+        }
+
+        $this->session->set_flashdata('message', 'Data berhasil diimport !');
+        redirect(site_url('t30_bkm'));
+
     }
 
     public function read($id)
