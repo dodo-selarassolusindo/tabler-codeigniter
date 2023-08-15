@@ -308,13 +308,18 @@ class T30_bkm extends CI_Controller
     {
         $row = $this->T30_bkm_model->get_by_id($id);
         if ($row) {
+            $t31_bkm_detail_data = $this->T31_bkm_detail_model->get_all_by_bkm($id);
+            $data_t31_bkm_detail = array(
+                't31_bkm_detail_data' => $t31_bkm_detail_data,
+            );
             $data = array(
-		'id' => $row->id,
-		'nomor' => $row->nomor,
-		'tanggal' => $row->tanggal,
-		'rate_usd' => $row->rate_usd,
-		'rate_aud' => $row->rate_aud,
-	    );
+        		'id' => $row->id,
+        		'nomor' => $row->nomor,
+        		'tanggal' => $row->tanggal,
+        		'rate_usd' => $row->rate_usd,
+        		'rate_aud' => $row->rate_aud,
+                't31_bkm_detail_data' => $this->load->view('t31_bkm_detail/t31_bkm_detail_list', $data_t31_bkm_detail, true),
+    	    );
             $this->load->view('t30_bkm/t30_bkm_read', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
