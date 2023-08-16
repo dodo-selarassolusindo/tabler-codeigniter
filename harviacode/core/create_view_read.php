@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class=\"col\">
                 <!-- Page pre-title -->
                 <div class=\"page-pretitle\">
-                    View Detail Data
+                    Detail Data
                 </div>
                 <h2 class=\"page-title\">
                     ".ucwords(implode(' ', explode('_', substr($table_name, 4))))."

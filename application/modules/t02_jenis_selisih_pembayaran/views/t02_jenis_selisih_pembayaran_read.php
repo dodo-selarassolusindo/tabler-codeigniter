@@ -9,7 +9,7 @@ $this->load->view('dist/_partials/header');
             <div class="col">
                 <!-- Page pre-title -->
                 <div class="page-pretitle">
-                    View Detail Data
+                    Detail Data
                 </div>
                 <h2 class="page-title">
                     Jenis Selisih Pembayaran
