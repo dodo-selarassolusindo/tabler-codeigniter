@@ -1,17 +1,16 @@
 <?php
-
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class T05_agent extends CI_Controller
 {
+
     function __construct()
     {
         parent::__construct();
         $this->load->model('T05_agent_model');
         $this->load->library('form_validation');
     }
-
+    
     public function index()
     {
         $q = urldecode($this->input->get('q', TRUE));
@@ -50,16 +49,16 @@ class T05_agent extends CI_Controller
         );
         $this->load->view('t05_agent/t05_agent_list', $data);
     }
-
+    
     public function read($id)
     {
         $row = $this->T05_agent_model->get_by_id($id);
         if ($row) {
             $data = array(
-		'id' => $row->id,
-		'nama' => $row->nama,
-		'komisi' => $row->komisi,
-	    );
+                'id' => $row->id,
+                'nama' => $row->nama,
+                'komisi' => $row->komisi,
+            );
             $this->load->view('t05_agent/t05_agent_read', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -72,25 +71,23 @@ class T05_agent extends CI_Controller
         $data = array(
             'button' => 'Create',
             'action' => site_url('t05_agent/create_action'),
-	    'id' => set_value('id'),
-	    'nama' => set_value('nama'),
-	    'komisi' => set_value('komisi'),
-	);
+            'id' => set_value('id'),
+            'nama' => set_value('nama'),
+            'komisi' => set_value('komisi'),
+        );
         $this->load->view('t05_agent/t05_agent_form', $data);
     }
 
     public function create_action()
     {
         $this->_rules();
-
         if ($this->form_validation->run() == FALSE) {
             $this->create();
         } else {
             $data = array(
-		'nama' => $this->input->post('nama',TRUE),
-		'komisi' => $this->input->post('komisi',TRUE),
-	    );
-
+                'nama' => $this->input->post('nama',TRUE),
+                'komisi' => $this->input->post('komisi',TRUE),
+            );
             $this->T05_agent_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
             redirect(site_url('t05_agent'));
@@ -100,15 +97,14 @@ class T05_agent extends CI_Controller
     public function update($id)
     {
         $row = $this->T05_agent_model->get_by_id($id);
-
         if ($row) {
             $data = array(
                 'button' => 'Update',
                 'action' => site_url('t05_agent/update_action'),
-		'id' => set_value('id', $row->id),
-		'nama' => set_value('nama', $row->nama),
-		'komisi' => set_value('komisi', $row->komisi),
-	    );
+                'id' => set_value('id', $row->id),
+                'nama' => set_value('nama', $row->nama),
+                'komisi' => set_value('komisi', $row->komisi),
+            );
             $this->load->view('t05_agent/t05_agent_form', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -119,15 +115,13 @@ class T05_agent extends CI_Controller
     public function update_action()
     {
         $this->_rules();
-
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id', TRUE));
         } else {
             $data = array(
-		'nama' => $this->input->post('nama',TRUE),
-		'komisi' => $this->input->post('komisi',TRUE),
-	    );
-
+                'nama' => $this->input->post('nama',TRUE),
+                'komisi' => $this->input->post('komisi',TRUE),
+            );
             $this->T05_agent_model->update($this->input->post('id', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
             redirect(site_url('t05_agent'));
@@ -137,7 +131,6 @@ class T05_agent extends CI_Controller
     public function delete($id)
     {
         $row = $this->T05_agent_model->get_by_id($id);
-
         if ($row) {
             $this->T05_agent_model->delete($id);
             $this->session->set_flashdata('message', 'Delete Record Success');
@@ -150,17 +143,18 @@ class T05_agent extends CI_Controller
 
     public function _rules()
     {
-	$this->form_validation->set_rules('nama', 'nama', 'trim|required');
-	$this->form_validation->set_rules('komisi', 'komisi', 'trim|required|numeric');
-
-	$this->form_validation->set_rules('id', 'id', 'trim');
-	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+        $this->form_validation->set_rules('nama', 'nama', 'trim|required');
+        $this->form_validation->set_rules('komisi', 'komisi', 'trim|required|numeric');
+        $this->form_validation->set_rules('id', 'id', 'trim');
+        $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
-
+    
 }
 
 /* End of file T05_agent.php */
 /* Location: ./application/controllers/T05_agent.php */
 /* Please DO NOT modify this information : */
-/* Generated by Harviacode Codeigniter CRUD Generator 2023-08-12 19:59:53 */
+/* Generated by Harviacode Codeigniter CRUD Generator 2023-08-16 08:38:12 */
 /* http://harviacode.com */
+
+?>
