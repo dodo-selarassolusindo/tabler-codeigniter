@@ -332,29 +332,27 @@ class T30_bkm extends CI_Controller
         $data = array(
             'button' => 'Create',
             'action' => site_url('t30_bkm/create_action'),
-	    'id' => set_value('id'),
-	    'nomor' => set_value('nomor'),
-	    'tanggal' => set_value('tanggal'),
-	    'rate_usd' => set_value('rate_usd'),
-	    'rate_aud' => set_value('rate_aud'),
-	);
+            'id' => set_value('id'),
+            'nomor' => set_value('nomor'),
+            'tanggal' => set_value('tanggal'),
+            'rate_usd' => set_value('rate_usd'),
+            'rate_aud' => set_value('rate_aud'),
+        );
         $this->load->view('t30_bkm/t30_bkm_form', $data);
     }
 
     public function create_action()
     {
         $this->_rules();
-
         if ($this->form_validation->run() == FALSE) {
             $this->create();
         } else {
             $data = array(
-		'nomor' => $this->input->post('nomor',TRUE),
-		'tanggal' => $this->input->post('tanggal',TRUE),
-		'rate_usd' => $this->input->post('rate_usd',TRUE),
-		'rate_aud' => $this->input->post('rate_aud',TRUE),
-	    );
-
+                'nomor' => $this->input->post('nomor',TRUE),
+                'tanggal' => $this->input->post('tanggal',TRUE),
+                'rate_usd' => $this->input->post('rate_usd',TRUE),
+                'rate_aud' => $this->input->post('rate_aud',TRUE),
+            );
             $this->T30_bkm_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
             redirect(site_url('t30_bkm'));
@@ -364,17 +362,16 @@ class T30_bkm extends CI_Controller
     public function update($id)
     {
         $row = $this->T30_bkm_model->get_by_id($id);
-
         if ($row) {
             $data = array(
                 'button' => 'Update',
                 'action' => site_url('t30_bkm/update_action'),
-		'id' => set_value('id', $row->id),
-		'nomor' => set_value('nomor', $row->nomor),
-		'tanggal' => set_value('tanggal', $row->tanggal),
-		'rate_usd' => set_value('rate_usd', $row->rate_usd),
-		'rate_aud' => set_value('rate_aud', $row->rate_aud),
-	    );
+                'id' => set_value('id', $row->id),
+                'nomor' => set_value('nomor', $row->nomor),
+                'tanggal' => set_value('tanggal', $row->tanggal),
+                'rate_usd' => set_value('rate_usd', $row->rate_usd),
+                'rate_aud' => set_value('rate_aud', $row->rate_aud),
+            );
             $this->load->view('t30_bkm/t30_bkm_form', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -385,17 +382,15 @@ class T30_bkm extends CI_Controller
     public function update_action()
     {
         $this->_rules();
-
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id', TRUE));
         } else {
             $data = array(
-		'nomor' => $this->input->post('nomor',TRUE),
-		'tanggal' => $this->input->post('tanggal',TRUE),
-		'rate_usd' => $this->input->post('rate_usd',TRUE),
-		'rate_aud' => $this->input->post('rate_aud',TRUE),
-	    );
-
+                'nomor' => $this->input->post('nomor',TRUE),
+                'tanggal' => $this->input->post('tanggal',TRUE),
+                'rate_usd' => $this->input->post('rate_usd',TRUE),
+                'rate_aud' => $this->input->post('rate_aud',TRUE),
+            );
             $this->T30_bkm_model->update($this->input->post('id', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
             redirect(site_url('t30_bkm'));
@@ -405,7 +400,6 @@ class T30_bkm extends CI_Controller
     public function delete($id)
     {
         $row = $this->T30_bkm_model->get_by_id($id);
-
         if ($row) {
             $this->T30_bkm_model->delete($id);
             $this->session->set_flashdata('message', 'Delete Record Success');
@@ -418,13 +412,12 @@ class T30_bkm extends CI_Controller
 
     public function _rules()
     {
-	$this->form_validation->set_rules('nomor', 'nomor', 'trim|required');
-	$this->form_validation->set_rules('tanggal', 'tanggal', 'trim|required');
-	$this->form_validation->set_rules('rate_usd', 'rate usd', 'trim|required|numeric');
-	$this->form_validation->set_rules('rate_aud', 'rate aud', 'trim|required|numeric');
-
-	$this->form_validation->set_rules('id', 'id', 'trim');
-	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+        $this->form_validation->set_rules('nomor', 'nomor', 'trim|required');
+        $this->form_validation->set_rules('tanggal', 'tanggal', 'trim|required');
+        $this->form_validation->set_rules('rate_usd', 'rate usd', 'trim|required|numeric');
+        $this->form_validation->set_rules('rate_aud', 'rate aud', 'trim|required|numeric');
+        $this->form_validation->set_rules('id', 'id', 'trim');
+        $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
 
 }

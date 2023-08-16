@@ -291,8 +291,7 @@ $string2 .= "
 /* http://harviacode.com */";
 
 $string2 .= "
-
-?>";
+";
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 $string = "<?php
