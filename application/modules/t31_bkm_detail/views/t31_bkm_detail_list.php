@@ -86,11 +86,11 @@
                                 <td><?= $t31_bkm_detail->price_2 ?></td>
                                 <td style="text-align:center" width="200px">
                                 <?php
-                                echo anchor(site_url('t31_bkm_detail/read/'.$t31_bkm_detail->id),'Read');
+                                echo anchor(site_url('t31_bkm_detail/read/'.$t31_bkm_detail->id),'Detail');
                                 echo ' | ';
-                                echo anchor(site_url('t31_bkm_detail/update/'.$t31_bkm_detail->id),'Update');
+                                echo anchor(site_url('t31_bkm_detail/update/'.$t31_bkm_detail->id),'Ubah');
                                 echo ' | ';
-                                echo anchor(site_url('t31_bkm_detail/delete/'.$t31_bkm_detail->id),'Delete','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
+                                echo anchor(site_url('t31_bkm_detail/delete/'.$t31_bkm_detail->id),'Hapus','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
                                 ?>
                                 </td>
                             </tr>

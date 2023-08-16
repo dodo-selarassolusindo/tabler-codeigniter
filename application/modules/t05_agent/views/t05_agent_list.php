@@ -80,11 +80,11 @@ $this->load->view('dist/_partials/header');
                                 <td><?= $t05_agent->komisi ?></td>
                                 <td style="text-align:center" width="200px">
                                 <?php
-                                echo anchor(site_url('t05_agent/read/'.$t05_agent->id),'Read');
+                                echo anchor(site_url('t05_agent/read/'.$t05_agent->id),'Detail');
                                 echo ' | ';
-                                echo anchor(site_url('t05_agent/update/'.$t05_agent->id),'Update');
+                                echo anchor(site_url('t05_agent/update/'.$t05_agent->id),'Ubah');
                                 echo ' | ';
-                                echo anchor(site_url('t05_agent/delete/'.$t05_agent->id),'Delete','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
+                                echo anchor(site_url('t05_agent/delete/'.$t05_agent->id),'Hapus','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
                                 ?>
                                 </td>
                             </tr>

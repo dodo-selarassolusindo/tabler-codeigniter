@@ -78,11 +78,11 @@ $this->load->view('dist/_partials/header');
                                 <td><?= $t06_country->country_name ?></td>
                                 <td style="text-align:center" width="200px">
                                 <?php
-                                echo anchor(site_url('t06_country/read/'.$t06_country->id_country),'Read');
+                                echo anchor(site_url('t06_country/read/'.$t06_country->id_country),'Detail');
                                 echo ' | ';
-                                echo anchor(site_url('t06_country/update/'.$t06_country->id_country),'Update');
+                                echo anchor(site_url('t06_country/update/'.$t06_country->id_country),'Ubah');
                                 echo ' | ';
-                                echo anchor(site_url('t06_country/delete/'.$t06_country->id_country),'Delete','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
+                                echo anchor(site_url('t06_country/delete/'.$t06_country->id_country),'Hapus','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
                                 ?>
                                 </td>
                             </tr>

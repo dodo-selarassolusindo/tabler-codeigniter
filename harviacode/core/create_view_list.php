@@ -91,11 +91,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             $string2 .= "
                                 <td style=\"text-align:center\" width=\"200px\">
                                 <?php
-                                echo anchor(site_url('".$c_url."/read/'.$".$c_url."->".$pk."),'Read');
+                                echo anchor(site_url('".$c_url."/read/'.$".$c_url."->".$pk."),'Detail');
                                 echo ' | ';
-                                echo anchor(site_url('".$c_url."/update/'.$".$c_url."->".$pk."),'Update');
+                                echo anchor(site_url('".$c_url."/update/'.$".$c_url."->".$pk."),'Ubah');
                                 echo ' | ';
-                                echo anchor(site_url('".$c_url."/delete/'.$".$c_url."->".$pk."),'Delete','onclick=\"javasciprt: return confirm(\\'Hapus data ?\\')\"');
+                                echo anchor(site_url('".$c_url."/delete/'.$".$c_url."->".$pk."),'Hapus','onclick=\"javasciprt: return confirm(\\'Hapus data ?\\')\"');
                                 ?>
                                 </td>
                             </tr>

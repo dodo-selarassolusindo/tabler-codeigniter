@@ -87,11 +87,11 @@ $this->load->view('dist/_partials/header');
                                 <td><?= $t30_bkm->rate_aud ?></td>
                                 <td style="text-align:center" width="200px">
                                 <?php
-                                echo anchor(site_url('t30_bkm/read/'.$t30_bkm->id),'Read');
+                                echo anchor(site_url('t30_bkm/read/'.$t30_bkm->id),'Detail');
                                 echo ' | ';
-                                echo anchor(site_url('t30_bkm/update/'.$t30_bkm->id),'Update');
+                                echo anchor(site_url('t30_bkm/update/'.$t30_bkm->id),'Ubah');
                                 echo ' | ';
-                                echo anchor(site_url('t30_bkm/delete/'.$t30_bkm->id),'Delete','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
+                                echo anchor(site_url('t30_bkm/delete/'.$t30_bkm->id),'Hapus','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
                                 ?>
                                 </td>
                             </tr>

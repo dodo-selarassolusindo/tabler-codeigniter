@@ -82,11 +82,11 @@ $this->load->view('dist/_partials/header');
                                 <td><?= $t07_kolom_payment->mata_uang ?></td>
                                 <td style="text-align:center" width="200px">
                                 <?php
-                                echo anchor(site_url('t07_kolom_payment/read/'.$t07_kolom_payment->id),'Read');
+                                echo anchor(site_url('t07_kolom_payment/read/'.$t07_kolom_payment->id),'Detail');
                                 echo ' | ';
-                                echo anchor(site_url('t07_kolom_payment/update/'.$t07_kolom_payment->id),'Update');
+                                echo anchor(site_url('t07_kolom_payment/update/'.$t07_kolom_payment->id),'Ubah');
                                 echo ' | ';
-                                echo anchor(site_url('t07_kolom_payment/delete/'.$t07_kolom_payment->id),'Delete','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
+                                echo anchor(site_url('t07_kolom_payment/delete/'.$t07_kolom_payment->id),'Hapus','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
                                 ?>
                                 </td>
                             </tr>

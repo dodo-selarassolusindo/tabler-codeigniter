@@ -78,11 +78,11 @@ $this->load->view('dist/_partials/header');
                                 <td><?= $t03_periode->tanggal ?></td>
                                 <td style="text-align:center" width="200px">
                                 <?php
-                                echo anchor(site_url('t03_periode/read/'.$t03_periode->id),'Read');
+                                echo anchor(site_url('t03_periode/read/'.$t03_periode->id),'Detail');
                                 echo ' | ';
-                                echo anchor(site_url('t03_periode/update/'.$t03_periode->id),'Update');
+                                echo anchor(site_url('t03_periode/update/'.$t03_periode->id),'Ubah');
                                 echo ' | ';
-                                echo anchor(site_url('t03_periode/delete/'.$t03_periode->id),'Delete','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
+                                echo anchor(site_url('t03_periode/delete/'.$t03_periode->id),'Hapus','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
                                 ?>
                                 </td>
                             </tr>

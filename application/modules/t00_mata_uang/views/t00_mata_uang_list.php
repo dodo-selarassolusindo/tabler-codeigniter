@@ -82,11 +82,11 @@ $this->load->view('dist/_partials/header');
                                 <td><?= $t00_mata_uang->simbol ?></td>
                                 <td style="text-align:center" width="200px">
                                 <?php
-                                echo anchor(site_url('t00_mata_uang/read/'.$t00_mata_uang->id),'Read');
+                                echo anchor(site_url('t00_mata_uang/read/'.$t00_mata_uang->id),'Detail');
                                 echo ' | ';
-                                echo anchor(site_url('t00_mata_uang/update/'.$t00_mata_uang->id),'Update');
+                                echo anchor(site_url('t00_mata_uang/update/'.$t00_mata_uang->id),'Ubah');
                                 echo ' | ';
-                                echo anchor(site_url('t00_mata_uang/delete/'.$t00_mata_uang->id),'Delete','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
+                                echo anchor(site_url('t00_mata_uang/delete/'.$t00_mata_uang->id),'Hapus','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
                                 ?>
                                 </td>
                             </tr>

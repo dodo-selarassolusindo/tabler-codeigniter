@@ -78,11 +78,11 @@ $this->load->view('dist/_partials/header');
                                 <td><?= $t01_jenis_pembayaran->nama ?></td>
                                 <td style="text-align:center" width="200px">
                                 <?php
-                                echo anchor(site_url('t01_jenis_pembayaran/read/'.$t01_jenis_pembayaran->id),'Read');
+                                echo anchor(site_url('t01_jenis_pembayaran/read/'.$t01_jenis_pembayaran->id),'Detail');
                                 echo ' | ';
-                                echo anchor(site_url('t01_jenis_pembayaran/update/'.$t01_jenis_pembayaran->id),'Update');
+                                echo anchor(site_url('t01_jenis_pembayaran/update/'.$t01_jenis_pembayaran->id),'Ubah');
                                 echo ' | ';
-                                echo anchor(site_url('t01_jenis_pembayaran/delete/'.$t01_jenis_pembayaran->id),'Delete','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
+                                echo anchor(site_url('t01_jenis_pembayaran/delete/'.$t01_jenis_pembayaran->id),'Hapus','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
                                 ?>
                                 </td>
                             </tr>

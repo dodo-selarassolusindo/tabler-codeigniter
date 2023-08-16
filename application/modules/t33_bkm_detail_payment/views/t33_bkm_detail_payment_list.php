@@ -82,11 +82,11 @@ $this->load->view('dist/_partials/header');
                                 <td><?= $t33_bkm_detail_payment->jumlah ?></td>
                                 <td style="text-align:center" width="200px">
                                 <?php
-                                echo anchor(site_url('t33_bkm_detail_payment/read/'.$t33_bkm_detail_payment->id),'Read');
+                                echo anchor(site_url('t33_bkm_detail_payment/read/'.$t33_bkm_detail_payment->id),'Detail');
                                 echo ' | ';
-                                echo anchor(site_url('t33_bkm_detail_payment/update/'.$t33_bkm_detail_payment->id),'Update');
+                                echo anchor(site_url('t33_bkm_detail_payment/update/'.$t33_bkm_detail_payment->id),'Ubah');
                                 echo ' | ';
-                                echo anchor(site_url('t33_bkm_detail_payment/delete/'.$t33_bkm_detail_payment->id),'Delete','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
+                                echo anchor(site_url('t33_bkm_detail_payment/delete/'.$t33_bkm_detail_payment->id),'Hapus','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
                                 ?>
                                 </td>
                             </tr>

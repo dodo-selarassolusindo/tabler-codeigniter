@@ -102,11 +102,11 @@ $this->load->view('dist/_partials/header');
                                 <td><?= $t04_package->dnfb_harga ?></td>
                                 <td style="text-align:center" width="200px">
                                 <?php
-                                echo anchor(site_url('t04_package/read/'.$t04_package->id),'Read');
+                                echo anchor(site_url('t04_package/read/'.$t04_package->id),'Detail');
                                 echo ' | ';
-                                echo anchor(site_url('t04_package/update/'.$t04_package->id),'Update');
+                                echo anchor(site_url('t04_package/update/'.$t04_package->id),'Ubah');
                                 echo ' | ';
-                                echo anchor(site_url('t04_package/delete/'.$t04_package->id),'Delete','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
+                                echo anchor(site_url('t04_package/delete/'.$t04_package->id),'Hapus','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
                                 ?>
                                 </td>
                             </tr>
