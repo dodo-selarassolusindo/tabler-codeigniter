@@ -12,15 +12,18 @@ $this->load->view('dist/_partials/header');
                     List Data
                 </div>
                 <h2 class="page-title">
-                    Bkm Detail Payment
+                    Pembayaran
                 </h2>
             </div>
             <!-- Page title actions -->
             <div class="col-auto ms-auto d-print-none">
                 <div class="btn-list">
-                    <a href="<?= site_url('t33_bkm_detail_payment/create') ?>" class="btn btn-primary d-none d-sm-inline-block">
+                    <!-- <a href="<?= site_url('t30_bkm/create') ?>" class="btn btn-primary d-none d-sm-inline-block">
                         Tambah Data
-                    </a>
+                    </a> -->
+                    <!-- <a href="<?= site_url('t30_bkm/import') ?>" class="btn btn-primary d-none d-sm-inline-block">
+                        Import Data
+                    </a> -->
                     <a href="<?= site_url() ?>" class="btn btn-secondary d-none d-sm-inline-block">
                         Kembali
                     </a>
@@ -50,12 +53,12 @@ $this->load->view('dist/_partials/header');
                             <div class="text-muted">
                                 Cari Data:
                                 <div class="ms-2 d-inline-block">
-                                    <form action="<?= site_url('t33_bkm_detail_payment/index') ?>" method="get">
+                                    <form action="<?= site_url('t30_bkm/index') ?>" method="get">
                                         <div class="input-group">
                                             <input type="text" class="form-control form-control-sm" name="q" value="<?= $q ?>">
                                             <span class="input-group-btn">
                                                 <?php if ($q <> '') { ?>
-                                                <a href="<?= site_url('t33_bkm_detail_payment') ?>" class="btn btn-secondary btn-sm">Reset</a>
+                                                <a href="<?= site_url('t30_bkm') ?>" class="btn btn-secondary btn-sm">Reset</a>
                                                 <?php } ?>
                                                 <button class="btn btn-primary btn-sm" type="submit">Cari</button>
                                             </span>
@@ -69,24 +72,26 @@ $this->load->view('dist/_partials/header');
                         <table class="table card-table table-vcenter text-nowrap datatable">
                             <tr>
                                 <th>No</th>
-                                <th>Bkm Detail</th>
-                                <th>Kolom Payment</th>
-                                <th>Jumlah</th>
+                                <th>Nomor</th>
+                                <th>Tanggal</th>
+                                <th>Rate Usd</th>
+                                <th>Rate Aud</th>
                                 <th>Proses Data</th>
                             </tr>
-                            <?php foreach ($t33_bkm_detail_payment_data as $t33_bkm_detail_payment) { ?>
+                            <?php foreach ($t30_bkm_data as $t30_bkm) { ?>
                             <tr>
                                 <td width="80px"><?= ++$start ?></td>
-                                <td><?= $t33_bkm_detail_payment->bkm_detail ?></td>
-                                <td><?= $t33_bkm_detail_payment->kolom_payment ?></td>
-                                <td><?= $t33_bkm_detail_payment->jumlah ?></td>
+                                <td><?= $t30_bkm->nomor ?></td>
+                                <td><?= $t30_bkm->tanggal ?></td>
+                                <td><?= $t30_bkm->rate_usd ?></td>
+                                <td><?= $t30_bkm->rate_aud ?></td>
                                 <td style="text-align:center" width="200px">
                                 <?php
-                                echo anchor(site_url('t33_bkm_detail_payment/read/'.$t33_bkm_detail_payment->id),'Detail');
-                                echo ' | ';
-                                echo anchor(site_url('t33_bkm_detail_payment/update/'.$t33_bkm_detail_payment->id),'Ubah');
-                                echo ' | ';
-                                echo anchor(site_url('t33_bkm_detail_payment/delete/'.$t33_bkm_detail_payment->id),'Hapus','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
+                                echo anchor(site_url('t30_bkm/read/'.$t30_bkm->id),'Proses');
+                                // echo ' | ';
+                                // echo anchor(site_url('t30_bkm/update/'.$t30_bkm->id),'Ubah');
+                                // echo ' | ';
+                                // echo anchor(site_url('t30_bkm/delete/'.$t30_bkm->id),'Hapus','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
                                 ?>
                                 </td>
                             </tr>
@@ -94,7 +99,7 @@ $this->load->view('dist/_partials/header');
                         </table>
                     </div>
                     <div class="card-footer d-flex align-items-center">
-                        <p class="m-0 text-muted">Menampilkan <span><?= count($t33_bkm_detail_payment_data) ?></span> dari <span><?= $total_rows ?></span> data</p>
+                        <p class="m-0 text-muted">Menampilkan <span><?= count($t30_bkm_data) ?></span> dari <span><?= $total_rows ?></span> data</p>
                         <?= $pagination ?>
                     </div>
                 </div>

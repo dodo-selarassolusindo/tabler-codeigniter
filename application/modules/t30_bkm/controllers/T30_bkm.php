@@ -56,6 +56,45 @@ class T30_bkm extends CI_Controller
         $this->load->view('t30_bkm/t30_bkm_list', $data);
     }
 
+    public function pembayaran()
+    {
+        $q = urldecode($this->input->get('q', TRUE));
+        $start = intval($this->input->get('start'));
+
+        if ($q <> '') {
+            $config['base_url'] = base_url() . 't30_bkm/pembayaran?q=' . urlencode($q);
+            $config['first_url'] = base_url() . 't30_bkm/pembayaran?q=' . urlencode($q);
+        } else {
+            $config['base_url'] = base_url() . 't30_bkm/pembayaran';
+            $config['first_url'] = base_url() . 't30_bkm/pembayaran';
+        }
+
+        $config['per_page'] = 10;
+        $config['page_query_string'] = TRUE;
+        $config['total_rows'] = $this->T30_bkm_model->total_rows($q);
+        $config['num_tag_open'] = '<li class="page-item">';
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['full_tag_open'] = '<ul class="pagination m-0 ms-auto">';
+        $config['full_tag_close'] = '</ul>';
+        $config['attributes'] = array('class' => 'page-link');
+        $config['num_links'] = 5;
+        $t30_bkm = $this->T30_bkm_model->get_limit_data($config['per_page'], $start, $q);
+
+        $this->load->library('pagination');
+        $this->pagination->initialize($config);
+
+        $data = array(
+            't30_bkm_data' => $t30_bkm,
+            'q' => $q,
+            'pagination' => $this->pagination->create_links(),
+            'total_rows' => $config['total_rows'],
+            'start' => $start,
+        );
+        $this->load->view('t30_bkm/t30_bkm_list_pembayaran', $data);
+    }
+
     public function import()
     {
         $data = array(

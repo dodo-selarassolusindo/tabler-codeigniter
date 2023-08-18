@@ -256,7 +256,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <a class="dropdown-item" href="<?= site_url('t30_bkm') ?>">
                                                         BKM
                                                     </a>
-                                                    <a class="dropdown-item" href="<?= site_url('t33_bkm_detail_payment') ?>">
+                                                    <a class="dropdown-item" href="<?= site_url('t30_bkm/pembayaran') ?>">
                                                         Pembayaran
                                                     </a>
                                                 </div>
