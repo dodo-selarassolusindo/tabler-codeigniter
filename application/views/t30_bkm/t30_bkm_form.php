@@ -12,7 +12,7 @@ $this->load->view('dist/_partials/header');
                     <?= $this->uri->segment(2) == 'create' ? 'Tambah' : 'Ubah'?> Data
                 </div>
                 <h2 class="page-title">
-                    Periode
+                    Bkm
                 </h2>
             </div>
         </div>
@@ -28,14 +28,26 @@ $this->load->view('dist/_partials/header');
                     <form action="<?php echo $action; ?>" method="post" class="card">
                         <div class="card-body">
                             <div class="mb-3">
+                                <label class="form-label required" for="nomor">Nomor <?php echo form_error('nomor') ?></label>
+                                <div><input type="text" class="form-control" name="nomor" id="nomor" placeholder="Nomor" value="<?php echo $nomor; ?>" /></div>
+                            </div>
+                            <div class="mb-3">
                                 <label class="form-label required" for="tanggal">Tanggal <?php echo form_error('tanggal') ?></label>
                                 <div><input type="text" class="form-control" name="tanggal" id="tanggal" placeholder="Tanggal" value="<?php echo $tanggal; ?>" /></div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label required" for="rate_usd">Rate Usd <?php echo form_error('rate_usd') ?></label>
+                                <div><input type="text" class="form-control" name="rate_usd" id="rate_usd" placeholder="Rate Usd" value="<?php echo $rate_usd; ?>" /></div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label required" for="rate_aud">Rate Aud <?php echo form_error('rate_aud') ?></label>
+                                <div><input type="text" class="form-control" name="rate_aud" id="rate_aud" placeholder="Rate Aud" value="<?php echo $rate_aud; ?>" /></div>
                             </div>
                             <input type="hidden" name="id" value="<?php echo $id; ?>" />
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary"><?= $button ?></button>
-                    	    <a href="<?php echo site_url('t03_periode') ?>" class="btn btn-secondary">Batal</a>
+                    	    <a href="<?php echo site_url('t30_bkm') ?>" class="btn btn-secondary">Batal</a>
                         </div>
                     </form>
                 </div>

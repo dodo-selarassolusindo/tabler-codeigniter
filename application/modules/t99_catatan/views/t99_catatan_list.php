@@ -12,13 +12,13 @@ $this->load->view('dist/_partials/header');
                     List Data
                 </div>
                 <h2 class="page-title">
-                    Mata Uang
+                    Catatan
                 </h2>
             </div>
             <!-- Page title actions -->
             <div class="col-auto ms-auto d-print-none">
                 <div class="btn-list">
-                    <a href="<?= site_url('t00_mata_uang/create') ?>" class="btn btn-primary d-none d-sm-inline-block">
+                    <a href="<?= site_url('t99_catatan/create') ?>" class="btn btn-primary d-none d-sm-inline-block">
                         Tambah Data
                     </a>
                     <a href="<?= site_url() ?>" class="btn btn-secondary d-none d-sm-inline-block">
@@ -50,12 +50,12 @@ $this->load->view('dist/_partials/header');
                             <div class="text-muted">
                                 Cari Data:
                                 <div class="ms-2 d-inline-block">
-                                    <form action="<?= site_url('t00_mata_uang/index') ?>" method="get">
+                                    <form action="<?= site_url('t99_catatan/index') ?>" method="get">
                                         <div class="input-group">
                                             <input type="text" class="form-control form-control-sm" name="q" value="<?= $q ?>">
                                             <span class="input-group-btn">
                                                 <?php if ($q <> '') { ?>
-                                                <a href="<?= site_url('t00_mata_uang') ?>" class="btn btn-secondary btn-sm">Reset</a>
+                                                <a href="<?= site_url('t99_catatan') ?>" class="btn btn-secondary btn-sm">Reset</a>
                                                 <?php } ?>
                                                 <button class="btn btn-primary btn-sm" type="submit">Cari</button>
                                             </span>
@@ -69,24 +69,22 @@ $this->load->view('dist/_partials/header');
                         <table class="table card-table table-vcenter text-nowrap datatable">
                             <tr>
                                 <th>No</th>
-                                <th>Kode</th>
-                                <th>Nama</th>
-                                <th>Simbol</th>
+                                <th>Tanggal</th>
+                                <th>Catatan</th>
                                 <th>Proses Data</th>
                             </tr>
-                            <?php foreach ($t00_mata_uang_data as $t00_mata_uang) { ?>
+                            <?php foreach ($t99_catatan_data as $t99_catatan) { ?>
                             <tr>
                                 <td width="80px"><?= ++$start ?></td>
-                                <td><?= $t00_mata_uang->kode ?></td>
-                                <td><?= $t00_mata_uang->nama ?></td>
-                                <td><?= $t00_mata_uang->simbol ?></td>
+                                <td><?= $t99_catatan->tanggal ?></td>
+                                <td><?= $t99_catatan->catatan ?></td>
                                 <td style="text-align:center" width="200px">
                                 <?php
-                                echo anchor(site_url('t00_mata_uang/read/'.$t00_mata_uang->id),'Detail');
+                                echo anchor(site_url('t99_catatan/read/'.$t99_catatan->id),'Detail');
                                 echo ' | ';
-                                echo anchor(site_url('t00_mata_uang/update/'.$t00_mata_uang->id),'Ubah');
+                                echo anchor(site_url('t99_catatan/update/'.$t99_catatan->id),'Ubah');
                                 echo ' | ';
-                                echo anchor(site_url('t00_mata_uang/delete/'.$t00_mata_uang->id),'Hapus','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
+                                echo anchor(site_url('t99_catatan/delete/'.$t99_catatan->id),'Hapus','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
                                 ?>
                                 </td>
                             </tr>
@@ -94,7 +92,7 @@ $this->load->view('dist/_partials/header');
                         </table>
                     </div>
                     <div class="card-footer d-flex align-items-center">
-                        <p class="m-0 text-muted">Menampilkan <span><?= count($t00_mata_uang_data) ?></span> dari <span><?= $total_rows ?></span> data</p>
+                        <p class="m-0 text-muted">Menampilkan <span><?= count($t99_catatan_data) ?></span> dari <span><?= $total_rows ?></span> data</p>
                         <?= $pagination ?>
                     </div>
                 </div>

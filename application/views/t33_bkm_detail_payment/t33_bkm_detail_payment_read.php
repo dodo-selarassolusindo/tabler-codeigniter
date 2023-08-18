@@ -12,7 +12,7 @@ $this->load->view('dist/_partials/header');
                     Detail Data
                 </div>
                 <h2 class="page-title">
-                    Mata Uang
+                    Bkm Detail Payment
                 </h2>
             </div>
         </div>
@@ -27,10 +27,10 @@ $this->load->view('dist/_partials/header');
                 <div class="card">
                     <div class="table-responsive">
                         <table class="table card-table table-vcenter text-nowrap datatable">
-                            <tr><td>Kode</td><td><?php echo $kode; ?></td></tr>
-                            <tr><td>Nama</td><td><?php echo $nama; ?></td></tr>
-                            <tr><td>Simbol</td><td><?php echo $simbol; ?></td></tr>
-                            <tr><td></td><td><a href="<?php echo site_url('t00_mata_uang') ?>" class="btn btn-secondary">Kembali</a></td></tr>
+                            <tr><td>Bkm Detail</td><td><?php echo $bkm_detail; ?></td></tr>
+                            <tr><td>Kolom Payment</td><td><?php echo $kolom_payment; ?></td></tr>
+                            <tr><td>Jumlah</td><td><?php echo $jumlah; ?></td></tr>
+                            <tr><td></td><td><a href="<?php echo site_url('t33_bkm_detail_payment') ?>" class="btn btn-secondary">Kembali</a></td></tr>
                         </table>
                     </div>
                 </div>

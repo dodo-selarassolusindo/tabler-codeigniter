@@ -102,7 +102,7 @@ class ".$c." extends CI_Controller
     public function create()
     {
         \$data = array(
-            'button' => 'Create',
+            'button' => 'Simpan',
             'action' => site_url('$c_url/create_action'),";
             foreach ($all as $row) {
                 $string2 .= "
@@ -127,7 +127,7 @@ class ".$c." extends CI_Controller
             $string2 .= "
             );
             \$this->".$m."->insert(\$data);
-            \$this->session->set_flashdata('message', 'Create Record Success');
+            \$this->session->set_flashdata('message', 'Tambah Data berhasil');
             redirect(site_url('$c_url'));
         }
     }
@@ -137,7 +137,7 @@ class ".$c." extends CI_Controller
         \$row = \$this->".$m."->get_by_id(\$id);
         if (\$row) {
             \$data = array(
-                'button' => 'Update',
+                'button' => 'Simpan',
                 'action' => site_url('$c_url/update_action'),";
                 foreach ($all as $row) {
                     $string2 .= "
@@ -147,7 +147,7 @@ class ".$c." extends CI_Controller
             );
             \$this->load->view('$c_url/$v_form', \$data);
         } else {
-            \$this->session->set_flashdata('message', 'Record Not Found');
+            \$this->session->set_flashdata('message', 'Data tidak ada');
             redirect(site_url('$c_url'));
         }
     }
@@ -166,7 +166,7 @@ class ".$c." extends CI_Controller
             $string2 .= "
             );
             \$this->".$m."->update(\$this->input->post('$pk', TRUE), \$data);
-            \$this->session->set_flashdata('message', 'Update Record Success');
+            \$this->session->set_flashdata('message', 'Ubah Data berhasil');
             redirect(site_url('$c_url'));
         }
     }
@@ -176,10 +176,10 @@ class ".$c." extends CI_Controller
         \$row = \$this->".$m."->get_by_id(\$id);
         if (\$row) {
             \$this->".$m."->delete(\$id);
-            \$this->session->set_flashdata('message', 'Delete Record Success');
+            \$this->session->set_flashdata('message', 'Hapus Data berhasil');
             redirect(site_url('$c_url'));
         } else {
-            \$this->session->set_flashdata('message', 'Record Not Found');
+            \$this->session->set_flashdata('message', 'Data tidak ada');
             redirect(site_url('$c_url'));
         }
     }

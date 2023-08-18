@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- Message -->
             <?php if (\$this->session->userdata('message') <> '') { ?>
             <div class=\"alert alert-success alert-dismissible\" role=\"alert\">
-                <h4 class=\"alert-title\">Wow! Everything worked!</h4>
+                <!-- <h4 class=\"alert-title\">Wow! Everything worked!</h4> -->
                 <div class=\"text-secondary\"><?= \$this->session->userdata('message') ?></div>
                 <a class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"close\"></a>
             </div>

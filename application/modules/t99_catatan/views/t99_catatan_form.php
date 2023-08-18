@@ -12,7 +12,7 @@ $this->load->view('dist/_partials/header');
                     <?= $this->uri->segment(2) == 'create' ? 'Tambah' : 'Ubah'?> Data
                 </div>
                 <h2 class="page-title">
-                    Periode
+                    Catatan
                 </h2>
             </div>
         </div>
@@ -31,11 +31,15 @@ $this->load->view('dist/_partials/header');
                                 <label class="form-label required" for="tanggal">Tanggal <?php echo form_error('tanggal') ?></label>
                                 <div><input type="text" class="form-control" name="tanggal" id="tanggal" placeholder="Tanggal" value="<?php echo $tanggal; ?>" /></div>
                             </div>
+                            <div class="mb-3">
+                                <label class="form-label required" for="catatan">Catatan <?php echo form_error('catatan') ?></label>
+                                <div><textarea class="form-control" rows="3" name="catatan" id="catatan" placeholder="Catatan"><?php echo $catatan; ?></textarea></div>
+                            </div>
                             <input type="hidden" name="id" value="<?php echo $id; ?>" />
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary"><?= $button ?></button>
-                    	    <a href="<?php echo site_url('t03_periode') ?>" class="btn btn-secondary">Batal</a>
+                    	    <a href="<?php echo site_url('t99_catatan') ?>" class="btn btn-secondary">Batal</a>
                         </div>
                     </form>
                 </div>

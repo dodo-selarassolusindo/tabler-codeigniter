@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class=\"row row-cards\">
             <div class=\"col-12\">
                 <div class=\"card\">
-                    <form action=\"<?php echo \$action; ?>\" method=\"post\">
+                    <form action=\"<?php echo \$action; ?>\" method=\"post\" class=\"card\">
                         <div class=\"card-body\">";
                         foreach ($non_pk as $row) {
                             if ($row["data_type"] == 'text') {
@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             } else {
                                 $string2 .= "
                             <div class=\"mb-3\">
-                                <label class=\"form-label required\" for=\"".$row["data_type"]."\">".label($row["column_name"])." <?php echo form_error('".$row["column_name"]."') ?></label>
+                                <label class=\"form-label required\" for=\"".$row["column_name"]."\">".label($row["column_name"])." <?php echo form_error('".$row["column_name"]."') ?></label>
                                 <div><input type=\"text\" class=\"form-control\" name=\"".$row["column_name"]."\" id=\"".$row["column_name"]."\" placeholder=\"".label($row["column_name"])."\" value=\"<?php echo $".$row["column_name"]."; ?>\" /></div>
                             </div>";
                             }
@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <div class=\"card-footer\">
                             <button type=\"submit\" class=\"btn btn-primary\"><?= \$button ?></button>
-                    	    <a href=\"<?php echo site_url('".$c_url."') ?>\" class=\"btn btn-secondary\">Cancel</a>
+                    	    <a href=\"<?php echo site_url('".$c_url."') ?>\" class=\"btn btn-secondary\">Batal</a>
                         </div>
                     </form>
                 </div>
@@ -85,7 +85,7 @@ foreach ($non_pk as $row) {
     } else
     {
     $string .= "\n\t    <div class=\"form-group\">
-            <label for=\"".$row["data_type"]."\">".label($row["column_name"])." <?php echo form_error('".$row["column_name"]."') ?></label>
+            <label for=\"".$row["column_name"]."\">".label($row["column_name"])." <?php echo form_error('".$row["column_name"]."') ?></label>
             <input type=\"text\" class=\"form-control\" name=\"".$row["column_name"]."\" id=\"".$row["column_name"]."\" placeholder=\"".label($row["column_name"])."\" value=\"<?php echo $".$row["column_name"]."; ?>\" />
         </div>";
     }

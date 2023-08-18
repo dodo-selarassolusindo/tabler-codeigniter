@@ -25,25 +25,25 @@ $this->load->view('dist/_partials/header');
         <div class="row row-cards">
             <div class="col-12">
                 <div class="card">
-                    <form action="<?php echo $action; ?>" method="post">
+                    <form action="<?php echo $action; ?>" method="post" class="card">
                         <div class="card-body">
                             <div class="mb-3">
-                                <label class="form-label required" for="varchar">Kode <?php echo form_error('kode') ?></label>
+                                <label class="form-label required" for="kode">Kode <?php echo form_error('kode') ?></label>
                                 <div><input type="text" class="form-control" name="kode" id="kode" placeholder="Kode" value="<?php echo $kode; ?>" /></div>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label required" for="varchar">Nama <?php echo form_error('nama') ?></label>
+                                <label class="form-label required" for="nama">Nama <?php echo form_error('nama') ?></label>
                                 <div><input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" value="<?php echo $nama; ?>" /></div>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label required" for="varchar">Simbol <?php echo form_error('simbol') ?></label>
+                                <label class="form-label required" for="simbol">Simbol <?php echo form_error('simbol') ?></label>
                                 <div><input type="text" class="form-control" name="simbol" id="simbol" placeholder="Simbol" value="<?php echo $simbol; ?>" /></div>
                             </div>
                             <input type="hidden" name="id" value="<?php echo $id; ?>" />
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary"><?= $button ?></button>
-                    	    <a href="<?php echo site_url('t00_mata_uang') ?>" class="btn btn-secondary">Cancel</a>
+                    	    <a href="<?php echo site_url('t00_mata_uang') ?>" class="btn btn-secondary">Batal</a>
                         </div>
                     </form>
                 </div>
