@@ -12,7 +12,7 @@ $this->load->view('dist/_partials/header');
                     List Data
                 </div>
                 <h2 class="page-title">
-                    Bkm Detail Payment
+                    Pembayaran
                 </h2>
             </div>
             <!-- Page title actions -->
@@ -29,7 +29,7 @@ $this->load->view('dist/_partials/header');
             <!-- Message -->
             <?php if ($this->session->userdata('message') <> '') { ?>
             <div class="alert alert-success alert-dismissible" role="alert">
-                <h4 class="alert-title">Wow! Everything worked!</h4>
+                <!-- <h4 class="alert-title">Wow! Everything worked!</h4> -->
                 <div class="text-secondary"><?= $this->session->userdata('message') ?></div>
                 <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
             </div>
@@ -45,7 +45,10 @@ $this->load->view('dist/_partials/header');
 
             <div class="col-12">
                 <div class="card">
-                    <div class="card-body border-bottom py-3">
+
+                    <?= $t30_bkm_data ?>
+
+                    <!-- <div class="card-body border-bottom py-3">
                         <div class="d-flex">
                             <div class="text-muted">
                                 Cari Data:
@@ -64,8 +67,9 @@ $this->load->view('dist/_partials/header');
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="table-responsive">
+                    </div> -->
+
+                    <!-- <div class="table-responsive">
                         <table class="table card-table table-vcenter text-nowrap datatable">
                             <tr>
                                 <th>No</th>
@@ -92,11 +96,11 @@ $this->load->view('dist/_partials/header');
                             </tr>
                             <?php } ?>
                         </table>
-                    </div>
-                    <div class="card-footer d-flex align-items-center">
+                    </div> -->
+                    <!-- <div class="card-footer d-flex align-items-center">
                         <p class="m-0 text-muted">Menampilkan <span><?= count($t33_bkm_detail_payment_data) ?></span> dari <span><?= $total_rows ?></span> data</p>
                         <?= $pagination ?>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 

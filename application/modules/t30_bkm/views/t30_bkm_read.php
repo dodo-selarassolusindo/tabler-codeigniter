@@ -12,7 +12,7 @@ $this->load->view('dist/_partials/header');
                     Detail Data
                 </div>
                 <h2 class="page-title">
-                    Bkm
+                    BKM
                 </h2>
             </div>
         </div>

@@ -15,6 +15,13 @@ class T05_agent_model extends CI_Model
         parent::__construct();
     }
 
+    // get data by nama
+    function get_by_nama($nama)
+    {
+        $this->db->where('nama', $nama);
+        return $this->db->get($this->table)->row();
+    }
+
     // get all
     function get_all()
     {
@@ -28,7 +35,7 @@ class T05_agent_model extends CI_Model
         $this->db->where($this->id, $id);
         return $this->db->get($this->table)->row();
     }
-    
+
     // get total rows
     function total_rows($q = NULL) {
         $this->db->like('id', $q);
