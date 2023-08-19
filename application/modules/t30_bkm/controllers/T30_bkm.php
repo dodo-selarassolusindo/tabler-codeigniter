@@ -419,13 +419,17 @@ class T30_bkm extends CI_Controller
                     // pre($startKolomPayment + $rowData->urutan . ', ' . $numRow . ' :: ' . $notNull);
                     // pre(chr($startKolomPayment + $rowData->urutan).$numRow . ' :: ' . $notNull);
                     // pre($rowData->id . ' - ' . $rowData->urutan);
-                    $data = array(
-                        'bkm_detail' => $bkm_detail,
-                        'kolom_payment' => $rowData->id,
-                        'jumlah' => $jumlah,
-                    );
-                    // pre($data);
-                    $this->T32_bkm_detail_payment_model->insert($data);
+
+                    if ($jumlah <> 0) {
+                        $data = array(
+                            'bkm_detail' => $bkm_detail,
+                            'kolom_payment' => $rowData->id,
+                            'jumlah' => $jumlah,
+                        );
+                        // pre($data);
+                        $this->T32_bkm_detail_payment_model->insert($data);
+                    }
+
                 }
                 // exit;
 

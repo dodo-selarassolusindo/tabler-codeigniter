@@ -50,13 +50,13 @@ $this->load->view('dist/_partials/header');
 
             <div class="col-12">
                 <div class="card">
-                    <form action="<?= $action ?>" method="post" enctype="multipart/form-data">
-                    <div class="card-body border-bottom py-3">
-                        <div class="d-flex">
-                            <div class="form-group">
-                                <label for="varchar">File Excel <?php echo form_error('nomor') ?></label>
-                                <input type="file" class="form-control" name="userfile" />
-                            </div>
+                    <form action="<?= $action ?>" method="post" enctype="multipart/form-data" class="card">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <!-- <div class="form-group"> -->
+                                <label class="form-label required" for="userfile">File Excel <?php echo form_error('nomor') ?></label>
+                                <input id="userfile" type="file" class="form-control" name="userfile" />
+                            <!-- </div> -->
                             <!-- <input type="hidden" name="id" value="<?php echo $id; ?>" /> -->
                         </div>
                     </div>
@@ -65,7 +65,7 @@ $this->load->view('dist/_partials/header');
                         <button type="submit" class="btn btn-primary d-none d-sm-inline-block"><?= $button ?></button>
                         <!-- <a href="<?= site_url('t30_bkm') ?>" class="btn btn-secondary">Batal</a> -->
                         <a href="<?= site_url('t30_bkm') ?>" class="btn btn-secondary d-none d-sm-inline-block">
-                            Kembali
+                            Batal
                         </a>
                         </div>
                     </div>
