@@ -36,8 +36,11 @@ class T31_bkm_detail_model extends CI_Model
     }
 
     // get total rows
-    function total_rows($q = NULL)
+    function total_rows($q = NULL, $bkm = null)
     {
+        if ($bkm <> null) {
+            $this->db->having('bkm', $bkm);
+        }
         $this->db->like('id', $q);
     	$this->db->or_like('bkm', $q);
     	$this->db->or_like('name', $q);
@@ -69,8 +72,11 @@ class T31_bkm_detail_model extends CI_Model
     }
 
     // get data with limit and search
-    function get_limit_data($limit, $start = 0, $q = NULL)
+    function get_limit_data($limit, $start = 0, $q = NULL, $bkm = null)
     {
+        if ($bkm <> null) {
+            $this->db->having('bkm', $bkm);
+        }
         $this->db->order_by($this->id, $this->order);
         $this->db->like('id', $q);
     	$this->db->or_like('bkm', $q);
