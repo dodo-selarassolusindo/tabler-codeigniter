@@ -87,7 +87,7 @@ $this->load->view('dist/_partials/header');
                                 <td><?= $t30_bkm->rate_aud ?></td>
                                 <td style="text-align:center" width="200px">
                                 <?php
-                                echo anchor(site_url('t30_bkm/read/'.$t30_bkm->id),'Proses');
+                                echo anchor(site_url('t30_bkm/pembayaran_detail/'.$t30_bkm->id),'Proses');
                                 // echo ' | ';
                                 // echo anchor(site_url('t30_bkm/update/'.$t30_bkm->id),'Ubah');
                                 // echo ' | ';

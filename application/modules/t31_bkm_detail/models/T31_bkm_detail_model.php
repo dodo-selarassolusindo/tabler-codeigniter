@@ -1,7 +1,5 @@
 <?php
-
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class T31_bkm_detail_model extends CI_Model
 {
@@ -38,67 +36,69 @@ class T31_bkm_detail_model extends CI_Model
     }
 
     // get total rows
-    function total_rows($q = NULL) {
+    function total_rows($q = NULL)
+    {
         $this->db->like('id', $q);
-	$this->db->or_like('bkm', $q);
-	$this->db->or_like('name', $q);
-	$this->db->or_like('mf', $q);
-	$this->db->or_like('country', $q);
-	$this->db->or_like('id_number', $q);
-	$this->db->or_like('package', $q);
-	$this->db->or_like('night', $q);
-	$this->db->or_like('check_in', $q);
-	$this->db->or_like('check_out', $q);
-	$this->db->or_like('agent', $q);
-	$this->db->or_like('mata_uang', $q);
-	$this->db->or_like('price', $q);
-	$this->db->or_like('remarks', $q);
-	$this->db->or_like('usd', $q);
-	$this->db->or_like('aud', $q);
-	$this->db->or_like('paypal', $q);
-	$this->db->or_like('bca_dollar', $q);
-	$this->db->or_like('rp', $q);
-	$this->db->or_like('cc_bca', $q);
-	$this->db->or_like('cc_mandiri', $q);
-	$this->db->or_like('price_1', $q);
-	$this->db->or_like('price_1_value', $q);
-	$this->db->or_like('fee_tanas', $q);
-	$this->db->or_like('fee_tanas_value', $q);
-	$this->db->or_like('price_2', $q);
-	$this->db->from($this->table);
+    	$this->db->or_like('bkm', $q);
+    	$this->db->or_like('name', $q);
+    	$this->db->or_like('mf', $q);
+    	$this->db->or_like('country', $q);
+    	$this->db->or_like('id_number', $q);
+    	$this->db->or_like('package', $q);
+    	$this->db->or_like('night', $q);
+    	$this->db->or_like('check_in', $q);
+    	$this->db->or_like('check_out', $q);
+    	$this->db->or_like('agent', $q);
+    	$this->db->or_like('mata_uang', $q);
+    	$this->db->or_like('price', $q);
+    	$this->db->or_like('remarks', $q);
+    	$this->db->or_like('usd', $q);
+    	$this->db->or_like('aud', $q);
+    	$this->db->or_like('paypal', $q);
+    	$this->db->or_like('bca_dollar', $q);
+    	$this->db->or_like('rp', $q);
+    	$this->db->or_like('cc_bca', $q);
+    	$this->db->or_like('cc_mandiri', $q);
+    	$this->db->or_like('price_1', $q);
+    	$this->db->or_like('price_1_value', $q);
+    	$this->db->or_like('fee_tanas', $q);
+    	$this->db->or_like('fee_tanas_value', $q);
+    	$this->db->or_like('price_2', $q);
+    	$this->db->from($this->table);
         return $this->db->count_all_results();
     }
 
     // get data with limit and search
-    function get_limit_data($limit, $start = 0, $q = NULL) {
+    function get_limit_data($limit, $start = 0, $q = NULL)
+    {
         $this->db->order_by($this->id, $this->order);
         $this->db->like('id', $q);
-	$this->db->or_like('bkm', $q);
-	$this->db->or_like('name', $q);
-	$this->db->or_like('mf', $q);
-	$this->db->or_like('country', $q);
-	$this->db->or_like('id_number', $q);
-	$this->db->or_like('package', $q);
-	$this->db->or_like('night', $q);
-	$this->db->or_like('check_in', $q);
-	$this->db->or_like('check_out', $q);
-	$this->db->or_like('agent', $q);
-	$this->db->or_like('mata_uang', $q);
-	$this->db->or_like('price', $q);
-	$this->db->or_like('remarks', $q);
-	$this->db->or_like('usd', $q);
-	$this->db->or_like('aud', $q);
-	$this->db->or_like('paypal', $q);
-	$this->db->or_like('bca_dollar', $q);
-	$this->db->or_like('rp', $q);
-	$this->db->or_like('cc_bca', $q);
-	$this->db->or_like('cc_mandiri', $q);
-	$this->db->or_like('price_1', $q);
-	$this->db->or_like('price_1_value', $q);
-	$this->db->or_like('fee_tanas', $q);
-	$this->db->or_like('fee_tanas_value', $q);
-	$this->db->or_like('price_2', $q);
-	$this->db->limit($limit, $start);
+    	$this->db->or_like('bkm', $q);
+    	$this->db->or_like('name', $q);
+    	$this->db->or_like('mf', $q);
+    	$this->db->or_like('country', $q);
+    	$this->db->or_like('id_number', $q);
+    	$this->db->or_like('package', $q);
+    	$this->db->or_like('night', $q);
+    	$this->db->or_like('check_in', $q);
+    	$this->db->or_like('check_out', $q);
+    	$this->db->or_like('agent', $q);
+    	$this->db->or_like('mata_uang', $q);
+    	$this->db->or_like('price', $q);
+    	$this->db->or_like('remarks', $q);
+    	$this->db->or_like('usd', $q);
+    	$this->db->or_like('aud', $q);
+    	$this->db->or_like('paypal', $q);
+    	$this->db->or_like('bca_dollar', $q);
+    	$this->db->or_like('rp', $q);
+    	$this->db->or_like('cc_bca', $q);
+    	$this->db->or_like('cc_mandiri', $q);
+    	$this->db->or_like('price_1', $q);
+    	$this->db->or_like('price_1_value', $q);
+    	$this->db->or_like('fee_tanas', $q);
+    	$this->db->or_like('fee_tanas_value', $q);
+    	$this->db->or_like('price_2', $q);
+    	$this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }
 
