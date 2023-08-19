@@ -12,7 +12,7 @@ class T30_bkm extends CI_Controller
         $this->load->model('t07_kolom_payment/T07_kolom_payment_model');
         $this->load->model('t04_package/T04_package_model');
         $this->load->model('t05_agent/T05_agent_model');
-        $this->load->model('t33_bkm_detail_payment/T33_bkm_detail_payment_model');
+        $this->load->model('t32_bkm_detail_payment/T32_bkm_detail_payment_model');
     }
 
     public function index()
@@ -425,7 +425,7 @@ class T30_bkm extends CI_Controller
                         'jumlah' => $jumlah,
                     );
                     // pre($data);
-                    $this->T33_bkm_detail_payment_model->insert($data);
+                    $this->T32_bkm_detail_payment_model->insert($data);
                 }
                 // exit;
 
