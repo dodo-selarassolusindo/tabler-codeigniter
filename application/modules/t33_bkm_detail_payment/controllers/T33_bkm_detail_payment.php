@@ -9,24 +9,25 @@ class T33_bkm_detail_payment extends CI_Controller
         parent::__construct();
         $this->load->model('T33_bkm_detail_payment_model');
         $this->load->library('form_validation');
+        $this->load->model('t07_kolom_payment/T07_kolom_payment_model');
     }
-    
-    public function index()
+
+    public function index($bkm_detail = null)
     {
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
 
         if ($q <> '') {
-            $config['base_url'] = base_url() . 't33_bkm_detail_payment?q=' . urlencode($q);
-            $config['first_url'] = base_url() . 't33_bkm_detail_payment?q=' . urlencode($q);
+            $config['base_url'] = base_url() . 't33_bkm_detail_payment/'.$bkm_detail.'?q=' . urlencode($q);
+            $config['first_url'] = base_url() . 't33_bkm_detail_payment/'.$bkm_detail.'?q=' . urlencode($q);
         } else {
-            $config['base_url'] = base_url() . 't33_bkm_detail_payment';
-            $config['first_url'] = base_url() . 't33_bkm_detail_payment';
+            $config['base_url'] = base_url() . 't33_bkm_detail_payment/'.$bkm_detail;
+            $config['first_url'] = base_url() . 't33_bkm_detail_payment/'.$bkm_detail;
         }
 
         $config['per_page'] = 10;
         $config['page_query_string'] = TRUE;
-        $config['total_rows'] = $this->T33_bkm_detail_payment_model->total_rows($q);
+        $config['total_rows'] = $this->T33_bkm_detail_payment_model->total_rows($q, $bkm_detail);
         $config['num_tag_open'] = '<li class="page-item">';
         $config['num_tag_close'] = '</li>';
         $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link">';
@@ -35,10 +36,12 @@ class T33_bkm_detail_payment extends CI_Controller
         $config['full_tag_close'] = '</ul>';
         $config['attributes'] = array('class' => 'page-link');
         $config['num_links'] = 5;
-        $t33_bkm_detail_payment = $this->T33_bkm_detail_payment_model->get_limit_data($config['per_page'], $start, $q);
+        $t33_bkm_detail_payment = $this->T33_bkm_detail_payment_model->get_limit_data($config['per_page'], $start, $q, $bkm_detail);
 
         $this->load->library('pagination');
         $this->pagination->initialize($config);
+
+        $t07_kolom_payment = $this->T07_kolom_payment_model->get_all();
 
         $data = array(
             't33_bkm_detail_payment_data' => $t33_bkm_detail_payment,
@@ -46,10 +49,11 @@ class T33_bkm_detail_payment extends CI_Controller
             'pagination' => $this->pagination->create_links(),
             'total_rows' => $config['total_rows'],
             'start' => $start,
+            't07_kolom_payment_data' => $t07_kolom_payment,
         );
         $this->load->view('t33_bkm_detail_payment/t33_bkm_detail_payment_list', $data);
     }
-    
+
     public function read($id)
     {
         $row = $this->T33_bkm_detail_payment_model->get_by_id($id);
@@ -154,7 +158,7 @@ class T33_bkm_detail_payment extends CI_Controller
         $this->form_validation->set_rules('id', 'id', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
-    
+
 }
 
 /* End of file T33_bkm_detail_payment.php */

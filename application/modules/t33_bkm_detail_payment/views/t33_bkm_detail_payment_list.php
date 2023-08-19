@@ -70,16 +70,24 @@ $this->load->view('dist/_partials/header');
                             <tr>
                                 <th>No</th>
                                 <th>Bkm Detail</th>
-                                <th>Kolom Payment</th>
-                                <th>Jumlah</th>
+                                <?php foreach($t07_kolom_payment_data as $t07_kolom_payment) { ?>
+                                <th><?= $t07_kolom_payment->nama ?></th>
+                                <?php } ?>
                                 <th>Proses Data</th>
                             </tr>
-                            <?php foreach ($t33_bkm_detail_payment_data as $t33_bkm_detail_payment) { ?>
+                            <?php $t33_bkm_detail_payment_loop_data = $t33_bkm_detail_payment_data; ?>
+                            <?php // foreach ($t33_bkm_detail_payment_data as $t33_bkm_detail_payment) { ?>
                             <tr>
                                 <td width="80px"><?= ++$start ?></td>
-                                <td><?= $t33_bkm_detail_payment->bkm_detail ?></td>
-                                <td><?= $t33_bkm_detail_payment->kolom_payment ?></td>
-                                <td><?= $t33_bkm_detail_payment->jumlah ?></td>
+                                <td><?= $t33_bkm_detail_payment_data[0]->bkm_detail ?></td>
+                                <?php foreach($t07_kolom_payment_data as $t07_kolom_payment) { ?>
+                                    <?php foreach($t33_bkm_detail_payment_loop_data as $t33_bkm_detail_payment_loop) { ?>
+                                        <?php if ($t33_bkm_detail_payment_loop->kolom_payment == $t07_kolom_payment->id) { ?>
+                                            <td><?= $t33_bkm_detail_payment_loop->jumlah ?></td>
+                                            <?php break; ?>
+                                        <?php } ?>
+                                    <?php } ?>
+                                <?php } ?>
                                 <td style="text-align:center" width="200px">
                                 <?php
                                 echo anchor(site_url('t33_bkm_detail_payment/read/'.$t33_bkm_detail_payment->id),'Detail');
@@ -90,7 +98,7 @@ $this->load->view('dist/_partials/header');
                                 ?>
                                 </td>
                             </tr>
-                            <?php } ?>
+                            <?php // } ?>
                         </table>
                     </div>
                     <div class="card-footer d-flex align-items-center">
