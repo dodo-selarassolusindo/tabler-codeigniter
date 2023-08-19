@@ -48,6 +48,7 @@ $this->load->view('dist/_partials/header');
 
             <div class="col-12">
                 <div class="card">
+                    <?= $t30_bkm_master ?>
                     <div class="card-body border-bottom py-3">
                         <div class="d-flex">
                             <div class="text-muted">
@@ -72,11 +73,11 @@ $this->load->view('dist/_partials/header');
                         <table class="table card-table table-vcenter text-nowrap datatable">
                             <tr>
                                 <th>No</th>
-                                <th>Bkm</th>
+                                <!-- <th>Bkm</th> -->
                                 <th>Name</th>
-                                <th>Mf</th>
-                                <th>Country</th>
-                                <th>Id Number</th>
+                                <!-- <th>Mf</th> -->
+                                <!-- <th>Country</th> -->
+                                <!-- <th>Id Number</th> -->
                                 <th>Package</th>
                                 <th>Night</th>
                                 <th>Check In</th>
@@ -102,11 +103,11 @@ $this->load->view('dist/_partials/header');
                             <?php foreach ($t31_bkm_detail_data as $t31_bkm_detail) { ?>
                             <tr>
                                 <td width="80px"><?= ++$start ?></td>
-                                <td><?= $t31_bkm_detail->bkm ?></td>
+                                <!-- <td><?= $t31_bkm_detail->bkm ?></td> -->
                                 <td><?= $t31_bkm_detail->name ?></td>
-                                <td><?= $t31_bkm_detail->mf ?></td>
-                                <td><?= $t31_bkm_detail->country ?></td>
-                                <td><?= $t31_bkm_detail->id_number ?></td>
+                                <!-- <td><?= $t31_bkm_detail->mf ?></td> -->
+                                <!-- <td><?= $t31_bkm_detail->country ?></td> -->
+                                <!-- <td><?= $t31_bkm_detail->id_number ?></td> -->
                                 <td><?= $t31_bkm_detail->package ?></td>
                                 <td><?= $t31_bkm_detail->night ?></td>
                                 <td><?= $t31_bkm_detail->check_in ?></td>
@@ -129,11 +130,11 @@ $this->load->view('dist/_partials/header');
                                 <td><?= $t31_bkm_detail->price_2 ?></td>
                                 <td style="text-align:center" width="200px">
                                 <?php
-                                echo anchor(site_url('t31_bkm_detail/read/'.$t31_bkm_detail->id),'Detail');
-                                echo ' | ';
-                                echo anchor(site_url('t31_bkm_detail/update/'.$t31_bkm_detail->id),'Ubah');
-                                echo ' | ';
-                                echo anchor(site_url('t31_bkm_detail/delete/'.$t31_bkm_detail->id),'Hapus','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
+                                echo anchor(site_url('t30_bkm/pembayaran_proses/'.$t31_bkm_detail->bkm.'/'.$t31_bkm_detail->id),'Proses');
+                                // echo ' | ';
+                                // echo anchor(site_url('t31_bkm_detail/update/'.$t31_bkm_detail->id),'Ubah');
+                                // echo ' | ';
+                                // echo anchor(site_url('t31_bkm_detail/delete/'.$t31_bkm_detail->id),'Hapus','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
                                 ?>
                                 </td>
                             </tr>

@@ -122,6 +122,14 @@ class T30_bkm extends CI_Controller
         $this->load->library('pagination');
         $this->pagination->initialize($config);
 
+        // load view bkm header
+        // t30_bkm_data
+        // $t30_bkm_data_row = ;
+        // pre($this->T30_bkm_model->get_by_id($bkm)); exit;
+        $t30_bkm_data_array = array(
+            't30_bkm_data' => $this->T30_bkm_model->get_by_id($bkm),
+        );
+
         $data = array(
             't31_bkm_detail_data' => $t31_bkm_detail,
             'q' => $q,
@@ -129,6 +137,56 @@ class T30_bkm extends CI_Controller
             'total_rows' => $config['total_rows'],
             'start' => $start,
             'bkm' => $bkm,
+            't30_bkm_master' => $this->load->view('t30_bkm/t30_bkm_list_pembayaran_only_data', $t30_bkm_data_array, true),
+        );
+        $this->load->view('t30_bkm/t30_bkm_list_pembayaran_detail', $data);
+    }
+
+    public function pembayaran_proses($bkm, $bkm_detail)
+    {
+        $q = urldecode($this->input->get('q', TRUE));
+        $start = intval($this->input->get('start'));
+
+        if ($q <> '') {
+            $config['base_url'] = base_url() . 't30_bkm/pembayaran_detail/'.$bkm.'?q=' . urlencode($q);
+            $config['first_url'] = base_url() . 't30_bkm/pembayaran_detail/'.$bkm.'?q=' . urlencode($q);
+        } else {
+            $config['base_url'] = base_url() . 't30_bkm/pembayaran_detail/'.$bkm;
+            $config['first_url'] = base_url() . 't30_bkm/pembayaran_detail/'.$bkm;
+        }
+
+        $config['per_page'] = 10;
+        $config['page_query_string'] = TRUE;
+        $config['total_rows'] = $this->T31_bkm_detail_model->total_rows($q, $bkm);
+        $config['num_tag_open'] = '<li class="page-item">';
+        $config['num_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['full_tag_open'] = '<ul class="pagination m-0 ms-auto">';
+        $config['full_tag_close'] = '</ul>';
+        $config['attributes'] = array('class' => 'page-link');
+        $config['num_links'] = 5;
+        $t31_bkm_detail = $this->T31_bkm_detail_model->get_limit_data($config['per_page'], $start, $q, $bkm);
+
+        $this->load->library('pagination');
+        $this->pagination->initialize($config);
+
+        // load view bkm header
+        // t30_bkm_data
+        // $t30_bkm_data_row = ;
+        // pre($this->T30_bkm_model->get_by_id($bkm)); exit;
+        $t30_bkm_data_array = array(
+            't30_bkm_data' => $this->T30_bkm_model->get_by_id($bkm),
+        );
+
+        $data = array(
+            't31_bkm_detail_data' => $t31_bkm_detail,
+            'q' => $q,
+            'pagination' => $this->pagination->create_links(),
+            'total_rows' => $config['total_rows'],
+            'start' => $start,
+            'bkm' => $bkm,
+            't30_bkm_master' => $this->load->view('t30_bkm/t30_bkm_list_pembayaran_only_data', $t30_bkm_data_array, true),
         );
         $this->load->view('t30_bkm/t30_bkm_list_pembayaran_detail', $data);
     }
