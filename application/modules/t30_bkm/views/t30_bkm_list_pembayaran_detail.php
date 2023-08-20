@@ -130,7 +130,7 @@ $this->load->view('dist/_partials/header');
                                 <td><?= $t31_bkm_detail->price_2 ?></td>
                                 <td style="text-align:center" width="200px">
                                 <?php
-                                echo anchor(site_url('t30_bkm/pembayaran_proses/'.$t31_bkm_detail->bkm.'/'.$t31_bkm_detail->id),'Proses');
+                                echo anchor(site_url('t31_bkm_detail/bayar/'.$t31_bkm_detail->id),'Proses');
                                 // echo ' | ';
                                 // echo anchor(site_url('t31_bkm_detail/update/'.$t31_bkm_detail->id),'Ubah');
                                 // echo ' | ';
