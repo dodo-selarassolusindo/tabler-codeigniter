@@ -12,7 +12,7 @@ class T33_selisih_price_model extends CI_Model
     {
         parent::__construct();
     }
-    
+
     // get all
     function get_all()
     {
@@ -28,8 +28,11 @@ class T33_selisih_price_model extends CI_Model
     }
 
     // get total rows
-    function total_rows($q = NULL)
+    function total_rows($q = NULL, $bkm_detail = null)
     {
+        if ($bkm_detail <> null) {
+            $this->db->having('bkm_detail', $bkm_detail);
+        }
         $this->db->like('id', $q);
         $this->db->or_like('bkm_detail', $q);
         $this->db->or_like('tanggal', $q);
@@ -40,8 +43,11 @@ class T33_selisih_price_model extends CI_Model
     }
 
     // get data with limit and search
-    function get_limit_data($limit, $start = 0, $q = NULL)
+    function get_limit_data($limit, $start = 0, $q = NULL, $bkm_detail = null)
     {
+        if ($bkm_detail <> null) {
+            $this->db->having('bkm_detail', $bkm_detail);
+        }
         $this->db->order_by($this->id, $this->order);
         $this->db->like('id', $q);
         $this->db->or_like('bkm_detail', $q);

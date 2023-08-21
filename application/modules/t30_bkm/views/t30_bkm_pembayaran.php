@@ -51,6 +51,9 @@ $this->load->view('dist/_partials/header');
 
                 <?= $t30_bkm ?>
                 <?= $t31_bkm_detail ?>
+                <?= $t33_selisih_price ?>
+                <?= $t34_pembayaran ?>
+                <?= $t35_selisih_bayar ?>
 
                 </div>
             </div>
