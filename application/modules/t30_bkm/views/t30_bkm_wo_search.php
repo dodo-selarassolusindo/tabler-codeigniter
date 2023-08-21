@@ -2,6 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
+                    <div class="card-header">
+                        <h3 class="card-title">BKM</h3>
+                    </div>
                     <div class="table-responsive">
                         <table class="table card-table table-vcenter text-nowrap datatable">
                             <tr>
