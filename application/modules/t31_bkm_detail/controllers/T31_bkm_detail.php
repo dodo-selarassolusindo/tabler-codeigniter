@@ -51,34 +51,6 @@ class T31_bkm_detail extends CI_Controller
         $this->load->view('t31_bkm_detail/t31_bkm_detail_list', $data);
     }
 
-    public function bayar($id)
-    {
-        $row = $this->T31_bkm_detail_model->get_by_id($id);
-        if ($row) {
-
-            // master
-            $t30_bkm_row = $this->T30_bkm_model->get_by_id($row->bkm);
-            $t30_bkm_array = array(
-                't30_bkm_data' => $t30_bkm_row,
-            );
-
-            // detail
-            $t31_bkm_detail_array = array(
-                't31_bkm_detail_data' => $row,
-            );
-
-            $data = array(
-                't30_bkm_data' => $this->load->view('t30_bkm/t30_bkm_list_pembayaran_only_data', $t30_bkm_array, true),
-                't31_bkm_detail_data' => $this->load->view('t31_bkm_detail/t31_bkm_detail_list_only_data', $t31_bkm_detail_array, true),
-            );
-
-            $this->load->view('t31_bkm_detail/t31_bkm_detail_bayar', $data);
-        } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('t31_bkm_detail'));
-        }
-    }
-
     public function read($id)
     {
         $row = $this->T31_bkm_detail_model->get_by_id($id);

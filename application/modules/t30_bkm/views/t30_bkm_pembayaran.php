@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 $this->load->view('dist/_partials/header');
 ?>
-
 <!-- Page header -->
 <div class="page-header d-print-none">
     <div class="container-xl">
@@ -25,7 +24,7 @@ $this->load->view('dist/_partials/header');
                     <!-- <a href="<?= site_url('t30_bkm/import') ?>" class="btn btn-primary d-none d-sm-inline-block">
                         Import Data
                     </a> -->
-                    <a href="<?= site_url('t30_bkm/pembayaran') ?>" class="btn btn-secondary d-none d-sm-inline-block">
+                    <a href="<?= site_url($kembali) ?>" class="btn btn-secondary d-none d-sm-inline-block">
                         Kembali
                     </a>
                 </div>
@@ -50,8 +49,8 @@ $this->load->view('dist/_partials/header');
             <div class="col-12">
                 <div class="card">
 
-                    <?= $t30_bkm_data ?>
-                    <?= $t31_bkm_detail_data ?>
+                <?= $t30_bkm ?>
+                <?= $t31_bkm_detail ?>
 
                 </div>
             </div>
