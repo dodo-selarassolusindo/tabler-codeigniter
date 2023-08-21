@@ -55,7 +55,7 @@ class T30_bkm extends CI_Controller
         $this->load->view('t30_bkm/t30_bkm_list', $data);
     }
 
-    public function pembayaran($bkm = null)
+    public function pembayaran($bkm = null, $bkm_detail = null)
     {
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
@@ -77,16 +77,24 @@ class T30_bkm extends CI_Controller
 
         } else {
 
-            if ($q <> '') {
-                $config['base_url'] = base_url() . 't30_bkm/pembayaran/'.$bkm.'?q=' . urlencode($q);
-                $config['first_url'] = base_url() . 't30_bkm/pembayaran/'.$bkm.'?q=' . urlencode($q);
+            if ($bkm_detail == null) {
+
+                echo $bkm_detail; exit;
+
             } else {
-                $config['base_url'] = base_url() . 't30_bkm/pembayaran/'.$bkm;
-                $config['first_url'] = base_url() . 't30_bkm/pembayaran/'.$bkm;
+
+                if ($q <> '') {
+                    $config['base_url'] = base_url() . 't30_bkm/pembayaran/'.$bkm.'?q=' . urlencode($q);
+                    $config['first_url'] = base_url() . 't30_bkm/pembayaran/'.$bkm.'?q=' . urlencode($q);
+                } else {
+                    $config['base_url'] = base_url() . 't30_bkm/pembayaran/'.$bkm;
+                    $config['first_url'] = base_url() . 't30_bkm/pembayaran/'.$bkm;
+                }
+                $config['total_rows'] = $this->T31_bkm_detail_model->total_rows($q, $bkm);
+                $t30_bkm = $this->T30_bkm_model->get_by_id($bkm);
+                $t31_bkm_detail = $this->T31_bkm_detail_model->get_limit_data($config['per_page'], $start, $q, $bkm);
+
             }
-            $config['total_rows'] = $this->T31_bkm_detail_model->total_rows($q, $bkm);
-            $t30_bkm = $this->T30_bkm_model->get_by_id($bkm);
-            $t31_bkm_detail = $this->T31_bkm_detail_model->get_limit_data($config['per_page'], $start, $q, $bkm);
 
         }
 
@@ -132,7 +140,7 @@ class T30_bkm extends CI_Controller
             );
             $t31_bkm_detail = $this->load->view('t31_bkm_detail/t31_bkm_detail_w_search', $data, true);
             $kembali = 't30_bkm/pembayaran';
-            
+
         }
 
         $data = array(
