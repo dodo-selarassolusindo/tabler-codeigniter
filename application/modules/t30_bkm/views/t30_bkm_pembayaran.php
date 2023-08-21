@@ -49,11 +49,32 @@ $this->load->view('dist/_partials/header');
             <div class="col-12">
                 <div class="card">
 
-                <?= $t30_bkm ?>
-                <?= $t31_bkm_detail ?>
-                <?= $t33_selisih_price ?>
-                <?= $t34_pembayaran ?>
-                <?= $t35_selisih_bayar ?>
+                    <?= $t30_bkm ?>
+                    <?= $t31_bkm_detail ?>
+
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card">
+
+                    <?= $t33_selisih_price ?>
+
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card">
+
+                    <?= $t34_pembayaran ?>
+
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card">
+
+                    <?= $t35_selisih_bayar ?>
 
                 </div>
             </div>

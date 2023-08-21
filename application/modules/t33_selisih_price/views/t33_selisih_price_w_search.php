@@ -56,6 +56,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </table>
                     </div>
                     <div class="card-footer d-flex align-items-center">
-                        <p class="m-0 text-muted">Menampilkan <span><?= count($t33_selisih_price_data) ?></span> dari <span><?= $total_rows ?></span> data</p>
+                        <p class="m-0 text-muted">Menampilkan <span><?= count($t33_selisih_price_data) ?></span> dari <span><?= $total_rows_selisih_price ?></span> data</p>
                         <?= $pagination ?>
                     </div>
