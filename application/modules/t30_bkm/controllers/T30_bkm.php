@@ -170,6 +170,7 @@ class T30_bkm extends CI_Controller
 
                 $data = array(
                     't30_bkm_data' => $t30_bkm,
+                    'start' => $start,
                 );
                 $t30_bkm = $this->load->view('t30_bkm/t30_bkm_wo_search', $data, true);
 
