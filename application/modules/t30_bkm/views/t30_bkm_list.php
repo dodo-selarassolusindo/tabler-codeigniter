@@ -21,9 +21,11 @@ $this->load->view('dist/_partials/header');
                     <!-- <a href="<?= site_url('t30_bkm/create') ?>" class="btn btn-primary d-none d-sm-inline-block">
                         Tambah Data
                     </a> -->
+                    <?php if ($kembali == '') { ?>
                     <a href="<?= site_url('t30_bkm/import') ?>" class="btn btn-primary d-none d-sm-inline-block">
                         Import Data
                     </a>
+                    <?php } ?>
                     <a href="<?= site_url($kembali) ?>" class="btn btn-secondary d-none d-sm-inline-block">
                         Kembali
                     </a>

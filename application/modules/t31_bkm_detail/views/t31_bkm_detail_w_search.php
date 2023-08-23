@@ -83,11 +83,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?= $t31_bkm_detail->price_2 ?></td>
                                 <td style="text-align:center" width="200px">
                                 <?php
-                                echo anchor(site_url('t30_bkm/pembayaran/'.$t31_bkm_detail->bkm.'/'.$t31_bkm_detail->id),'Proses');
-                                // echo ' | ';
-                                // echo anchor(site_url('t31_bkm_detail/update/'.$t31_bkm_detail->id),'Ubah');
-                                // echo ' | ';
-                                // echo anchor(site_url('t31_bkm_detail/delete/'.$t31_bkm_detail->id),'Hapus','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
+                                echo anchor(site_url('t30_bkm/pembayaran/'.$t31_bkm_detail->bkm.'/'.$t31_bkm_detail->id),'Bayar');
+                                echo ' | ';
+                                echo anchor(site_url('t31_bkm_detail/update/'.$t31_bkm_detail->id),'Ubah');
+                                echo ' | ';
+                                echo anchor(site_url('t31_bkm_detail/delete/'.$t31_bkm_detail->id),'Hapus','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
                                 ?>
                                 </td>
                             </tr>
