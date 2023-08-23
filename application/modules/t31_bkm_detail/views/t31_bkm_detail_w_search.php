@@ -7,12 +7,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="text-muted">
                                 Cari Data:
                                 <div class="ms-2 d-inline-block">
-                                    <form action="<?= site_url('t30_bkm/pembayaran/'.$bkm) ?>" method="get">
+                                    <form action="<?= site_url('t30_bkm/detail/'.$bkm) ?>" method="get">
                                         <div class="input-group">
                                             <input type="text" class="form-control form-control-sm" name="q" value="<?= $q ?>">
                                             <span class="input-group-btn">
                                                 <?php if ($q <> '') { ?>
-                                                <a href="<?= site_url('t30_bkm/pembayaran/'.$bkm) ?>" class="btn btn-secondary btn-sm">Reset</a>
+                                                <a href="<?= site_url('t30_bkm/detail/'.$bkm) ?>" class="btn btn-secondary btn-sm">Reset</a>
                                                 <?php } ?>
                                                 <button class="btn btn-primary btn-sm" type="submit">Cari</button>
                                             </span>

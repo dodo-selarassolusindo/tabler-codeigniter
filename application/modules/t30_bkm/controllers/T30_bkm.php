@@ -38,6 +38,7 @@ class T30_bkm extends CI_Controller
             $config['base_url'] = base_url() . 't30_bkm/pembayaran';
             $config['first_url'] = base_url() . 't30_bkm/pembayaran';
         }
+
         $config['total_rows'] = $this->T30_bkm_model->total_rows($q);
         $t30_bkm = $this->T30_bkm_model->get_limit_data($config['per_page'], $start, $q);
 
@@ -66,7 +67,6 @@ class T30_bkm extends CI_Controller
         $data = array(
             't30_bkm' => $t30_bkm,
             't31_bkm_detail' => $t31_bkm_detail,
-            // 't33_selisih_price' => $t33_selisih_price,
             't34_pembayaran' => $t34_pembayaran,
             't35_selisih_bayar' => $t35_selisih_bayar,
             'kembali' => $kembali,
@@ -75,13 +75,11 @@ class T30_bkm extends CI_Controller
 
     }
 
-    public function detail($bkm = null)
+    public function detail($bkm)
     {
 
-        // $t31_bkm_detail = '';
-        // $t33_selisih_price = '';
-        // $t34_pembayaran = '';
-        // $t35_selisih_bayar = '';
+        $t34_pembayaran = '';
+        $t35_selisih_bayar = '';
 
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
@@ -90,12 +88,13 @@ class T30_bkm extends CI_Controller
         $config['page_query_string'] = TRUE;
 
         if ($q <> '') {
-            $config['base_url'] = base_url() . 't30_bkm/pembayaran/'.$bkm.'?q=' . urlencode($q);
-            $config['first_url'] = base_url() . 't30_bkm/pembayaran/'.$bkm.'?q=' . urlencode($q);
+            $config['base_url'] = base_url() . 't30_bkm/detail/'.$bkm.'?q=' . urlencode($q);
+            $config['first_url'] = base_url() . 't30_bkm/detail/'.$bkm.'?q=' . urlencode($q);
         } else {
-            $config['base_url'] = base_url() . 't30_bkm/pembayaran/'.$bkm;
-            $config['first_url'] = base_url() . 't30_bkm/pembayaran/'.$bkm;
+            $config['base_url'] = base_url() . 't30_bkm/detail/'.$bkm;
+            $config['first_url'] = base_url() . 't30_bkm/detail/'.$bkm;
         }
+
         $config['total_rows'] = $this->T31_bkm_detail_model->total_rows($q, $bkm);
         $t30_bkm = $this->T30_bkm_model->get_by_id($bkm);
         $t31_bkm_detail = $this->T31_bkm_detail_model->get_limit_data($config['per_page'], $start, $q, $bkm);
@@ -132,12 +131,12 @@ class T30_bkm extends CI_Controller
         $data = array(
             't30_bkm' => $t30_bkm,
             't31_bkm_detail' => $t31_bkm_detail,
-            // 't33_selisih_price' => $t33_selisih_price,
-            // 't34_pembayaran' => $t34_pembayaran,
-            // 't35_selisih_bayar' => $t35_selisih_bayar,
+            't34_pembayaran' => $t34_pembayaran,
+            't35_selisih_bayar' => $t35_selisih_bayar,
             'kembali' => $kembali,
         );
-        $this->load->view('t30_bkm/t30_bkm_pembayaran', $data);
+        $this->load->view('t30_bkm/t30_bkm_list', $data);
+
     }
 
     public function pembayaran($bkm = null, $bkm_detail = null)
