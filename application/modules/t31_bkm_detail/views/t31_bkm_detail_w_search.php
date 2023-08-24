@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </tr>
                             <?php foreach ($t31_bkm_detail_data as $t31_bkm_detail) { ?>
                             <tr>
-                                <td width="80px"><?= ++$start ?></td>
+                                <td><?= ++$start ?></td>
                                 <!-- <td><?= $t31_bkm_detail->bkm ?></td> -->
                                 <td><?= $t31_bkm_detail->name ?></td>
                                 <!-- <td><?= $t31_bkm_detail->mf ?></td> -->
@@ -81,7 +81,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?= $t31_bkm_detail->fee_tanas ?></td>
                                 <td><?= $t31_bkm_detail->fee_tanas_value ?></td>
                                 <td><?= $t31_bkm_detail->price_2 ?></td>
-                                <td style="text-align:center" width="200px">
+                                <td>
                                 <?php
                                 echo anchor(site_url('t30_bkm/pembayaran/'.$t31_bkm_detail->bkm.'/'.$t31_bkm_detail->id),'Bayar');
                                 echo ' | ';

@@ -74,6 +74,7 @@ class T31_bkm_detail_model extends CI_Model
     // get data with limit and search
     function get_limit_data($limit, $start = 0, $q = NULL, $bkm = null)
     {
+        // $this->db->join();
         if ($bkm <> null) {
             $this->db->having('bkm', $bkm);
         }
