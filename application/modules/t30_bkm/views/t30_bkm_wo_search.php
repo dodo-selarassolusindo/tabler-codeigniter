@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <?php $t30_bkm = $t30_bkm_data ?>
                             <?php // foreach ($t30_bkm_data as $t30_bkm) { ?>
                             <tr>
-                                <td width="80px"><?= ++$start ?></td>
+                                <td><?= ++$start ?></td>
                                 <td><?= $t30_bkm->nomor ?></td>
                                 <td><?= $t30_bkm->tanggal ?></td>
                                 <td><?= $t30_bkm->rate_usd ?></td>
