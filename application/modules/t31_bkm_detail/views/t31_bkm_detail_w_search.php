@@ -36,8 +36,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <th>Check In</th>
                                 <th>Check Out</th>
                                 <th>Agent</th>
-                                <th>Mata Uang</th>
-                                <th>Price</th>
+                                <!-- <th>Mata Uang</th> -->
+                                <!-- <th>Price</th> -->
+                                <th>Price List</th>
                                 <th>Remarks</th>
                                 <th>Usd</th>
                                 <th>Aud</th>
@@ -66,8 +67,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?= date_dmy($t31_bkm_detail->check_in) ?></td>
                                 <td><?= date_dmy($t31_bkm_detail->check_out) ?></td>
                                 <td><?= $t31_bkm_detail->agent ?></td>
-                                <td><?= $t31_bkm_detail->mata_uang ?></td>
-                                <td><?= $t31_bkm_detail->price ?></td>
+                                <!-- <td><?= $t31_bkm_detail->mata_uang ?></td> -->
+                                <!-- <td><?= $t31_bkm_detail->price ?></td> -->
+                                <td><?= $t31_bkm_detail->mata_uang.' '.$t31_bkm_detail->price ?></td>
                                 <td><?= $t31_bkm_detail->remarks ?></td>
                                 <td><?= $t31_bkm_detail->usd ?></td>
                                 <td><?= $t31_bkm_detail->aud ?></td>

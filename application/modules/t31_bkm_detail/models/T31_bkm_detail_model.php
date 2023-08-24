@@ -74,18 +74,21 @@ class T31_bkm_detail_model extends CI_Model
     // get data with limit and search
     function get_limit_data($limit, $start = 0, $q = NULL, $bkm = null)
     {
-        // $this->db->join();
+        $this->db->join('t04_package', 't04_package.id = '.$this->table.'.package', 'left');
+        $this->db->join('t05_agent', 't05_agent.id = '.$this->table.'.agent', 'left');
+        $this->db->join('t00_mata_uang', 't00_mata_uang.id = '.$this->table.'.mata_uang', 'left');
         if ($bkm <> null) {
             $this->db->having('bkm', $bkm);
         }
-        $this->db->order_by($this->id, $this->order);
-        $this->db->like('id', $q);
+        $this->db->order_by($this->table.'.'.$this->id, $this->order);
+        $this->db->like($this->table.'.'.'id', $q);
     	$this->db->or_like('bkm', $q);
     	$this->db->or_like('name', $q);
     	$this->db->or_like('mf', $q);
     	$this->db->or_like('country', $q);
     	$this->db->or_like('id_number', $q);
-    	$this->db->or_like('package', $q);
+    	// $this->db->or_like('package', $q);
+    	$this->db->or_like('t04_package.nama', $q);
     	$this->db->or_like('night', $q);
     	$this->db->or_like('check_in', $q);
     	$this->db->or_like('check_out', $q);
@@ -106,6 +109,12 @@ class T31_bkm_detail_model extends CI_Model
     	$this->db->or_like('fee_tanas_value', $q);
     	$this->db->or_like('price_2', $q);
     	$this->db->limit($limit, $start);
+        $this->db->select(
+            $this->table.'.*
+            , t04_package.nama as package
+            , t05_agent.nama as agent
+            , t00_mata_uang.kode as mata_uang
+            ', false);
         return $this->db->get($this->table)->result();
     }
 
