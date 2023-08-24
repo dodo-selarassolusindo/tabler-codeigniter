@@ -64,11 +64,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?= ++$start ?></td>
                                 <td>
                                 <?php
-                                echo anchor(site_url('t30_bkm/pembayaran/'.$t31_bkm_detail->bkm.'/'.$t31_bkm_detail->id),'Bayar');
-                                echo ' | ';
-                                echo anchor(site_url('t31_bkm_detail/update/'.$t31_bkm_detail->id),'Ubah');
-                                echo ' | ';
-                                echo anchor(site_url('t31_bkm_detail/delete/'.$t31_bkm_detail->id),'Hapus','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
+                                echo anchor(site_url('t30_bkm/pembayaran/'.$t31_bkm_detail->bkm.'/'.$t31_bkm_detail->id),'Bayar','class="btn btn-primary btn-sm"');
+                                // echo ' | ';
+                                echo ' '.anchor(site_url('t31_bkm_detail/update/'.$t31_bkm_detail->id),'Ubah','class="btn btn-primary btn-sm"');
+                                // echo ' | ';
+                                echo ' '.anchor(site_url('t31_bkm_detail/delete/'.$t31_bkm_detail->id),'Hapus','class="btn btn-danger btn-sm" onclick="javasciprt: return confirm(\'Hapus data ?\')"');
                                 ?>
                                 </td>
                                 <!-- <td><?= $t31_bkm_detail->bkm ?></td> -->
