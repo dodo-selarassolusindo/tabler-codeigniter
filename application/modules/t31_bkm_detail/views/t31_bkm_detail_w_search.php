@@ -63,8 +63,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!-- <td><?= $t31_bkm_detail->id_number ?></td> -->
                                 <td><?= $t31_bkm_detail->package ?></td>
                                 <td><?= $t31_bkm_detail->night ?></td>
-                                <td><?= $t31_bkm_detail->check_in ?></td>
-                                <td><?= $t31_bkm_detail->check_out ?></td>
+                                <td><?= date_dmy($t31_bkm_detail->check_in) ?></td>
+                                <td><?= date_dmy($t31_bkm_detail->check_out) ?></td>
                                 <td><?= $t31_bkm_detail->agent ?></td>
                                 <td><?= $t31_bkm_detail->mata_uang ?></td>
                                 <td><?= $t31_bkm_detail->price ?></td>
