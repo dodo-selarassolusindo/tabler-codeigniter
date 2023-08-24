@@ -83,13 +83,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <?php foreach ($".$c_url."_data as \$$c_url) { ?>
                             <tr>";
                             $string2 .= "
-                                <td width=\"80px\"><?= ++\$start ?></td>";
+                                <td><?= ++\$start ?></td>";
                             foreach ($non_pk as $row) {
                                 $string2 .= "
                                 <td><?= $" . $c_url ."->". $row['column_name'] . " ?></td>";
                             }
                             $string2 .= "
-                                <td style=\"text-align:center\" width=\"200px\">
+                                <td>
                                 <?php
                                 echo anchor(site_url('".$c_url."/read/'.$".$c_url."->".$pk."),'Detail');
                                 echo ' | ';

@@ -36,12 +36,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </tr>
                             <?php foreach ($t30_bkm_data as $t30_bkm) { ?>
                             <tr>
-                                <td width="80px"><?= ++$start ?></td>
+                                <td><?= ++$start ?></td>
                                 <td><?= $t30_bkm->nomor ?></td>
-                                <td><?= $t30_bkm->tanggal ?></td>
-                                <td><?= $t30_bkm->rate_usd ?></td>
-                                <td><?= $t30_bkm->rate_aud ?></td>
-                                <td style="text-align:center" width="200px">
+                                <td><?= date_dmy($t30_bkm->tanggal) ?></td>
+                                <td><?= number_format($t30_bkm->rate_usd, 0) ?></td>
+                                <td><?= number_format($t30_bkm->rate_aud, 0) ?></td>
+                                <td>
                                 <?php
                                 echo anchor(site_url('t30_bkm/detail/'.$t30_bkm->id),'Detail');
                                 echo ' | ';
