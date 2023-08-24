@@ -19,9 +19,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <tr>
                                 <td><?= ++$start ?></td>
                                 <td><?= $t30_bkm->nomor ?></td>
-                                <td><?= $t30_bkm->tanggal ?></td>
-                                <td><?= $t30_bkm->rate_usd ?></td>
-                                <td><?= $t30_bkm->rate_aud ?></td>
+                                <td><?= date_dmy($t30_bkm->tanggal) ?></td>
+                                <td><?= number_format($t30_bkm->rate_usd, 0) ?></td>
+                                <td><?= number_format($t30_bkm->rate_aud, 0) ?></td>
                             </tr>
                             <?php // } ?>
                         </table>
