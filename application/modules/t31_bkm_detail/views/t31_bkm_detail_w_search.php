@@ -26,6 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <table class="table card-table table-vcenter text-nowrap datatable">
                             <tr>
                                 <th>No</th>
+                                <th>Proses Data</th>
                                 <!-- <th>Bkm</th> -->
                                 <th>Name</th>
                                 <!-- <th>Mf</th> -->
@@ -39,24 +40,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!-- <th>Mata Uang</th> -->
                                 <!-- <th>Price</th> -->
                                 <th>Price List</th>
+                                <th>Price</th>
+                                <th>Fee Taman Nasional</th>
+                                <th>Pay</th>
                                 <th>Remarks</th>
-                                <th>Usd</th>
-                                <th>Aud</th>
-                                <th>Paypal</th>
-                                <th>Bca Dollar</th>
-                                <th>Rp</th>
-                                <th>Cc Bca</th>
-                                <th>Cc Mandiri</th>
-                                <th>Price 1</th>
-                                <th>Price 1 Value</th>
-                                <th>Fee Tanas</th>
-                                <th>Fee Tanas Value</th>
-                                <th>Price 2</th>
-                                <th>Proses Data</th>
+
+                                <!-- <th>Usd</th> -->
+                                <!-- <th>Aud</th> -->
+                                <!-- <th>Paypal</th> -->
+                                <!-- <th>Bca Dollar</th> -->
+                                <!-- <th>Rp</th> -->
+                                <!-- <th>Cc Bca</th> -->
+                                <!-- <th>Cc Mandiri</th> -->
+
+                                <!-- <th>Price 1</th> -->
+                                <!-- <th>Price 1 Value</th> -->
+                                <!-- <th>Fee Tanas</th> -->
+                                <!-- <th>Fee Tanas Value</th> -->
+                                <!-- <th>Price 2</th> -->
                             </tr>
                             <?php foreach ($t31_bkm_detail_data as $t31_bkm_detail) { ?>
                             <tr>
                                 <td><?= ++$start ?></td>
+                                <td>
+                                <?php
+                                echo anchor(site_url('t30_bkm/pembayaran/'.$t31_bkm_detail->bkm.'/'.$t31_bkm_detail->id),'Bayar');
+                                echo ' | ';
+                                echo anchor(site_url('t31_bkm_detail/update/'.$t31_bkm_detail->id),'Ubah');
+                                echo ' | ';
+                                echo anchor(site_url('t31_bkm_detail/delete/'.$t31_bkm_detail->id),'Hapus','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
+                                ?>
+                                </td>
                                 <!-- <td><?= $t31_bkm_detail->bkm ?></td> -->
                                 <td><?= $t31_bkm_detail->name ?></td>
                                 <!-- <td><?= $t31_bkm_detail->mf ?></td> -->
@@ -70,28 +84,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!-- <td><?= $t31_bkm_detail->mata_uang ?></td> -->
                                 <!-- <td><?= $t31_bkm_detail->price ?></td> -->
                                 <td><?= $t31_bkm_detail->mata_uang.' '.$t31_bkm_detail->price ?></td>
-                                <td><?= $t31_bkm_detail->remarks ?></td>
-                                <td><?= $t31_bkm_detail->usd ?></td>
-                                <td><?= $t31_bkm_detail->aud ?></td>
-                                <td><?= $t31_bkm_detail->paypal ?></td>
-                                <td><?= $t31_bkm_detail->bca_dollar ?></td>
-                                <td><?= $t31_bkm_detail->rp ?></td>
-                                <td><?= $t31_bkm_detail->cc_bca ?></td>
-                                <td><?= $t31_bkm_detail->cc_mandiri ?></td>
-                                <td><?= $t31_bkm_detail->price_1 ?></td>
-                                <td><?= $t31_bkm_detail->price_1_value ?></td>
-                                <td><?= $t31_bkm_detail->fee_tanas ?></td>
-                                <td><?= $t31_bkm_detail->fee_tanas_value ?></td>
+                                <td><?= ($t31_bkm_detail->price_1_value != '' ? (substr(trim($t31_bkm_detail->price_1), 0, 4) == '[$00' ? 'USD ' : 'AUD ') . $t31_bkm_detail->price_1_value : '') ?></td>
+                                <td><?= ($t31_bkm_detail->fee_tanas_value != '' ? (substr(trim($t31_bkm_detail->fee_tanas), 0, 4) == '[$00' ? 'USD ' : 'AUD ') . $t31_bkm_detail->fee_tanas_value : '') ?></td>
                                 <td><?= $t31_bkm_detail->price_2 ?></td>
-                                <td>
-                                <?php
-                                echo anchor(site_url('t30_bkm/pembayaran/'.$t31_bkm_detail->bkm.'/'.$t31_bkm_detail->id),'Bayar');
-                                echo ' | ';
-                                echo anchor(site_url('t31_bkm_detail/update/'.$t31_bkm_detail->id),'Ubah');
-                                echo ' | ';
-                                echo anchor(site_url('t31_bkm_detail/delete/'.$t31_bkm_detail->id),'Hapus','onclick="javasciprt: return confirm(\'Hapus data ?\')"');
-                                ?>
-                                </td>
+                                <td><?= $t31_bkm_detail->remarks ?></td>
+
+                                <!-- <td><?= $t31_bkm_detail->usd ?></td> -->
+                                <!-- <td><?= $t31_bkm_detail->aud ?></td> -->
+                                <!-- <td><?= $t31_bkm_detail->paypal ?></td> -->
+                                <!-- <td><?= $t31_bkm_detail->bca_dollar ?></td> -->
+                                <!-- <td><?= $t31_bkm_detail->rp ?></td> -->
+                                <!-- <td><?= $t31_bkm_detail->cc_bca ?></td> -->
+                                <!-- <td><?= $t31_bkm_detail->cc_mandiri ?></td> -->
+
+                                <!-- <td><?= $t31_bkm_detail->price_1 ?></td> -->
+                                <!-- <td><?= $t31_bkm_detail->price_1_value ?></td> -->
+                                <!-- <td><?= $t31_bkm_detail->fee_tanas ?></td> -->
+                                <!-- <td><?= $t31_bkm_detail->fee_tanas_value ?></td> -->
+                                <!-- <td><?= $t31_bkm_detail->price_2 ?></td> -->
                             </tr>
                             <?php } ?>
                         </table>
