@@ -4,6 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     <div class="card-header">
                         <h3 class="card-title">Pembayaran</h3>
+                        <div class="ms-auto text-muted">
+                            <?php echo anchor(site_url('t34_pembayaran/create/'.$this->uri->segment(4)),'Tambah','class="btn btn-primary btn-sm"'); ?>
+                        </div>
                     </div>
                     <div class="card-body border-bottom py-3">
                         <div class="d-flex">
