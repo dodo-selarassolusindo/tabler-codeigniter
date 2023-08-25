@@ -42,38 +42,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <?php foreach ($t31_bkm_detail_data as $t31_bkm_detail) { ?>
                             <tr>
                                 <td><?= ++$start ?></td>
-                                <!-- <td><?= $t31_bkm_detail->bkm ?></td> -->
                                 <td><?= $t31_bkm_detail->name ?></td>
-                                <!-- <td><?= $t31_bkm_detail->mf ?></td> -->
-                                <!-- <td><?= $t31_bkm_detail->country ?></td> -->
-                                <!-- <td><?= $t31_bkm_detail->id_number ?></td> -->
                                 <td><?= $t31_bkm_detail->package ?></td>
                                 <td><?= $t31_bkm_detail->night ?></td>
                                 <td><?= date_dmy($t31_bkm_detail->check_in) ?></td>
                                 <td><?= date_dmy($t31_bkm_detail->check_out) ?></td>
                                 <td><?= $t31_bkm_detail->agent ?></td>
-                                <!-- <td><?= $t31_bkm_detail->mata_uang ?></td> -->
-                                <!-- <td><?= $t31_bkm_detail->price ?></td> -->
                                 <td><?= $t31_bkm_detail->mata_uang.' '.$t31_bkm_detail->price ?></td>
                                 <td><?= ($t31_bkm_detail->price_1_value != '' ? (substr(trim($t31_bkm_detail->price_1), 0, 4) == '[$00' ? 'USD ' : 'AUD ') . number_format($t31_bkm_detail->price_1_value, 0) : '') ?></td>
                                 <td><?= ($t31_bkm_detail->fee_tanas_value != '' ? (substr(trim($t31_bkm_detail->fee_tanas), 0, 4) == '[$00' ? 'USD ' : 'AUD ') . number_format($t31_bkm_detail->fee_tanas_value, 0) : '') ?></td>
                                 <td><?= $t31_bkm_detail->price_2 ?></td>
                                 <td><?= $t31_bkm_detail->remarks ?></td>
-
-                                <!-- <td><?= $t31_bkm_detail->usd ?></td> -->
-                                <!-- <td><?= $t31_bkm_detail->aud ?></td> -->
-                                <!-- <td><?= $t31_bkm_detail->paypal ?></td> -->
-                                <!-- <td><?= $t31_bkm_detail->bca_dollar ?></td> -->
-                                <!-- <td><?= $t31_bkm_detail->rp ?></td> -->
-                                <!-- <td><?= $t31_bkm_detail->cc_bca ?></td> -->
-                                <!-- <td><?= $t31_bkm_detail->cc_mandiri ?></td> -->
-
-                                <!-- <td><?= $t31_bkm_detail->price_1 ?></td> -->
-                                <!-- <td><?= $t31_bkm_detail->price_1_value ?></td> -->
-                                <!-- <td><?= $t31_bkm_detail->fee_tanas ?></td> -->
-                                <!-- <td><?= $t31_bkm_detail->fee_tanas_value ?></td> -->
-                                <!-- <td><?= $t31_bkm_detail->price_2 ?></td> -->
-
                                 <td>
                                 <?php
                                 echo anchor(site_url('t30_bkm/pembayaran/'.$t31_bkm_detail->bkm.'/'.$t31_bkm_detail->id),'Bayar','class="btn btn-primary btn-sm"');
