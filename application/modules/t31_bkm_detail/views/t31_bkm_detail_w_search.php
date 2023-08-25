@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <table class="table card-table table-vcenter text-nowrap datatable">
                             <tr>
                                 <th>No</th>
-                                <th>Proses Data</th>
+
                                 <!-- <th>Bkm</th> -->
                                 <th>Name</th>
                                 <!-- <th>Mf</th> -->
@@ -58,19 +58,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!-- <th>Fee Tanas</th> -->
                                 <!-- <th>Fee Tanas Value</th> -->
                                 <!-- <th>Price 2</th> -->
+                                <th>Proses Data</th>
                             </tr>
                             <?php foreach ($t31_bkm_detail_data as $t31_bkm_detail) { ?>
                             <tr>
                                 <td><?= ++$start ?></td>
-                                <td>
-                                <?php
-                                echo anchor(site_url('t30_bkm/pembayaran/'.$t31_bkm_detail->bkm.'/'.$t31_bkm_detail->id),'Bayar','class="btn btn-primary btn-sm"');
-                                // echo ' | ';
-                                echo ' '.anchor(site_url('t31_bkm_detail/update/'.$t31_bkm_detail->id),'Ubah','class="btn btn-primary btn-sm"');
-                                // echo ' | ';
-                                echo ' '.anchor(site_url('t31_bkm_detail/delete/'.$t31_bkm_detail->id),'Hapus','class="btn btn-danger btn-sm" onclick="javasciprt: return confirm(\'Hapus data ?\')"');
-                                ?>
-                                </td>
+
                                 <!-- <td><?= $t31_bkm_detail->bkm ?></td> -->
                                 <td><?= $t31_bkm_detail->name ?></td>
                                 <!-- <td><?= $t31_bkm_detail->mf ?></td> -->
@@ -102,6 +95,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!-- <td><?= $t31_bkm_detail->fee_tanas ?></td> -->
                                 <!-- <td><?= $t31_bkm_detail->fee_tanas_value ?></td> -->
                                 <!-- <td><?= $t31_bkm_detail->price_2 ?></td> -->
+
+                                <td>
+                                <?php
+                                echo anchor(site_url('t30_bkm/pembayaran/'.$t31_bkm_detail->bkm.'/'.$t31_bkm_detail->id),'Bayar','class="btn btn-primary btn-sm"');
+                                // echo ' | ';
+                                echo ' '.anchor(site_url('t31_bkm_detail/update/'.$t31_bkm_detail->id),'Ubah','class="btn btn-primary btn-sm"');
+                                // echo ' | ';
+                                echo ' '.anchor(site_url('t31_bkm_detail/delete/'.$t31_bkm_detail->id),'Hapus','class="btn btn-danger btn-sm" onclick="javasciprt: return confirm(\'Hapus data ?\')"');
+                                ?>
+                                </td>
                             </tr>
                             <?php } ?>
                         </table>
