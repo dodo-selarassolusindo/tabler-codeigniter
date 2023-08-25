@@ -44,8 +44,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?= $t35_selisih_bayar->mata_uang.' '.number_format($t35_selisih_bayar->jumlah, 0) ?></td>
                                 <td>
                                 <?php
-                                echo anchor(site_url('t35_selisih_bayar/read/'.$t35_selisih_bayar->id),'Detail','class="btn btn-primary btn-sm"');
-                                echo ' ';
+                                // echo anchor(site_url('t35_selisih_bayar/read/'.$t35_selisih_bayar->id),'Detail','class="btn btn-primary btn-sm"');
+                                // echo ' ';
                                 echo anchor(site_url('t35_selisih_bayar/update/'.$t35_selisih_bayar->id),'Ubah','class="btn btn-primary btn-sm"');
                                 echo ' ';
                                 echo anchor(site_url('t35_selisih_bayar/delete/'.$t35_selisih_bayar->id),'Hapus','class="btn btn-danger btn-sm" onclick="javasciprt: return confirm(\'Hapus data ?\')"');
