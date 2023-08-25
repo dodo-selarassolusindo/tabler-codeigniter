@@ -26,44 +26,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <table class="table card-table table-vcenter text-nowrap datatable">
                             <tr>
                                 <th>No</th>
-
-                                <!-- <th>Bkm</th> -->
                                 <th>Name</th>
-                                <!-- <th>Mf</th> -->
-                                <!-- <th>Country</th> -->
-                                <!-- <th>Id Number</th> -->
                                 <th>Package</th>
                                 <th>Night</th>
                                 <th>Check In</th>
                                 <th>Check Out</th>
                                 <th>Agent</th>
-                                <!-- <th>Mata Uang</th> -->
-                                <!-- <th>Price</th> -->
                                 <th>Price List</th>
                                 <th>Price</th>
                                 <th>Fee Taman Nasional</th>
                                 <th>Pay</th>
                                 <th>Remarks</th>
-
-                                <!-- <th>Usd</th> -->
-                                <!-- <th>Aud</th> -->
-                                <!-- <th>Paypal</th> -->
-                                <!-- <th>Bca Dollar</th> -->
-                                <!-- <th>Rp</th> -->
-                                <!-- <th>Cc Bca</th> -->
-                                <!-- <th>Cc Mandiri</th> -->
-
-                                <!-- <th>Price 1</th> -->
-                                <!-- <th>Price 1 Value</th> -->
-                                <!-- <th>Fee Tanas</th> -->
-                                <!-- <th>Fee Tanas Value</th> -->
-                                <!-- <th>Price 2</th> -->
                                 <th>Proses Data</th>
                             </tr>
                             <?php foreach ($t31_bkm_detail_data as $t31_bkm_detail) { ?>
                             <tr>
                                 <td><?= ++$start ?></td>
-
                                 <!-- <td><?= $t31_bkm_detail->bkm ?></td> -->
                                 <td><?= $t31_bkm_detail->name ?></td>
                                 <!-- <td><?= $t31_bkm_detail->mf ?></td> -->
@@ -77,8 +55,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!-- <td><?= $t31_bkm_detail->mata_uang ?></td> -->
                                 <!-- <td><?= $t31_bkm_detail->price ?></td> -->
                                 <td><?= $t31_bkm_detail->mata_uang.' '.$t31_bkm_detail->price ?></td>
-                                <td><?= ($t31_bkm_detail->price_1_value != '' ? (substr(trim($t31_bkm_detail->price_1), 0, 4) == '[$00' ? 'USD ' : 'AUD ') . $t31_bkm_detail->price_1_value : '') ?></td>
-                                <td><?= ($t31_bkm_detail->fee_tanas_value != '' ? (substr(trim($t31_bkm_detail->fee_tanas), 0, 4) == '[$00' ? 'USD ' : 'AUD ') . $t31_bkm_detail->fee_tanas_value : '') ?></td>
+                                <td><?= ($t31_bkm_detail->price_1_value != '' ? (substr(trim($t31_bkm_detail->price_1), 0, 4) == '[$00' ? 'USD ' : 'AUD ') . number_format($t31_bkm_detail->price_1_value, 0) : '') ?></td>
+                                <td><?= ($t31_bkm_detail->fee_tanas_value != '' ? (substr(trim($t31_bkm_detail->fee_tanas), 0, 4) == '[$00' ? 'USD ' : 'AUD ') . number_format($t31_bkm_detail->fee_tanas_value, 0) : '') ?></td>
                                 <td><?= $t31_bkm_detail->price_2 ?></td>
                                 <td><?= $t31_bkm_detail->remarks ?></td>
 

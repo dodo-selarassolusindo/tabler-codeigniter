@@ -31,7 +31,16 @@ class T31_bkm_detail_model extends CI_Model
     // get data by id
     function get_by_id($id)
     {
-        $this->db->where($this->id, $id);
+        $this->db->join('t04_package', 't04_package.id = '.$this->table.'.package', 'left');
+        $this->db->join('t05_agent', 't05_agent.id = '.$this->table.'.agent', 'left');
+        $this->db->join('t00_mata_uang', 't00_mata_uang.id = '.$this->table.'.mata_uang', 'left');
+        $this->db->where($this->table.'.'.$this->id, $id);
+        $this->db->select(
+            $this->table.'.*
+            , t04_package.nama as package
+            , t05_agent.nama as agent
+            , t00_mata_uang.kode as mata_uang
+            ', false);
         return $this->db->get($this->table)->row();
     }
 
