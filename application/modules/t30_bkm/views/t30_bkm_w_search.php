@@ -44,9 +44,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td>
                                 <?php
                                 echo anchor(site_url('t30_bkm/detail/'.$t30_bkm->id),'Detail','class="btn btn-primary btn-sm"');
-                                echo ' | ';
+                                echo ' ';
                                 echo anchor(site_url('t30_bkm/update/'.$t30_bkm->id),'Ubah','class="btn btn-primary btn-sm"');
-                                echo ' | ';
+                                echo ' ';
                                 echo anchor(site_url('t30_bkm/delete/'.$t30_bkm->id),'Hapus','class="btn btn-danger btn-sm" onclick="javasciprt: return confirm(\'Hapus data ?\')"');
                                 ?>
                                 </td>
