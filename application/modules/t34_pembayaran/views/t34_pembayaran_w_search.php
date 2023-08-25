@@ -29,20 +29,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <table class="table card-table table-vcenter text-nowrap datatable">
                             <tr>
                                 <th>No</th>
-                                <th>Bkm Detail</th>
+                                <!-- <th>Bkm Detail</th> -->
                                 <th>Tanggal</th>
-                                <th>Mata Uang</th>
+                                <!-- <th>Mata Uang</th> -->
                                 <th>Jumlah</th>
                                 <th>Proses Data</th>
                             </tr>
                             <?php foreach ($t34_pembayaran_data as $t34_pembayaran) { ?>
                             <tr>
-                                <td width="80px"><?= ++$start ?></td>
-                                <td><?= $t34_pembayaran->bkm_detail ?></td>
-                                <td><?= $t34_pembayaran->tanggal ?></td>
-                                <td><?= $t34_pembayaran->mata_uang ?></td>
-                                <td><?= $t34_pembayaran->jumlah ?></td>
-                                <td style="text-align:center" width="200px">
+                                <td><?= ++$start ?></td>
+                                <!-- <td><?= $t34_pembayaran->bkm_detail ?></td> -->
+                                <td><?= date_dmy($t34_pembayaran->tanggal) ?></td>
+                                <!-- <td><?= $t34_pembayaran->mata_uang ?></td> -->
+                                <td><?= $t34_pembayaran->mata_uang.' '.number_format($t34_pembayaran->jumlah, 0) ?></td>
+                                <td>
                                 <?php
                                 echo anchor(site_url('t34_pembayaran/read/'.$t34_pembayaran->id),'Detail');
                                 echo ' | ';

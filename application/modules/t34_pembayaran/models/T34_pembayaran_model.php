@@ -45,16 +45,23 @@ class T34_pembayaran_model extends CI_Model
     // get data with limit and search
     function get_limit_data($limit, $start = 0, $q = NULL, $bkm_detail = null)
     {
+        $this->db->join('t00_mata_uang', 't00_mata_uang.id = '.$this->table.'.mata_uang', 'left');
         if ($bkm_detail <> null) {
             $this->db->having('bkm_detail', $bkm_detail);
         }
-        $this->db->order_by($this->id, $this->order);
-        $this->db->like('id', $q);
+        $this->db->order_by($this->table.'.'.$this->id, $this->order);
+        $this->db->like($this->table.'.'.'id', $q);
         $this->db->or_like('bkm_detail', $q);
         $this->db->or_like('tanggal', $q);
         $this->db->or_like('mata_uang', $q);
         $this->db->or_like('jumlah', $q);
         $this->db->limit($limit, $start);
+        $this->db->select(
+            $this->table.'.*
+            , t00_mata_uang.kode as mata_uang
+            ',
+            false
+        );
         return $this->db->get($this->table)->result();
     }
 
