@@ -217,7 +217,7 @@ class T30_bkm extends CI_Controller
             'start' => $start,
             'bkm' => $bkm,
         );
-        $t34_pembayaran = $this->load->view('t34_pembayaran/t34_pembayaran_w_search', $data, true);
+        $t34_pembayaran = $this->load->view('t34_pembayaran/t34_pembayaran_wo_search', $data, true);
         $t35_selisih_bayar = $this->load->view('t35_selisih_bayar/t35_selisih_bayar_w_search', $data, true);
         $kembali = 't30_bkm/detail/'.$bkm;
 
