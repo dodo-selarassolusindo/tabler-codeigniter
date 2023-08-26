@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
                     <div class="card-header">
-                        <h3 class="card-title">Pembayaran</h3>
+                        <h3 class="card-title">Pembayaran oleh :</h3>
                         <div class="ms-auto text-muted">
                             <!-- <?php echo anchor(site_url('t34_pembayaran/create/'.$this->uri->segment(4)),'Tambah','class="btn btn-primary btn-sm"'); ?> -->
                         </div>
@@ -13,16 +13,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <tr>
                                 <th>No</th>
                                 <!-- <th>Bkm Detail</th> -->
-                                <th>Tanggal</th>
+                                <th>Name</th>
                                 <!-- <th>Mata Uang</th> -->
-                                <th>Jumlah</th>
+                                <th>Jumlah Yang Sudah Dibayar</th>
                                 <th>Proses Data</th>
                             </tr>
                             <?php foreach ($t34_pembayaran_data as $t34_pembayaran) { ?>
                             <tr>
                                 <td><?= ++$start ?></td>
                                 <!-- <td><?= $t34_pembayaran->bkm_detail ?></td> -->
-                                <td><?= date_dmy($t34_pembayaran->tanggal) ?></td>
+                                <!-- <td><?= date_dmy($t34_pembayaran->tanggal) ?></td> -->
+                                <td><?= $t34_pembayaran->name ?></td>
                                 <!-- <td><?= $t34_pembayaran->mata_uang ?></td> -->
                                 <td><?= $t34_pembayaran->mata_uang.' '.number_format($t34_pembayaran->jumlah, 0) ?></td>
                                 <td>

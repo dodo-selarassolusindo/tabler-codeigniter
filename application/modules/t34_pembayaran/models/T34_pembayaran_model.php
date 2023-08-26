@@ -46,6 +46,7 @@ class T34_pembayaran_model extends CI_Model
     function get_limit_data($limit, $start = 0, $q = NULL, $bkm_detail = null)
     {
         $this->db->join('t00_mata_uang', 't00_mata_uang.id = '.$this->table.'.mata_uang', 'left');
+        $this->db->join('t31_bkm_detail', 't31_bkm_detail.id = '.$this->table.'.bkm_detail', 'left');
         if ($bkm_detail <> null) {
             $this->db->having('bkm_detail', $bkm_detail);
         }
@@ -53,12 +54,13 @@ class T34_pembayaran_model extends CI_Model
         $this->db->like($this->table.'.'.'id', $q);
         $this->db->or_like('bkm_detail', $q);
         $this->db->or_like('tanggal', $q);
-        $this->db->or_like('mata_uang', $q);
+        $this->db->or_like($this->table.'.'.'mata_uang', $q);
         $this->db->or_like('jumlah', $q);
         $this->db->limit($limit, $start);
         $this->db->select(
             $this->table.'.*
             , t00_mata_uang.simbol as mata_uang
+            , t31_bkm_detail.name
             ',
             false
         );

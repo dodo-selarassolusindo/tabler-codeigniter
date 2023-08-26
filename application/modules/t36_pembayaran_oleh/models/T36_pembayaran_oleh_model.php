@@ -28,7 +28,8 @@ class T36_pembayaran_oleh_model extends CI_Model
             , t31_bkm_detail.name
             , t00_mata_uang.kode as mata_uang_kode
             , t31_bkm_detail.price
-            '
+            ',
+            false
         );
         return $this->db->get($this->table)->result();
     }
