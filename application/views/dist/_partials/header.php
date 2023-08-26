@@ -33,6 +33,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             font-feature-settings: "cv03", "cv04", "cv11";
         }
         </style>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <link href="<?= base_url() ?>/assets/select2/css/select2.min.css" rel="stylesheet" />
+
+        <style media="screen">
+        .select2-container {
+            width: 100%!important;
+        }
+        .select2-search--dropdown .select2-search__field {
+            width: 98%;
+        }
+        </style>
+
     </head>
     <body class="layout-fluid">
         <script src="<?= base_url()?>/dist/js/demo-theme.min.js?1684106062"></script>

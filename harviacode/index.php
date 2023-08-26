@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+error_reporting(1);
 require_once 'core/harviacode.php';
 require_once 'core/helper.php';
 require_once 'core/process.php';
@@ -45,7 +45,7 @@ require_once 'core/process.php';
                                         <input type="radio" name="jenis_tabel" value="reguler_table" <?php echo $jenis_tabel == 'reguler_table' ? 'checked' : ''; ?>>
                                         Reguler Table
                                     </label>
-                                </div>                            
+                                </div>
                             </div>
                             <div class="col-md-7">
                                 <div class="radio" style="margin-bottom: 0px; margin-top: 0px">
@@ -66,7 +66,7 @@ require_once 'core/process.php';
                                 Export Excel
                             </label>
                         </div>
-                    </div>    
+                    </div>
 
                     <div class="form-group">
                         <div class="checkbox">
@@ -76,7 +76,7 @@ require_once 'core/process.php';
                                 Export Word
                             </label>
                         </div>
-                    </div>    
+                    </div>
 
                     <!--                    <div class="form-group">
                                             <div class="checkbox  <?php // echo file_exists('../application/third_party/mpdf/mpdf.php') ? '' : 'disabled';   ?>">
@@ -117,7 +117,7 @@ require_once 'core/process.php';
                 <p><strong>About :</strong></p>
                 <p>
                     Codeigniter CRUD Generator is a simple tool to auto generate model, controller and view from your table. This tool will boost your
-                    writing code. This CRUD generator will make a complete CRUD operation, pagination, search, form*, form validation, export to excel, and export to word. 
+                    writing code. This CRUD generator will make a complete CRUD operation, pagination, search, form*, form validation, export to excel, and export to word.
                     This CRUD Generator using bootstrap 3 style. You still need to modify the result code for more customization.
                 </p>
                 <small>* generate textarea and text input only</small>
@@ -149,7 +149,7 @@ require_once 'core/process.php';
                 <ul>
                     <li>Select table show no data. Make sure you have correct database configuration on application/config/database.php and load database library on autoload.</li>
                     <li>Error chmod on mac and linux. Please change your application folder and harviacode folder chmod to 777 </li>
-                    <li>Error 404 when click Create, Read, Update, Delete or Next Page. Make sure your mod_rewrite is active 
+                    <li>Error 404 when click Create, Read, Update, Delete or Next Page. Make sure your mod_rewrite is active
                         and you can access http://localhost/yourproject/welcome. The problem is on htaccess. Still have problem?
                         please go to google and search how to remove index.php codeigniter.
                     </li>

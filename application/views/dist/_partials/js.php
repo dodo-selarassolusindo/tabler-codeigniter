@@ -8,6 +8,9 @@
         <script src="<?= base_url() ?>/dist/js/tabler.min.js?1684106062" defer></script>
         <script src="<?= base_url() ?>/dist/js/demo.min.js?1684106062" defer></script>
 
+        <script src="<?= base_url() ?>/assets/js/jquery-1.11.2.min.js"></script>
+        <script src="<?= base_url() ?>/assets/select2/js/select2.min.js"></script>
+
         <?php if ($this->uri->segment(1) == '') { ?>
         <script>
 
@@ -613,3 +616,10 @@
         </script>
 
         <?php } ?>
+
+        <script type="text/javascript">
+        // In your Javascript (external .js resource or <script> tag)
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+        </script>
