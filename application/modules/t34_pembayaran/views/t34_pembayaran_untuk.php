@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <th>Total Yang Harus Dibayar</th>
-                                    <td><div><input type="text" class="form-control" name="jumlah" id="jumlah-total" placeholder="Jumlah" value="<?php echo 'Rp. ' . number_format($total_price, 0); ?>" /></div></td>
+                                    <td><div><input readonly type="text" class="form-control" name="jumlah" id="jumlah-total" placeholder="Jumlah" value="<?php echo 'Rp. ' . number_format($total_price, 0); ?>" /></div></td>
                                     <td>&nbsp;</td>
                                 </tr>
                             </tfoot>
