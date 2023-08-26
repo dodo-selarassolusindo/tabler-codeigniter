@@ -163,13 +163,6 @@ class T30_bkm extends CI_Controller
             $config['first_url'] = base_url() . 't30_bkm/pembayaran/'.$bkm.'/'.$bkm_detail;
         }
 
-        $config['total_rows_pembayaran'] = $this->T34_pembayaran_model->total_rows($q, $bkm_detail);
-        $config['total_rows_selisih_bayar'] = $this->T35_selisih_bayar_model->total_rows($q, $bkm_detail);
-        $t30_bkm = $this->T30_bkm_model->get_by_id($bkm);
-        $t31_bkm_detail = $this->T31_bkm_detail_model->get_by_id($bkm_detail);
-        $t34_pembayaran = $this->T34_pembayaran_model->get_limit_data($config['per_page'], $start, $q, $bkm_detail);
-        $t35_selisih_bayar = $this->T35_selisih_bayar_model->get_limit_data($config['per_page'], $start, $q, $bkm_detail);
-
         $config['num_tag_open'] = '<li class="page-item">';
         $config['num_tag_close'] = '</li>';
         $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link">';
@@ -178,6 +171,12 @@ class T30_bkm extends CI_Controller
         $config['full_tag_close'] = '</ul>';
         $config['attributes'] = array('class' => 'page-link');
         $config['num_links'] = 5;
+        $config['total_rows_pembayaran'] = $this->T34_pembayaran_model->total_rows($q, $bkm_detail);
+        $config['total_rows_selisih_bayar'] = $this->T35_selisih_bayar_model->total_rows($q, $bkm_detail);
+        $t30_bkm = $this->T30_bkm_model->get_by_id($bkm);
+        $t31_bkm_detail = $this->T31_bkm_detail_model->get_by_id($bkm_detail);
+        $t34_pembayaran = $this->T34_pembayaran_model->get_limit_data($config['per_page'], $start, $q, $bkm_detail);
+        $t35_selisih_bayar = $this->T35_selisih_bayar_model->get_limit_data($config['per_page'], $start, $q, $bkm_detail);
 
         $this->load->library('pagination');
         $this->pagination->initialize($config);
@@ -196,11 +195,9 @@ class T30_bkm extends CI_Controller
 
         // t34_pembayaran_untuk
         $t00_mata_uang = $this->T00_mata_uang_model->get_all();
-        // $t34_pembayaran_untuk = $this->T34_pembayaran_model->get_all_by_bkm($bkm);
         $t36_pembayaran_oleh = $this->T36_pembayaran_oleh_model->get_all_by_bkm_detail($bkm_detail);
         $data = array(
             't00_mata_uang_data' => $t00_mata_uang,
-            // 't34_pembayaran_untuk_data' => $t34_pembayaran_untuk,
             't36_pembayaran_oleh_data' => $t36_pembayaran_oleh,
             'start' => $start,
             'bkm' => $bkm,

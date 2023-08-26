@@ -13,13 +13,6 @@ class T34_pembayaran_model extends CI_Model
         parent::__construct();
     }
 
-    // // get all by bkm
-    // function get_all_by_bkm()
-    // {
-    //     $this->db->order_by($this->id, $this->order);
-    //     return $this->db->get($this->table)->result();
-    // }
-
     // get all
     function get_all()
     {
@@ -65,7 +58,7 @@ class T34_pembayaran_model extends CI_Model
         $this->db->limit($limit, $start);
         $this->db->select(
             $this->table.'.*
-            , t00_mata_uang.kode as mata_uang
+            , t00_mata_uang.simbol as mata_uang
             ',
             false
         );
