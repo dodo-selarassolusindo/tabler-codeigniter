@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+error_reporting(1);
 require_once 'helper.php';
 $res = '';
 $get_setting = readJSON('settingjson.cfg');
@@ -44,7 +44,7 @@ if (isset($_POST['save'])) {
                                         <input type="radio" name="target" value="../application/" <?php echo $target == '../application/' ? 'checked' : ''; ?>>
                                         ../application/
                                     </label>
-                                </div>                            
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="radio" style="margin-bottom: 0px; margin-top: 0px">
@@ -67,4 +67,3 @@ if (isset($_POST['save'])) {
         </div>
     </body>
 </html>
-

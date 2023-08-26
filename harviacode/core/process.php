@@ -7,9 +7,9 @@ if (isset($_POST['generate']))
     // get form data
     $table_name = safe($_POST['table_name']);
     $jenis_tabel = safe($_POST['jenis_tabel']);
-    $export_excel = safe($_POST['export_excel']);
-    $export_word = safe($_POST['export_word']);
-    $export_pdf = safe($_POST['export_pdf']);
+    // $export_excel = safe($_POST['export_excel']);
+    // $export_word = safe($_POST['export_word']);
+    // $export_pdf = safe($_POST['export_pdf']);
     $controller = safe($_POST['controller']);
     $model = safe($_POST['model']);
 
@@ -63,21 +63,21 @@ if (isset($_POST['generate']))
         include 'core/create_view_form.php';
         include 'core/create_view_read.php';
 
-        $export_excel == 1 ? include 'core/create_exportexcel_helper.php' : '';
-        $export_word == 1 ? include 'core/create_view_list_doc.php' : '';
-        $export_pdf == 1 ? include 'core/create_pdf_library.php' : '';
-        $export_pdf == 1 ? include 'core/create_view_list_pdf.php' : '';
+        // $export_excel == 1 ? include 'core/create_exportexcel_helper.php' : '';
+        // $export_word == 1 ? include 'core/create_view_list_doc.php' : '';
+        // $export_pdf == 1 ? include 'core/create_pdf_library.php' : '';
+        // $export_pdf == 1 ? include 'core/create_view_list_pdf.php' : '';
 
         $hasil[] = $hasil_controller;
         $hasil[] = $hasil_model;
         $hasil[] = $hasil_view_list;
         $hasil[] = $hasil_view_form;
         $hasil[] = $hasil_view_read;
-        $hasil[] = $hasil_view_doc;
-        $hasil[] = $hasil_view_pdf;
+        // $hasil[] = $hasil_view_doc;
+        // $hasil[] = $hasil_view_pdf;
         $hasil[] = $hasil_config_pagination;
-        $hasil[] = $hasil_exportexcel;
-        $hasil[] = $hasil_pdf;
+        // $hasil[] = $hasil_exportexcel;
+        // $hasil[] = $hasil_pdf;
     } else
     {
         $hasil[] = 'No table selected.';

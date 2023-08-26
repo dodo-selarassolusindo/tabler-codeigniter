@@ -14,10 +14,11 @@ function readJSON($path)
 
 function createFile($string, $path)
 {
+    // echo '2';
     $create = fopen($path, "w") or die("Change your permision folder for application and harviacode folder to 777");
     fwrite($create, $string);
     fclose($create);
-    
+
     return $path;
 }
 
