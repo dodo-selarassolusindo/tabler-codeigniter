@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <th>Package</th>
                                     <th>Night</th>
                                     <th>Price List</th>
-                                    <th>Jumlah Yang Harus Dibayar</th>
+                                    <th>Jumlah Bayar</th>
                                     <th>Proses Data</th>
                                 </tr>
                                 <?php $total_price = 0 ?>
@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
-                                    <th>Total Yang Harus Dibayar</th>
+                                    <th>Total Bayar</th>
                                     <td><div><input readonly type="text" class="form-control" name="jumlah" id="jumlah-total" placeholder="Jumlah" value="<?php echo 'Rp. ' . number_format($total_price, 0); ?>" /></div></td>
                                     <td>&nbsp;</td>
                                 </tr>

@@ -15,16 +15,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!-- <th>Bkm Detail</th> -->
                                 <th>Name</th>
                                 <!-- <th>Mata Uang</th> -->
-                                <th>Jumlah Yang Sudah Dibayar</th>
+                                <th>Jumlah Terbayar</th>
                                 <th>Proses Data</th>
                             </tr>
                             <?php foreach ($t34_pembayaran_data as $t34_pembayaran) { ?>
                             <tr>
                                 <td><?= ++$start ?></td>
-                                <!-- <td><?= $t34_pembayaran->bkm_detail ?></td> -->
-                                <!-- <td><?= date_dmy($t34_pembayaran->tanggal) ?></td> -->
                                 <td><?= $t34_pembayaran->name ?></td>
-                                <!-- <td><?= $t34_pembayaran->mata_uang ?></td> -->
                                 <td><?= $t34_pembayaran->mata_uang.' '.number_format($t34_pembayaran->jumlah, 0) ?></td>
                                 <td>
                                 <?php

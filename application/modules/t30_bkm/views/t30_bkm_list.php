@@ -60,7 +60,7 @@ $this->load->view('dist/_partials/header');
             <div class="col-12">
                 <div class="card">
 
-                    <?= $t34_pembayaran_untuk ?>
+                    <?= $t34_pembayaran ?>
 
                 </div>
             </div>
@@ -68,7 +68,7 @@ $this->load->view('dist/_partials/header');
             <div class="col-12">
                 <div class="card">
 
-                    <?= $t34_pembayaran ?>
+                    <?= $t34_pembayaran_untuk ?>
 
                 </div>
             </div>
