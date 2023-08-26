@@ -12,7 +12,27 @@ class T36_pembayaran_oleh_model extends CI_Model
     {
         parent::__construct();
     }
-    
+
+    // get all by bkm_detail
+    function get_all_by_bkm_detail($bkm_detail)
+    {
+        $this->db->join('t31_bkm_detail', 't31_bkm_detail.id = '.$this->table.'.'.'paid_for', 'left');
+        $this->db->join('t04_package', 't04_package.id = t31_bkm_detail.package', 'left');
+        $this->db->join('t00_mata_uang', 't00_mata_uang.id = t31_bkm_detail.mata_uang', 'left');
+        $this->db->where('bkm_detail', $bkm_detail);
+        $this->db->order_by($this->table.'.'.$this->id, $this->order);
+        $this->db->select(
+            $this->table.'.*
+            , t04_package.nama as package_nama
+            , t31_bkm_detail.night
+            , t31_bkm_detail.name
+            , t00_mata_uang.kode as mata_uang_kode
+            , t31_bkm_detail.price
+            '
+        );
+        return $this->db->get($this->table)->result();
+    }
+
     // get all
     function get_all()
     {

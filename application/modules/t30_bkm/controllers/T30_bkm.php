@@ -17,6 +17,7 @@ class T30_bkm extends CI_Controller
         $this->load->model('t34_pembayaran/T34_pembayaran_model');
         $this->load->model('t35_selisih_bayar/T35_selisih_bayar_model');
         $this->load->model('t00_mata_uang/T00_mata_uang_model');
+        $this->load->model('t36_pembayaran_oleh/T36_pembayaran_oleh_model');
     }
 
     public function index()
@@ -195,10 +196,12 @@ class T30_bkm extends CI_Controller
 
         // t34_pembayaran_untuk
         $t00_mata_uang = $this->T00_mata_uang_model->get_all();
-        $t34_pembayaran_untuk = $this->T34_pembayaran_model->get_all_by_bkm($bkm);
+        // $t34_pembayaran_untuk = $this->T34_pembayaran_model->get_all_by_bkm($bkm);
+        $t36_pembayaran_oleh = $this->T36_pembayaran_oleh_model->get_all_by_bkm_detail($bkm_detail);
         $data = array(
             't00_mata_uang_data' => $t00_mata_uang,
-            't34_pembayaran_untuk_data' => $t34_pembayaran_untuk,
+            // 't34_pembayaran_untuk_data' => $t34_pembayaran_untuk,
+            't36_pembayaran_oleh_data' => $t36_pembayaran_oleh,
             'start' => $start,
             'bkm' => $bkm,
         );
