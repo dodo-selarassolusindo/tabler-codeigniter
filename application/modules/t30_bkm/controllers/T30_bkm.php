@@ -151,9 +151,6 @@ class T30_bkm extends CI_Controller
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
 
-        $config['per_page'] = 10;
-        $config['page_query_string'] = TRUE;
-
         // echo $bkm_detail; exit;
         if ($q <> '') {
             $config['base_url'] = base_url() . 't30_bkm/pembayaran/'.$bkm.'/'.$bkm_detail.'?q=' . urlencode($q);
@@ -163,6 +160,8 @@ class T30_bkm extends CI_Controller
             $config['first_url'] = base_url() . 't30_bkm/pembayaran/'.$bkm.'/'.$bkm_detail;
         }
 
+        $config['per_page'] = 10;
+        $config['page_query_string'] = TRUE;
         $config['num_tag_open'] = '<li class="page-item">';
         $config['num_tag_close'] = '</li>';
         $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link">';
@@ -171,29 +170,45 @@ class T30_bkm extends CI_Controller
         $config['full_tag_close'] = '</ul>';
         $config['attributes'] = array('class' => 'page-link');
         $config['num_links'] = 5;
-        $config['total_rows_pembayaran'] = $this->T34_pembayaran_model->total_rows($q, $bkm_detail);
-        $config['total_rows_selisih_bayar'] = $this->T35_selisih_bayar_model->total_rows($q, $bkm_detail);
+
+        // $config['total_rows_pembayaran'] = $this->T34_pembayaran_model->total_rows($q, $bkm_detail);
+        // $config['total_rows_selisih_bayar'] = $this->T35_selisih_bayar_model->total_rows($q, $bkm_detail);
+
+        // bkm master
         $t30_bkm = $this->T30_bkm_model->get_by_id($bkm);
-        $t31_bkm_detail = $this->T31_bkm_detail_model->get_by_id($bkm_detail);
-        $t34_pembayaran = $this->T34_pembayaran_model->get_limit_data($config['per_page'], $start, $q, $bkm_detail);
-        $t35_selisih_bayar = $this->T35_selisih_bayar_model->get_limit_data($config['per_page'], $start, $q, $bkm_detail);
-
-        $this->load->library('pagination');
-        $this->pagination->initialize($config);
-
         $data = array(
             't30_bkm_data' => $t30_bkm,
             'start' => $start,
         );
         $t30_bkm = $this->load->view('t30_bkm/t30_bkm_wo_search', $data, true);
 
+        // bkm detail
+        $t31_bkm_detail = $this->T31_bkm_detail_model->get_by_id($bkm_detail);
         $data = array(
             't31_bkm_detail_data' => $t31_bkm_detail,
             'start' => $start,
         );
         $t31_bkm_detail = $this->load->view('t31_bkm_detail/t31_bkm_detail_wo_search', $data, true);
 
-        // t34_pembayaran_untuk
+        // pembayaran oleh
+        $t34_pembayaran = $this->T34_pembayaran_model->get_limit_data($config['per_page'], $start, $q, $bkm_detail);
+        $data = array(
+            't34_pembayaran_data' => $t34_pembayaran,
+            'q' => $q,
+            'pagination' => $this->pagination->create_links(),
+            'total_rows_pembayaran' => $config['total_rows_pembayaran'],
+            'total_rows_selisih_bayar' => $config['total_rows_selisih_bayar'],
+            'start' => $start,
+            'bkm' => $bkm,
+        );
+        $t34_pembayaran = $this->load->view('t34_pembayaran/t34_pembayaran_wo_search', $data, true);
+
+        $t35_selisih_bayar = $this->T35_selisih_bayar_model->get_limit_data($config['per_page'], $start, $q, $bkm_detail);
+
+        $this->load->library('pagination');
+        $this->pagination->initialize($config);
+
+        // t36_pembayaran_oleh
         $t00_mata_uang = $this->T00_mata_uang_model->get_all();
         $t36_pembayaran_oleh = $this->T36_pembayaran_oleh_model->get_all_by_bkm_detail($bkm_detail);
         $data = array(
