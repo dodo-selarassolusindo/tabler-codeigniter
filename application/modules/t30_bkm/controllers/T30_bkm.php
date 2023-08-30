@@ -21,9 +21,7 @@ class T30_bkm extends CI_Controller
     {
 
         $t31_bkm_detail = '';
-        $t34_pembayaran_untuk = '';
-        $t34_pembayaran = '';
-        $t35_selisih_bayar = '';
+        $t33_pembayaran = '';
 
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
@@ -67,9 +65,7 @@ class T30_bkm extends CI_Controller
         $data = array(
             't30_bkm' => $t30_bkm,
             't31_bkm_detail' => $t31_bkm_detail,
-            't34_pembayaran_untuk' => $t34_pembayaran_untuk,
-            't34_pembayaran' => $t34_pembayaran,
-            't35_selisih_bayar' => $t35_selisih_bayar,
+            't33_pembayaran' => $t33_pembayaran,
             'kembali' => $kembali,
         );
         $this->load->view('t30_bkm/t30_bkm_list', $data);
@@ -79,9 +75,7 @@ class T30_bkm extends CI_Controller
     public function detail($bkm)
     {
 
-        $t34_pembayaran_untuk = '';
-        $t34_pembayaran = '';
-        $t35_selisih_bayar = '';
+        $t33_pembayaran = '';
 
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
@@ -133,9 +127,7 @@ class T30_bkm extends CI_Controller
         $data = array(
             't30_bkm' => $t30_bkm,
             't31_bkm_detail' => $t31_bkm_detail,
-            't34_pembayaran_untuk' => $t34_pembayaran_untuk,
-            't34_pembayaran' => $t34_pembayaran,
-            't35_selisih_bayar' => $t35_selisih_bayar,
+            't33_pembayaran' => $t33_pembayaran,
             'kembali' => $kembali,
         );
         $this->load->view('t30_bkm/t30_bkm_list', $data);
@@ -187,18 +179,13 @@ class T30_bkm extends CI_Controller
         );
         $t31_bkm_detail = $this->load->view('t31_bkm_detail/t31_bkm_detail_wo_search', $data, true);
 
-        // pembayaran oleh
-        $t34_pembayaran = $this->T34_pembayaran_model->get_limit_data($config['per_page'], $start, $q, $bkm_detail);
+        // pembayaran
+        $t33_pembayaran = $this->T33_pembayaran_model->get_all_by_bkm_detail($bkm_detail);
         $data = array(
-            't34_pembayaran_data' => $t34_pembayaran,
-            'q' => $q,
-            'pagination' => $this->pagination->create_links(),
-            'total_rows_pembayaran' => $config['total_rows_pembayaran'],
-            'total_rows_selisih_bayar' => $config['total_rows_selisih_bayar'],
+            't33_pembayaran_data' => $t33_pembayaran,
             'start' => $start,
-            'bkm' => $bkm,
         );
-        $t34_pembayaran = $this->load->view('t34_pembayaran/t34_pembayaran_wo_search', $data, true);
+        $t33_pembayaran = $this->load->view('t33_pembayaran/t33_pembayaran_wo_search', $data, true);
 
         $this->load->library('pagination');
         $this->pagination->initialize($config);
@@ -208,12 +195,11 @@ class T30_bkm extends CI_Controller
         $data = array(
             't30_bkm' => $t30_bkm,
             't31_bkm_detail' => $t31_bkm_detail,
-            't34_pembayaran_untuk' => $t34_pembayaran_untuk,
-            't34_pembayaran' => $t34_pembayaran,
-            't35_selisih_bayar' => $t35_selisih_bayar,
+            't33_pembayaran' => $t33_pembayaran,
             'kembali' => $kembali,
         );
         $this->load->view('t30_bkm/t30_bkm_list', $data);
+
     }
 
     public function import()
@@ -457,7 +443,7 @@ class T30_bkm extends CI_Controller
                         // simpan di tabel pembayaran
                         $data = array(
                             'bkm_detail' => $bkm_detail,
-                            'tanggal' => date_ymd($sheet[4]['A']),
+                            'dibayar_oleh' => $bkm_detail,
                             'mata_uang' => $rowData->mata_uang,
                             'jumlah' => $jumlah,
                         );

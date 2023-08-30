@@ -12,7 +12,15 @@ class T33_pembayaran_model extends CI_Model
     {
         parent::__construct();
     }
-    
+
+    // get all by bkm_detail
+    function get_all_by_bkm_detail($bkm_detail)
+    {
+        $this->db->where('bkm_detail', $bkm_detail);
+        $this->db->order_by($this->id, 'asc');
+        return $this->db->get($this->table)->result();
+    }
+
     // get all
     function get_all()
     {
