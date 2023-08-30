@@ -179,13 +179,47 @@ class T30_bkm extends CI_Controller
         );
         $t31_bkm_detail = $this->load->view('t31_bkm_detail/t31_bkm_detail_wo_search', $data, true);
 
-        // pembayaran
-        $t33_pembayaran = $this->T33_pembayaran_model->get_all_by_bkm_detail($bkm_detail);
-        $data = array(
-            't33_pembayaran_data' => $t33_pembayaran,
-            'start' => $start,
-        );
-        $t33_pembayaran = $this->load->view('t33_pembayaran/t33_pembayaran_wo_search', $data, true);
+        // pembayaran dirinya sendiri
+        // $t33_pembayaran = $this->T33_pembayaran_model->get_all_by_bkm_detail($bkm_detail);
+        $t33_pembayaran = $this->T33_pembayaran_model->get_by_bkm_detail($bkm_detail);
+        if ($t33_pembayaran) {
+            $data = array(
+                't33_pembayaran_data' => $t33_pembayaran,
+                'start' => 1,
+            );
+        } else {
+            $t33_pembayaran = (object) array(
+                'bkm_detail' => $bkm_detail,
+                'mata_uang' => -1,
+                'jumlah' => 0,
+            );
+            $data = array(
+                't33_pembayaran_data' => $t33_pembayaran,
+                'start' => 1,
+            );
+        }
+        $t33_pembayaran = $this->load->view('t33_pembayaran/t33_pembayaran_wo_search_1', $data, true);
+
+        // pembayaran tamu lain
+        // $t33_pembayaran = $this->T33_pembayaran_model->get_all_by_bkm_detail($bkm_detail);
+        $t33_pembayaran_2 = $this->T33_pembayaran_model->get_all_by_dibayar_oleh($bkm_detail);
+        if ($t33_pembayaran_2) {
+            $data = array(
+                't33_pembayaran_2_data' => $t33_pembayaran_2,
+                'start' => 2,
+            );
+        } else {
+            $t33_pembayaran_2 = (object) array(
+                'bkm_detail' => $bkm_detail,
+                'mata_uang' => -1,
+                'jumlah' => 0,
+            );
+            $data = array(
+                't33_pembayaran_data' => $t33_pembayaran,
+                'start' => 2,
+            );
+        }
+        $t33_pembayaran = $this->load->view('t33_pembayaran/t33_pembayaran_wo_search_2', $data, true);
 
         $this->load->library('pagination');
         $this->pagination->initialize($config);
