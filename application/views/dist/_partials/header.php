@@ -43,6 +43,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         .select2-search--dropdown .select2-search__field {
             width: 98%;
         }
+        .select2-selection__choice__remove {
+            display: none !important;
+        }
         </style>
 
     </head>
