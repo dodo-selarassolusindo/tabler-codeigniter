@@ -59,7 +59,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 // echo ' | ';
                                 echo ' '.anchor(site_url('t31_bkm_detail/update/'.$t31_bkm_detail->id),'Ubah','class="btn btn-primary btn-sm"');
                                 // echo ' | ';
-                                echo ' '.anchor(site_url('t31_bkm_detail/delete/'.$t31_bkm_detail->id),'Hapus','class="btn btn-danger btn-sm" onclick="javasciprt: return confirm(\'Hapus data ?\')"');
+                                // echo ' '.anchor(site_url('t31_bkm_detail/delete/'.$t31_bkm_detail->id),'Hapus','class="btn btn-danger btn-sm" onclick="javasciprt: return confirm(\'Hapus data ?\')"');
                                 ?>
                                 </td>
                             </tr>
