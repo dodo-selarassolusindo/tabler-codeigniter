@@ -205,7 +205,7 @@ class T30_bkm extends CI_Controller
 
         // pembayaran tamu lain
         $t33_pembayaran_2 = $this->T33_pembayaran_model->get_all_by_dibayar_oleh($bkm_detail);
-        $t31_bkm_detail_all = $this->T31_bkm_detail_model->get_all_by_bkm($bkm);
+        $t31_bkm_detail_all = $this->T31_bkm_detail_model->get_all_by_bkm($bkm, $bkm_detail);
         if ($t33_pembayaran_2) {
             // sudah ada tamu yang dibayari
             $data = array(

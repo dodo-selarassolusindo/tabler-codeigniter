@@ -14,10 +14,12 @@ class T31_bkm_detail_model extends CI_Model
     }
 
     // get all by bkm
-    function get_all_by_bkm($bkm)
+    function get_all_by_bkm($bkm, $bkm_detail, $array_bayar)
     {
         // $this->db->order_by($this->id, $this->order);
         $this->db->where('bkm', $bkm);
+        $this->db->where('id !=', $bkm_detail);
+        $this->db->where_not_in('id', $array_bayar);
         return $this->db->get($this->table)->result();
     }
 
