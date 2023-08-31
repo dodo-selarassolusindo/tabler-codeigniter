@@ -21,6 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="mb-3">
                                         <label class="form-label"><strong>Mata Uang</strong></label>
                                         <select class="form-control select2" name="bayar_mata_uang">
+                                            <option value="-1">-</option>
                                         <?php foreach($this->T00_mata_uang_model->get_all() as $row) { ?>
                                             <option value="<?= $row->id ?>" <?= $row->id == $t33_pembayaran_1->mata_uang ? 'selected' : '' ?>><?= $row->kode ?></option>
                                         <?php } ?>
