@@ -262,7 +262,6 @@ class T30_bkm extends CI_Controller
                 'bkm_detail' => $item,
                 'dibayar_oleh' => $bkm_detail,
             ];
-            // $this->db->insert('t33_pembayaran', $detail);
             $this->T33_pembayaran_model->insert($detail);
         }
 
