@@ -180,7 +180,6 @@ class T30_bkm extends CI_Controller
         /**
          * pembayaran
          */
-
         $arr_bayar = $this->T33_pembayaran_model->get_bayar($bkm);
 
         // pembayaran dirinya sendiri
@@ -205,14 +204,14 @@ class T30_bkm extends CI_Controller
             }
         }
 
-        // array tamu sudah bayar sendiri
-        $tamu_bayar_sendiri = array();
-        $t33_pembayaran_3 = $this->T33_pembayaran_model->get_all_by_tamu_bayar_sendiri($bkm);
-        if ($t33_pembayaran_3) {
-            foreach($t33_pembayaran_3 as $row) {
-                $tamu_bayar_sendiri[] = $row->bkm_detail;
-             }
-        }
+        // // array tamu sudah bayar sendiri
+        // $tamu_bayar_sendiri = array();
+        // $t33_pembayaran_3 = $this->T33_pembayaran_model->get_all_by_tamu_bayar_sendiri($bkm);
+        // if ($t33_pembayaran_3) {
+        //     foreach($t33_pembayaran_3 as $row) {
+        //         $tamu_bayar_sendiri[] = $row->bkm_detail;
+        //      }
+        // }
 
         $kembali = 't30_bkm/detail/'.$bkm;
 
@@ -222,7 +221,7 @@ class T30_bkm extends CI_Controller
             't31_bkm_detail_all_data' => $this->T31_bkm_detail_model->get_all_by_bkm_not_bkm_detail($bkm, $bkm_detail),
             'kembali' => $kembali,
             'tamu_terbayar' => $tamu_terbayar,
-            'tamu_bayar_sendiri' => $tamu_bayar_sendiri,
+            // 'tamu_bayar_sendiri' => $tamu_bayar_sendiri,
             'arr_bayar' => $arr_bayar,
         );
         $t33_pembayaran = $this->load->view('t33_pembayaran/t33_pembayaran_form', $data, true);
@@ -244,14 +243,21 @@ class T30_bkm extends CI_Controller
         // proses terbayar oleh diri sendiri
         $bkm_detail = $this->input->post('bkm_detail', true);
         if ($this->T33_pembayaran_model->get_by_bkm_detail($bkm_detail)) {
-            // update by bkm_detail
-            $data = array(
-                'mata_uang' => $this->input->post('mata_uang',TRUE),
-                'jumlah' => $this->input->post('jumlah',TRUE),
-            );
-            $this->T33_pembayaran_model->update_by_bkm_detail($this->input->post('bkm_detail', TRUE), $data);
-            $this->session->set_flashdata('message', 'Update Data Success');
-            // redirect(site_url($this->input->post('kembali', true)));
+            if ($this->input->post('jumlah',TRUE) == 0) {
+                // jika jumlah bayar = 0 maka hapus pembayaran
+                $this->T33_pembayaran_model->delete_by_bkm_detail($bkm_detail);
+                $this->session->set_flashdata('message', 'Update Data Success');
+            } else {
+                // jika jumlah bayar tidak 0
+                // update by bkm_detail
+                $data = array(
+                    'mata_uang' => $this->input->post('mata_uang',TRUE),
+                    'jumlah' => $this->input->post('jumlah',TRUE),
+                );
+                $this->T33_pembayaran_model->update_by_bkm_detail($this->input->post('bkm_detail', TRUE), $data);
+                $this->session->set_flashdata('message', 'Update Data Success');
+                // redirect(site_url($this->input->post('kembali', true)));
+            }
         } else {
             // insert data baru
             $data = array(
