@@ -228,7 +228,7 @@ class T30_bkm extends CI_Controller
 
     public function pembayaran_action()
     {
-        // check pembayaran diri sendiri
+        // proses terbayar oleh diri sendiri
         $bkm_detail = $this->input->post('bkm_detail', true);
         if ($this->T33_pembayaran_model->get_by_bkm_detail($bkm_detail)) {
             // update by bkm_detail
@@ -251,6 +251,8 @@ class T30_bkm extends CI_Controller
             $this->session->set_flashdata('message', 'Insert Data Success');
             // redirect(site_url($this->input->post('kembali', true)));
         }
+
+        // proses terbayar oleh tamu terpilih
 
         redirect(site_url($this->input->post('kembali', true)));
     }
