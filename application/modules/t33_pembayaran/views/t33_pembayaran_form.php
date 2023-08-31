@@ -60,8 +60,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </div>
                                 <div class="col-md-2">
                                     <div class="mb-3">
-                                        <select class="form-control select2" name="selisih" placeholder="Selisih">
-                                            <option value="-1">-</option>
+                                        <select class="form-control select2-selisih" name="selisih">
+                                            <option value=""></option>
                                         <?php foreach($this->T02_jenis_selisih_pembayaran_model->get_all() as $row) { ?>
                                             <option value="<?= $row->id ?>" <?= $row->id == $t33_pembayaran_1->selisih ? 'selected' : '' ?>><?= $row->nama ?></option>
                                         <?php } ?>
@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-md-2">
                                     <div class="mb-3">
                                         <select class="form-control select2" name="selisih_mata_uang">
-                                            <option value="-1">-</option>
+                                            <!-- <option value=""></option> -->
                                         <?php foreach($this->T00_mata_uang_model->get_all() as $row) { ?>
                                             <option value="<?= $row->id ?>" <?= $row->id == $t33_pembayaran_1->selisih_mata_uang ? 'selected' : '' ?>><?= $row->kode ?></option>
                                         <?php } ?>

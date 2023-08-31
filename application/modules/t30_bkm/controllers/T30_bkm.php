@@ -265,6 +265,13 @@ class T30_bkm extends CI_Controller
             $this->T33_pembayaran_model->insert($detail);
         }
 
+        /**
+         * simpan / update data selisih bayar
+         */
+        $data = array(
+            
+        );
+
         redirect(site_url($this->input->post('kembali', true)));
     }
 

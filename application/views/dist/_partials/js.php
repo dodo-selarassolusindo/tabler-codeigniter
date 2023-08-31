@@ -621,5 +621,9 @@
         // In your Javascript (external .js resource or <script> tag)
         $(document).ready(function() {
             $('.select2').select2();
+            $('.select2-selisih').select2({
+                placeholder: 'Selisih',
+                allowClear: true,
+            });
         });
         </script>
