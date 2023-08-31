@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 31, 2023 at 11:31 AM
+-- Generation Time: Aug 31, 2023 at 11:50 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -616,7 +616,8 @@ INSERT INTO `t33_pembayaran` (`id`, `bkm_detail`, `dibayar_oleh`, `mata_uang`, `
 (1, 1, 1, 1, 29885000, NULL, NULL, NULL),
 (2, 6, 6, 1, 6180000, NULL, NULL, NULL),
 (3, 2, 1, NULL, NULL, NULL, NULL, NULL),
-(4, 3, 1, NULL, NULL, NULL, NULL, NULL);
+(4, 3, 1, NULL, NULL, NULL, NULL, NULL),
+(5, 5, 5, 1, 5000000, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -909,7 +910,7 @@ ALTER TABLE `t32_bkm_detail_payment`
 -- AUTO_INCREMENT for table `t33_pembayaran`
 --
 ALTER TABLE `t33_pembayaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `t99_catatan`
