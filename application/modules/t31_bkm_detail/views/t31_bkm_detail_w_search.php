@@ -55,11 +55,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?= $t31_bkm_detail->remarks ?></td>
                                 <td>
                                 <?php
-                                echo anchor(site_url('t30_bkm/pembayaran/'.$t31_bkm_detail->bkm.'/'.$t31_bkm_detail->id),'Bayar','class="btn btn-primary btn-sm"');
-                                // echo ' | ';
-                                echo ' '.anchor(site_url('t31_bkm_detail/update/'.$t31_bkm_detail->id),'Ubah','class="btn btn-primary btn-sm"');
-                                // echo ' | ';
-                                // echo ' '.anchor(site_url('t31_bkm_detail/delete/'.$t31_bkm_detail->id),'Hapus','class="btn btn-danger btn-sm" onclick="javasciprt: return confirm(\'Hapus data ?\')"');
+                                if ($this->T33_pembayaran_model->get_by_bkm_detail($t31_bkm_detail->id)) {
+                                    if ($this->T33_pembayaran_model->get_by_bkm_detail($t31_bkm_detail->id)->dibayar_oleh == $t31_bkm_detail->id) {
+                                        echo anchor(site_url('t30_bkm/pembayaran/'.$t31_bkm_detail->bkm.'/'.$t31_bkm_detail->id),'Bayar','class="btn btn-primary btn-sm"');
+                                        echo ' ';
+                                    }
+                                } else {
+                                    echo anchor(site_url('t30_bkm/pembayaran/'.$t31_bkm_detail->bkm.'/'.$t31_bkm_detail->id),'Bayar','class="btn btn-primary btn-sm"');
+                                    echo ' ';
+                                }
+                                echo anchor(site_url('t31_bkm_detail/update/'.$t31_bkm_detail->id),'Ubah','class="btn btn-primary btn-sm"');
                                 ?>
                                 </td>
                             </tr>

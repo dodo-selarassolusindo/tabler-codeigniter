@@ -202,14 +202,12 @@ class T30_bkm extends CI_Controller
                 $tamu_terbayar[] = $row->bkm_detail;
             }
         }
-        // pre($tamu_terbayar); exit;
 
         $kembali = 't30_bkm/detail/'.$bkm;
 
         $data = array(
             'action' => site_url('t30_bkm/pembayaran_action'),
             't33_pembayaran_1' => $t33_pembayaran_1,
-            // 't33_pembayaran_2' => $t33_pembayaran_2,
             't31_bkm_detail_all_data' => $this->T31_bkm_detail_model->get_all_by_bkm_not_bkm_detail($bkm, $bkm_detail),
             'kembali' => $kembali,
             'tamu_terbayar' => $tamu_terbayar,
