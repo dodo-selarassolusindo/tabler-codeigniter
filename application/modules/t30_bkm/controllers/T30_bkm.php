@@ -23,7 +23,6 @@ class T30_bkm extends CI_Controller
 
         $t31_bkm_detail = '';
         $t33_pembayaran = '';
-        $t33_pembayaran_2 = '';
 
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
@@ -68,7 +67,6 @@ class T30_bkm extends CI_Controller
             't30_bkm' => $t30_bkm,
             't31_bkm_detail' => $t31_bkm_detail,
             't33_pembayaran' => $t33_pembayaran,
-            't33_pembayaran_2' => $t33_pembayaran_2,
             'kembali' => $kembali,
         );
         $this->load->view('t30_bkm/t30_bkm_list', $data);
@@ -79,7 +77,6 @@ class T30_bkm extends CI_Controller
     {
 
         $t33_pembayaran = '';
-        $t33_pembayaran_2 = '';
 
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
@@ -132,7 +129,6 @@ class T30_bkm extends CI_Controller
             't30_bkm' => $t30_bkm,
             't31_bkm_detail' => $t31_bkm_detail,
             't33_pembayaran' => $t33_pembayaran,
-            't33_pembayaran_2' => $t33_pembayaran_2,
             'kembali' => $kembali,
         );
         $this->load->view('t30_bkm/t30_bkm_list', $data);
@@ -145,7 +141,6 @@ class T30_bkm extends CI_Controller
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
 
-        // echo $bkm_detail; exit;
         if ($q <> '') {
             $config['base_url'] = base_url() . 't30_bkm/pembayaran/'.$bkm.'/'.$bkm_detail.'?q=' . urlencode($q);
             $config['first_url'] = base_url() . 't30_bkm/pembayaran/'.$bkm.'/'.$bkm_detail.'?q=' . urlencode($q);
@@ -165,9 +160,6 @@ class T30_bkm extends CI_Controller
         $config['attributes'] = array('class' => 'page-link');
         $config['num_links'] = 5;
 
-        // $config['total_rows_pembayaran'] = $this->T34_pembayaran_model->total_rows($q, $bkm_detail);
-        // $config['total_rows_selisih_bayar'] = $this->T35_selisih_bayar_model->total_rows($q, $bkm_detail);
-
         // bkm master
         $t30_bkm = $this->T30_bkm_model->get_by_id($bkm);
         $data = array(
@@ -184,54 +176,90 @@ class T30_bkm extends CI_Controller
         );
         $t31_bkm_detail = $this->load->view('t31_bkm_detail/t31_bkm_detail_wo_search', $data, true);
 
+
+        /**
+         * pembayaran
+         */
         // pembayaran dirinya sendiri
-        // $t33_pembayaran = $this->T33_pembayaran_model->get_all_by_bkm_detail($bkm_detail);
-        $t33_pembayaran = $this->T33_pembayaran_model->get_by_bkm_detail($bkm_detail);
-        if ($t33_pembayaran) {
-            $data = array(
-                't33_pembayaran_data' => $t33_pembayaran,
-                'start' => 1,
-            );
+        $t33_pembayaran_1 = $this->T33_pembayaran_model->get_by_bkm_detail($bkm_detail);
+        if ($t33_pembayaran_1) {
+            // $data = array(
+            //     't33_pembayaran_data' => $t33_pembayaran,
+            //     'start' => 1,
+            // );
         } else {
-            $t33_pembayaran = (object) array(
+            $t33_pembayaran_1 = (object) array(
                 'bkm_detail' => $bkm_detail,
                 'mata_uang' => -1,
                 'jumlah' => 0,
+                'selisih' => -1,
+                'selisih_mata_uang' => -1,
+                'selisih_jumlah' => 0
             );
-            $data = array(
-                't33_pembayaran_data' => $t33_pembayaran,
-                'start' => 1,
-            );
+            // $data = array(
+            //     't33_pembayaran_data' => $t33_pembayaran,
+            //     'start' => 1,
+            // );
         }
-        $t33_pembayaran = $this->load->view('t33_pembayaran/t33_pembayaran_wo_search_1', $data, true);
+
+        // array "dibayar oleh" tamu terpilih
+        $t33_pembayaran_2 = $this->T33_pembayaran_model->get_all_by_dibayar_oleh($bkm_detail);
+
+        $data = array(
+            't33_pembayaran_1' => $t33_pembayaran_1,
+            't33_pembayaran_2' => $t33_pembayaran_2,
+            't31_bkm_detail_all_data' => $this->T31_bkm_detail_model->get_all_by_bkm_not_bkm_detail($bkm, $bkm_detail),
+        );
+        $t33_pembayaran = $this->load->view('t33_pembayaran/t33_pembayaran_form', $data, true);
+
+        // pembayaran dirinya sendiri
+        // $t33_pembayaran = $this->T33_pembayaran_model->get_all_by_bkm_detail($bkm_detail);
+        // $t33_pembayaran = $this->T33_pembayaran_model->get_by_bkm_detail($bkm_detail);
+        // if ($t33_pembayaran) {
+        //     $data = array(
+        //         't33_pembayaran_data' => $t33_pembayaran,
+        //         'start' => 1,
+        //     );
+        // } else {
+        //     $t33_pembayaran = (object) array(
+        //         'bkm_detail' => $bkm_detail,
+        //         'mata_uang' => -1,
+        //         'jumlah' => 0,
+        //     );
+        //     $data = array(
+        //         't33_pembayaran_data' => $t33_pembayaran,
+        //         'start' => 1,
+        //     );
+        // }
+        // $t33_pembayaran = $this->load->view('t33_pembayaran/t33_pembayaran_wo_search_1', $data, true);
 
         // pembayaran tamu lain
         // $t33_pembayaran = $this->T33_pembayaran_model->get_all_by_bkm_detail($bkm_detail);
 
         // array "dibayar oleh" tamu terpilih
-        $t33_pembayaran_2 = $this->T33_pembayaran_model->get_all_by_dibayar_oleh($bkm_detail);
+        // $t33_pembayaran_2 = $this->T33_pembayaran_model->get_all_by_dibayar_oleh($bkm_detail);
 
-        if ($t33_pembayaran_2) {
-            // jika sudah ada tamu yang "dibayari oleh" tamu terpilih
-            $data = array(
-                't31_bkm_detail_all_data' => $this->T31_bkm_detail_model->get_all_by_bkm($bkm, $bkm_detail, $t33_pembayaran_2),
-                't33_pembayaran_2_data' => $t33_pembayaran_2,
-                'start' => 2,
-            );
-        } else {
-            // jika belum ada tamu yang "dibayari oleh" tamu terpilih
-            // $t33_pembayaran_2 = (object) array(
-            //     'bkm_detail' => $bkm_detail,
-            //     'mata_uang' => -1,
-            //     'jumlah' => 0,
-            // );
-            $data = array(
-                't31_bkm_detail_all_data' => $this->T31_bkm_detail_model->get_all_by_bkm_not_bkm_detail($bkm, $bkm_detail),
-                't33_pembayaran_2_data' => array(),
-                'start' => 2,
-            );
-        }
-        $t33_pembayaran_2 = $this->load->view('t33_pembayaran/t33_pembayaran_wo_search_2', $data, true);
+        // if ($t33_pembayaran_2) {
+        //     // jika sudah ada tamu yang "dibayari oleh" tamu terpilih
+        //     $data = array(
+        //         't31_bkm_detail_all_data' => $this->T31_bkm_detail_model->get_all_by_bkm($bkm, $bkm_detail, $t33_pembayaran_2),
+        //         't33_pembayaran_2_data' => $t33_pembayaran_2,
+        //         'start' => 2,
+        //     );
+        // } else {
+        //     // jika belum ada tamu yang "dibayari oleh" tamu terpilih
+        //     // $t33_pembayaran_2 = (object) array(
+        //     //     'bkm_detail' => $bkm_detail,
+        //     //     'mata_uang' => -1,
+        //     //     'jumlah' => 0,
+        //     // );
+        //     $data = array(
+        //         't31_bkm_detail_all_data' => $this->T31_bkm_detail_model->get_all_by_bkm_not_bkm_detail($bkm, $bkm_detail),
+        //         't33_pembayaran_2_data' => array(),
+        //         'start' => 2,
+        //     );
+        // }
+        // $t33_pembayaran_2 = $this->load->view('t33_pembayaran/t33_pembayaran_wo_search_2', $data, true);
 
         $this->load->library('pagination');
         $this->pagination->initialize($config);
@@ -242,7 +270,6 @@ class T30_bkm extends CI_Controller
             't30_bkm' => $t30_bkm,
             't31_bkm_detail' => $t31_bkm_detail,
             't33_pembayaran' => $t33_pembayaran,
-            't33_pembayaran_2' => $t33_pembayaran_2,
             'kembali' => $kembali,
         );
         $this->load->view('t30_bkm/t30_bkm_list', $data);

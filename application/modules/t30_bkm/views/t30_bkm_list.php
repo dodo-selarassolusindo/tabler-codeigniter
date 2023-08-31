@@ -61,7 +61,6 @@ $this->load->view('dist/_partials/header');
                 <div class="card">
 
                     <?= $t33_pembayaran ?>
-                    <?= $t33_pembayaran_2 ?>
 
                 </div>
             </div>

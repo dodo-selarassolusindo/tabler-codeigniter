@@ -1,58 +1,90 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-$this->load->view('dist/_partials/header');
 ?>
-<!-- Page header -->
-<div class="page-header d-print-none">
-    <div class="container-xl">
-        <div class="row g-2 align-items-center">
-            <div class="col">
-                <!-- Page pre-title -->
-                <div class="page-pretitle">
-                    <?= $this->uri->segment(2) == 'create' ? 'Tambah' : 'Ubah'?> Data
-                </div>
-                <h2 class="page-title">
-                    Pembayaran
-                </h2>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Page body -->
-<div class="page-body">
-    <div class="container-xl">
-        <div class="row row-cards">
-            <div class="col-12">
-                <div class="card">
-                    <form action="<?php echo $action; ?>" method="post" class="card">
+                    <?php // $t33_pembayaran = $t33_pembayaran_data ?>
+                    <form class="card">
                         <div class="card-body">
-                            <div class="mb-3">
-                                <label class="form-label required" for="bkm_detail">Bkm Detail <?php echo form_error('bkm_detail') ?></label>
-                                <div><input type="text" class="form-control" name="bkm_detail" id="bkm_detail" placeholder="Bkm Detail" value="<?php echo $bkm_detail; ?>" /></div>
+
+                            <!-- tamu terpilih -->
+                            <div class="row row-cards">
+                                <div class="col-md-1">
+                                    <div class="mb-3"><label class="form-label"><strong>No</strong></label>1</div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="mb-3">
+                                        <label class="form-label"><strong>Name</strong></label>
+                                        <?= $this->T31_bkm_detail_model->get_by_id($t33_pembayaran_1->bkm_detail)->name ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="mb-3">
+                                        <label class="form-label"><strong>Mata Uang</strong></label>
+                                        <select class="form-control select2" name="bayar_mata_uang">
+                                        <?php foreach($this->T00_mata_uang_model->get_all() as $row) { ?>
+                                            <option value="<?= $row->id ?>" <?= $row->id == $t33_pembayaran_1->mata_uang ? 'selected' : '' ?>><?= $row->kode ?></option>
+                                        <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="mb-3">
+                                        <label class="form-label"><strong>Jumlah</strong></label>
+                                        <input type="text" class="form-control" name="bayar_jumlah" id="bayar_jumlah" value="<?= $t33_pembayaran_1->jumlah ?>" />
+                                    </div>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label required" for="tanggal">Tanggal <?php echo form_error('tanggal') ?></label>
-                                <div><input type="text" class="form-control" name="tanggal" id="tanggal" placeholder="Tanggal" value="<?php echo $tanggal; ?>" /></div>
+
+                            <!-- tamu yang dibayari oleh tamu terpilih -->
+                            <div class="row row-cards">
+                                <div class="col-md-1">
+                                    <div class="mb-3">2</div>
+                                </div>
+                                <div class="col-md-11">
+                                    <div class="mb-3">
+                                        <select class="form-control select2" name="bkm_detail[]" multiple="multiple">
+                                            <?php foreach($t31_bkm_detail_all_data as $row) { ?>
+                                            <option value="<?= $row->id ?>"><?= $row->name ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label required" for="mata_uang">Mata Uang <?php echo form_error('mata_uang') ?></label>
-                                <div><input type="text" class="form-control" name="mata_uang" id="mata_uang" placeholder="Mata Uang" value="<?php echo $mata_uang; ?>" /></div>
+
+                            <!-- selisih -->
+                            <div class="row row-cards">
+                                <div class="col-md-1">
+                                    <div class="mb-3">3</div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="mb-3">
+                                        <select class="form-control select2" name="selisih" placeholder="Selisih">
+                                            <option value="-1">-</option>
+                                        <?php foreach($this->T02_jenis_selisih_pembayaran_model->get_all() as $row) { ?>
+                                            <option value="<?= $row->id ?>" <?= $row->id == $t33_pembayaran_1->selisih ? 'selected' : '' ?>><?= $row->nama ?></option>
+                                        <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="mb-3">
+                                        <select class="form-control select2" name="selisih_mata_uang">
+                                            <option value="-1">-</option>
+                                        <?php foreach($this->T00_mata_uang_model->get_all() as $row) { ?>
+                                            <option value="<?= $row->id ?>" <?= $row->id == $t33_pembayaran_1->selisih_mata_uang ? 'selected' : '' ?>><?= $row->kode ?></option>
+                                        <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" name="selisih_jumlah" id="selisih_jumlah" value="<?= $t33_pembayaran_1->selisih_jumlah ?>" />
+                                    </div>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label required" for="jumlah">Jumlah <?php echo form_error('jumlah') ?></label>
-                                <div><input type="text" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah" value="<?php echo $jumlah; ?>" /></div>
-                            </div>
-                            <input type="hidden" name="id" value="<?php echo $id; ?>" />
+
                         </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary"><?= $button ?></button>
-                    	    <a href="<?php echo site_url('t33_pembayaran') ?>" class="btn btn-secondary">Batal</a>
+                        <div class="card-footer ">
+                            <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<?php $this->load->view('dist/_partials/footer') ?>
