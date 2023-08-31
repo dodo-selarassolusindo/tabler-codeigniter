@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="mb-3">
                                         <select class="form-control select2" name="bkm_detail_for[]" multiple="multiple">
                                             <?php foreach($t31_bkm_detail_all_data as $row) { ?>
-                                                <?php $arr_check = array_search($row->id, array_column($arr_bayar, 'bkm_detail'), true) ?>
+                                                <?php $arr_check = array_search($row->id, array_column($arr_bayar, 'bkm_detail')) ?>
                                                 <?php if ($arr_check == '') { ?>
                                                     <option value="<?= $row->id ?>" <?= in_array($row->id, $tamu_terbayar) ? 'selected' : '' ?>><?= $row->name ?></option>
                                                 <?php } else { ?>
