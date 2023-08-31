@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
                     <?php // $t33_pembayaran = $t33_pembayaran_data ?>
-                    <form class="card" >
+                    <form class="card" action="<?= $action ?>" method="post">
                         <div class="card-body">
 
                             <!-- tamu terpilih -->
