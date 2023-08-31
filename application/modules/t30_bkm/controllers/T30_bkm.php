@@ -206,20 +206,27 @@ class T30_bkm extends CI_Controller
 
         // pembayaran tamu lain
         // $t33_pembayaran = $this->T33_pembayaran_model->get_all_by_bkm_detail($bkm_detail);
+
+        // array "dibayar oleh" tamu terpilih
         $t33_pembayaran_2 = $this->T33_pembayaran_model->get_all_by_dibayar_oleh($bkm_detail);
+
         if ($t33_pembayaran_2) {
+            // jika sudah ada tamu yang "dibayari oleh" tamu terpilih
             $data = array(
+                't31_bkm_detail_all_data' => $this->T31_bkm_detail_model->get_all_by_bkm($bkm, $bkm_detail, $t33_pembayaran_2),
                 't33_pembayaran_2_data' => $t33_pembayaran_2,
                 'start' => 2,
             );
         } else {
-            $t33_pembayaran_2 = (object) array(
-                'bkm_detail' => $bkm_detail,
-                'mata_uang' => -1,
-                'jumlah' => 0,
-            );
+            // jika belum ada tamu yang "dibayari oleh" tamu terpilih
+            // $t33_pembayaran_2 = (object) array(
+            //     'bkm_detail' => $bkm_detail,
+            //     'mata_uang' => -1,
+            //     'jumlah' => 0,
+            // );
             $data = array(
-                't33_pembayaran_data' => $t33_pembayaran,
+                't31_bkm_detail_all_data' => $this->T31_bkm_detail_model->get_all_by_bkm_not_bkm_detail($bkm, $bkm_detail),
+                't33_pembayaran_2_data' => array(),
                 'start' => 2,
             );
         }

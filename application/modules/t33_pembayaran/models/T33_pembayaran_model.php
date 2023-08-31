@@ -18,7 +18,8 @@ class T33_pembayaran_model extends CI_Model
     {
         $this->db->where('dibayar_oleh', $dibayar_oleh);
         $this->db->order_by($this->id, 'asc');
-        return $this->db->get($this->table)->result();
+        // return $this->db->get($this->table)->result();
+        return $this->db->get($this->table)->result_array();
     }
 
     // get data by bkm_detail
