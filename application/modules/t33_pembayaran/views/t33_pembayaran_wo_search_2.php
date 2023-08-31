@@ -19,6 +19,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </div>
                             </div>
 
+                            <div class="row row-cards">
+                                <div class="col-md-1">
+                                    <div class="mb-3">
+                                        3
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="mb-3">
+                                        <!-- <label class="form-label"><strong>Mata Uang</strong></label> -->
+                                        <select class="form-control select2" name="mata_uang" placeholder="Selisih">
+                                        <?php foreach($this->T00_mata_uang_model->get_all() as $row) { ?>
+                                            <option value="<?= $row->id ?>" <?= $row->id == $t33_pembayaran->mata_uang ? 'selected' : '' ?>><?= $row->kode ?></option>
+                                        <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="mb-3">
+                                        <!-- <label class="form-label"><strong>Mata Uang</strong></label> -->
+                                        <select class="form-control select2" name="mata_uang">
+                                        <?php foreach($this->T00_mata_uang_model->get_all() as $row) { ?>
+                                            <option value="<?= $row->id ?>" <?= $row->id == $t33_pembayaran->mata_uang ? 'selected' : '' ?>><?= $row->kode ?></option>
+                                        <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="mb-3">
+                                        <!-- <label class="form-label"><strong>Jumlah</strong></label> -->
+                                        <input type="text" class="form-control" name="jumlah" id="jumlah" value="<?= $t33_pembayaran->jumlah ?>" />
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="card-footer ">
                             <button type="submit" class="btn btn-primary">Simpan</button>
