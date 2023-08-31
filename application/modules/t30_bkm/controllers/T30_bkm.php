@@ -253,6 +253,18 @@ class T30_bkm extends CI_Controller
         }
 
         // proses terbayar oleh tamu terpilih
+        // hapus dulu data yang sudah tersimpan
+        // hapus berdasarkan dibayar_oleh by tamu terpilih
+        $this->T33_pembayaran_model->delete_by_dibayar_oleh_not_bkm_detail($bkm_detail);
+        $data = $this->input->post();
+        foreach ($data['bkm_detail_for'] as $key => $item) {
+            $detail = [
+                'bkm_detail' => $item,
+                'dibayar_oleh' => $bkm_detail,
+            ];
+            // $this->db->insert('t33_pembayaran', $detail);
+            $this->T33_pembayaran_model->insert($detail);
+        }
 
         redirect(site_url($this->input->post('kembali', true)));
     }

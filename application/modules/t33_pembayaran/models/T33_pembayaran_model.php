@@ -13,6 +13,14 @@ class T33_pembayaran_model extends CI_Model
         parent::__construct();
     }
 
+    // delete data by bkm_detail
+    function delete_by_dibayar_oleh_not_bkm_detail($bkm_detail)
+    {
+        $this->db->where('dibayar_oleh', $bkm_detail);
+        $this->db->where('bkm_detail !=', $bkm_detail);
+        $this->db->delete($this->table);
+    }
+
     // update data by bkm_detail
     function update_by_bkm_detail($bkm_detail, $data)
     {
