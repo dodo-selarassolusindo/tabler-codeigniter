@@ -15,6 +15,7 @@ class T30_bkm extends CI_Controller
         $this->load->model('t32_bkm_detail_payment/T32_bkm_detail_payment_model');
         $this->load->model('t33_pembayaran/T33_pembayaran_model');
         $this->load->model('t00_mata_uang/T00_mata_uang_model');
+        $this->load->model('t02_jenis_selisih_pembayaran/T02_jenis_selisih_pembayaran_model');
     }
 
     public function index()

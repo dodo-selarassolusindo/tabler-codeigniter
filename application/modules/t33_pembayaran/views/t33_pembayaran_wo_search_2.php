@@ -29,8 +29,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="mb-3">
                                         <!-- <label class="form-label"><strong>Mata Uang</strong></label> -->
                                         <select class="form-control select2" name="mata_uang" placeholder="Selisih">
-                                        <?php foreach($this->T00_mata_uang_model->get_all() as $row) { ?>
-                                            <option value="<?= $row->id ?>" <?= $row->id == $t33_pembayaran->mata_uang ? 'selected' : '' ?>><?= $row->kode ?></option>
+                                            <option value="-1">-</option>
+                                        <?php foreach($this->T02_jenis_selisih_pembayaran_model->get_all() as $row) { ?>
+                                            <option value="<?= $row->id ?>"><?= $row->nama ?></option>
                                         <?php } ?>
                                         </select>
                                     </div>
@@ -39,6 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="mb-3">
                                         <!-- <label class="form-label"><strong>Mata Uang</strong></label> -->
                                         <select class="form-control select2" name="mata_uang">
+                                            <option value="-1">-</option>
                                         <?php foreach($this->T00_mata_uang_model->get_all() as $row) { ?>
                                             <option value="<?= $row->id ?>" <?= $row->id == $t33_pembayaran->mata_uang ? 'selected' : '' ?>><?= $row->kode ?></option>
                                         <?php } ?>
