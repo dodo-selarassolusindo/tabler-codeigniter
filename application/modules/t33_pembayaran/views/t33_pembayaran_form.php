@@ -50,6 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <?php $arr_check = array_search($row->id, array_column($arr_bayar, 'bkm_detail')) ?>
                                                 <?php //pre($arr_check); exit; ?>
                                                 <?php if ($arr_check == '') { ?>
+                                                    <?php pre($arr_check); exit; ?>
                                                     <option value="<?= $row->id ?>" <?= in_array($row->id, $tamu_terbayar) ? 'selected' : '' ?>><?= $row->name ?></option>
                                                 <?php } else { ?>
                                                     <?php if ($arr_bayar[$arr_check]['dibayar_oleh'] == $t33_pembayaran_1->bkm_detail) { ?>
