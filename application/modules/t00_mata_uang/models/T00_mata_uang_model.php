@@ -6,7 +6,7 @@ class T00_mata_uang_model extends CI_Model
 
     public $table = 't00_mata_uang';
     public $id = 'id';
-    public $order = 'DESC';
+    public $order = 'ASC';
 
     function __construct()
     {
