@@ -46,7 +46,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="mb-3">
                                         <select class="form-control select2" name="bkm_detail_for[]" multiple="multiple">
                                             <?php foreach($t31_bkm_detail_all_data as $row) { ?>
-                                            <option value="<?= $row->id ?>" <?= in_array($row->id, $tamu_terbayar) ? 'selected' : '' ?>><?= $row->name ?></option>
+                                                <?php $arr_check = array_search($row->id, array_column($arr_bayar, 'bkm_detail'), true) ?>
+                                                <?php if ($arr_check == '') { ?>
+                                                    <option value="<?= $row->id ?>" <?= in_array($row->id, $tamu_terbayar) ? 'selected' : '' ?>><?= $row->name ?></option>
+                                                <?php } else { ?>
+                                                    <?php if ($arr_bayar[$arr_check]['dibayar_oleh'] == $t33_pembayaran_1->bkm_detail) { ?>
+                                                        <option value="<?= $row->id ?>" <?= in_array($row->id, $tamu_terbayar) ? 'selected' : '' ?>><?= $row->name ?></option>
+                                                    <?php } ?>
+                                                <?php } ?>
                                             <?php } ?>
                                         </select>
                                     </div>

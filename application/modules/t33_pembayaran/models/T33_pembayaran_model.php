@@ -6,11 +6,42 @@ class T33_pembayaran_model extends CI_Model
 
     public $table = 't33_pembayaran';
     public $id = 'id';
-    public $order = 'DESC';
+    public $order = 'ASC';
 
     function __construct()
     {
         parent::__construct();
+    }
+
+    function get_bayar($bkm)
+    {
+        // collect data bkm_detail berdasarkan $bkm
+        $this->db->where('bkm', $bkm);
+        $this->db->select('id');
+        foreach($this->db->get('t31_bkm_detail')->result() as $row) {
+            $arr_bkm_detail[] = $row->id;
+        }
+        // pre($arr_bkm_detail);
+
+        $this->db->where_in('bkm_detail', $arr_bkm_detail);
+        $this->db->select('bkm_detail, dibayar_oleh');
+        $arr_bayar = $this->db->get($this->table)->result_array();
+        // foreach($this->db->get($this->table)->result() as $row) {
+        //     $arr_bayar_sendiri[] = $row->bkm_detail;
+        // }
+        // pre($arr_bayar_sendiri); exit;
+        return $arr_bayar;
+    }
+
+    // get_all_by_tamu_bayar_sendiri
+    function get_all_by_tamu_bayar_sendiri($bkm)
+    {
+        $this->db->join('t31_bkm_detail', 't31_bkm_detail.id = '.$this->table.'.bkm_detail');
+        $this->db->join('t30_bkm', 't30_bkm.id = t31_bkm_detail.bkm');
+        $this->db->where('t30_bkm.id', $bkm);
+        $this->db->where('bkm_detail = dibayar_oleh');
+        $this->db->order_by($this->table.'.'.$this->id, $this->order);
+        return $this->db->get($this->table)->result();
     }
 
     // delete data by bkm_detail

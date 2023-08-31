@@ -181,6 +181,8 @@ class T30_bkm extends CI_Controller
          * pembayaran
          */
 
+        $arr_bayar = $this->T33_pembayaran_model->get_bayar($bkm);
+
         // pembayaran dirinya sendiri
         $t33_pembayaran_1 = $this->T33_pembayaran_model->get_by_bkm_detail($bkm_detail);
         if (!$t33_pembayaran_1) {
@@ -203,6 +205,15 @@ class T30_bkm extends CI_Controller
             }
         }
 
+        // array tamu sudah bayar sendiri
+        $tamu_bayar_sendiri = array();
+        $t33_pembayaran_3 = $this->T33_pembayaran_model->get_all_by_tamu_bayar_sendiri($bkm);
+        if ($t33_pembayaran_3) {
+            foreach($t33_pembayaran_3 as $row) {
+                $tamu_bayar_sendiri[] = $row->bkm_detail;
+             }
+        }
+
         $kembali = 't30_bkm/detail/'.$bkm;
 
         $data = array(
@@ -211,6 +222,8 @@ class T30_bkm extends CI_Controller
             't31_bkm_detail_all_data' => $this->T31_bkm_detail_model->get_all_by_bkm_not_bkm_detail($bkm, $bkm_detail),
             'kembali' => $kembali,
             'tamu_terbayar' => $tamu_terbayar,
+            'tamu_bayar_sendiri' => $tamu_bayar_sendiri,
+            'arr_bayar' => $arr_bayar,
         );
         $t33_pembayaran = $this->load->view('t33_pembayaran/t33_pembayaran_form', $data, true);
 
@@ -269,7 +282,7 @@ class T30_bkm extends CI_Controller
          * simpan / update data selisih bayar
          */
         $data = array(
-            
+
         );
 
         redirect(site_url($this->input->post('kembali', true)));
