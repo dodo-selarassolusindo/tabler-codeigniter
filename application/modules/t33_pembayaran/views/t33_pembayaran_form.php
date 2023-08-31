@@ -45,6 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-md-11">
                                     <div class="mb-3">
                                         <select class="form-control select2" name="bkm_detail_for[]" multiple="multiple">
+                                            <?php pre($arr_bayar); exit; ?>
                                             <?php foreach($t31_bkm_detail_all_data as $row) { ?>
                                                 <?php $arr_check = array_search($row->id, array_column($arr_bayar, 'bkm_detail')) ?>
                                                 <?php if ($arr_check == '') { ?>
