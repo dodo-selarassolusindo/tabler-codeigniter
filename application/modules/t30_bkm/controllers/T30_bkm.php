@@ -22,6 +22,7 @@ class T30_bkm extends CI_Controller
 
         $t31_bkm_detail = '';
         $t33_pembayaran = '';
+        $t33_pembayaran_2 = '';
 
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
@@ -66,6 +67,7 @@ class T30_bkm extends CI_Controller
             't30_bkm' => $t30_bkm,
             't31_bkm_detail' => $t31_bkm_detail,
             't33_pembayaran' => $t33_pembayaran,
+            't33_pembayaran_2' => $t33_pembayaran_2,
             'kembali' => $kembali,
         );
         $this->load->view('t30_bkm/t30_bkm_list', $data);
@@ -76,6 +78,7 @@ class T30_bkm extends CI_Controller
     {
 
         $t33_pembayaran = '';
+        $t33_pembayaran_2 = '';
 
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
@@ -128,6 +131,7 @@ class T30_bkm extends CI_Controller
             't30_bkm' => $t30_bkm,
             't31_bkm_detail' => $t31_bkm_detail,
             't33_pembayaran' => $t33_pembayaran,
+            't33_pembayaran_2' => $t33_pembayaran_2,
             'kembali' => $kembali,
         );
         $this->load->view('t30_bkm/t30_bkm_list', $data);
@@ -230,6 +234,7 @@ class T30_bkm extends CI_Controller
             't30_bkm' => $t30_bkm,
             't31_bkm_detail' => $t31_bkm_detail,
             't33_pembayaran' => $t33_pembayaran,
+            't33_pembayaran_2' => $t33_pembayaran_2,
             'kembali' => $kembali,
         );
         $this->load->view('t30_bkm/t30_bkm_list', $data);
