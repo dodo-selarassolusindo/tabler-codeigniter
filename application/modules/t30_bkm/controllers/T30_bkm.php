@@ -226,6 +226,34 @@ class T30_bkm extends CI_Controller
 
     }
 
+    public function pembayaran_action()
+    {
+        // check pembayaran diri sendiri
+        $bkm_detail = $this->input->post('bkm_detail', true);
+        if ($this->T33_pembayaran_model->get_by_bkm_detail($bkm_detail)) {
+            // update by bkm_detail
+            $data = array(
+                'mata_uang' => $this->input->post('mata_uang',TRUE),
+                'jumlah' => $this->input->post('jumlah',TRUE),
+            );
+            $this->T33_pembayaran_model->update_by_bkm_detail($this->input->post('bkm_detail', TRUE), $data);
+            $this->session->set_flashdata('message', 'Update Data Success');
+            redirect(site_url($this->input->post('kembali', true)));
+        } else {
+            // insert data baru
+            $data = array(
+                'bkm_detail' => $this->input->post('bkm_detail',TRUE),
+                'dibayar_oleh' => $this->input->post('bkm_detail',TRUE),
+                'mata_uang' => $this->input->post('mata_uang',TRUE),
+                'jumlah' => $this->input->post('jumlah',TRUE),
+            );
+            $this->T33_pembayaran_model->insert($data);
+            $this->session->set_flashdata('message', 'Insert Data Success');
+            redirect(site_url($this->input->post('kembali', true)));
+        }
+
+    }
+
     public function import()
     {
         $data = array(

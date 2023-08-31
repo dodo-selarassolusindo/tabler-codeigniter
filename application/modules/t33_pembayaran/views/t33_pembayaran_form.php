@@ -88,6 +88,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <div class="card-footer ">
                             <button type="submit" class="btn btn-primary">Simpan</button>
+                            <input type="hidden" name="kembali" value="<?= $kembali ?>">
                             <a href="<?= site_url($kembali) ?>" class="btn btn-secondary d-none d-sm-inline-block">
                                 Batal / Kembali
                             </a>
