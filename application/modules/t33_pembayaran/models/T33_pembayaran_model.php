@@ -17,9 +17,10 @@ class T33_pembayaran_model extends CI_Model
     function get_all_by_dibayar_oleh($dibayar_oleh)
     {
         $this->db->where('dibayar_oleh', $dibayar_oleh);
+        $this->db->where('bkm_detail !=', $dibayar_oleh);
         $this->db->order_by($this->id, 'asc');
         // return $this->db->get($this->table)->result();
-        return $this->db->get($this->table)->result_array();
+        return $this->db->get($this->table)->result();
     }
 
     // get data by bkm_detail

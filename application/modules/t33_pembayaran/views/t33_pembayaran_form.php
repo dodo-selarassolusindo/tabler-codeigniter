@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
                     <?php // $t33_pembayaran = $t33_pembayaran_data ?>
-                    <form class="card">
+                    <form class="card" >
                         <div class="card-body">
 
                             <!-- tamu terpilih -->
@@ -15,12 +15,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="mb-3">
                                         <label class="form-label"><strong>Name</strong></label>
                                         <?= $this->T31_bkm_detail_model->get_by_id($t33_pembayaran_1->bkm_detail)->name ?>
+                                        <input type="hidden" name="bkm_detail" value="<?= $t33_pembayaran_1->bkm_detail ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="mb-3">
                                         <label class="form-label"><strong>Mata Uang</strong></label>
-                                        <select class="form-control select2" name="bayar_mata_uang">
+                                        <select class="form-control select2" name="mata_uang">
                                             <option value="-1">-</option>
                                         <?php foreach($this->T00_mata_uang_model->get_all() as $row) { ?>
                                             <option value="<?= $row->id ?>" <?= $row->id == $t33_pembayaran_1->mata_uang ? 'selected' : '' ?>><?= $row->kode ?></option>
@@ -31,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-md-2">
                                     <div class="mb-3">
                                         <label class="form-label"><strong>Jumlah</strong></label>
-                                        <input type="text" class="form-control" name="bayar_jumlah" id="bayar_jumlah" value="<?= $t33_pembayaran_1->jumlah ?>" />
+                                        <input type="text" class="form-control" name="jumlah" id="jumlah" value="<?= $t33_pembayaran_1->jumlah ?>" />
                                     </div>
                                 </div>
                             </div>
@@ -43,9 +44,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </div>
                                 <div class="col-md-11">
                                     <div class="mb-3">
-                                        <select class="form-control select2" name="bkm_detail[]" multiple="multiple">
+                                        <select class="form-control select2" name="bkm_detail_for[]" multiple="multiple">
                                             <?php foreach($t31_bkm_detail_all_data as $row) { ?>
-                                            <option value="<?= $row->id ?>"><?= $row->name ?></option>
+                                            <option value="<?= $row->id ?>" <?= in_array($row->id, $tamu_terbayar) ? 'selected' : '' ?>><?= $row->name ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>

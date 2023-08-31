@@ -180,14 +180,10 @@ class T30_bkm extends CI_Controller
         /**
          * pembayaran
          */
+
         // pembayaran dirinya sendiri
         $t33_pembayaran_1 = $this->T33_pembayaran_model->get_by_bkm_detail($bkm_detail);
-        if ($t33_pembayaran_1) {
-            // $data = array(
-            //     't33_pembayaran_data' => $t33_pembayaran,
-            //     'start' => 1,
-            // );
-        } else {
+        if (!$t33_pembayaran_1) {
             $t33_pembayaran_1 = (object) array(
                 'bkm_detail' => $bkm_detail,
                 'mata_uang' => -1,
@@ -196,22 +192,27 @@ class T30_bkm extends CI_Controller
                 'selisih_mata_uang' => -1,
                 'selisih_jumlah' => 0
             );
-            // $data = array(
-            //     't33_pembayaran_data' => $t33_pembayaran,
-            //     'start' => 1,
-            // );
         }
 
         // array "dibayar oleh" tamu terpilih
+        $tamu_terbayar = array();
         $t33_pembayaran_2 = $this->T33_pembayaran_model->get_all_by_dibayar_oleh($bkm_detail);
+        if ($t33_pembayaran_2) {
+            foreach($t33_pembayaran_2 as $row) {
+                $tamu_terbayar[] = $row->bkm_detail;
+            }
+        }
+        // pre($tamu_terbayar); exit;
 
         $kembali = 't30_bkm/detail/'.$bkm;
 
         $data = array(
+            'action' => site_url('t30_bkm/pembayaran_action'),
             't33_pembayaran_1' => $t33_pembayaran_1,
-            't33_pembayaran_2' => $t33_pembayaran_2,
+            // 't33_pembayaran_2' => $t33_pembayaran_2,
             't31_bkm_detail_all_data' => $this->T31_bkm_detail_model->get_all_by_bkm_not_bkm_detail($bkm, $bkm_detail),
             'kembali' => $kembali,
+            'tamu_terbayar' => $tamu_terbayar,
         );
         $t33_pembayaran = $this->load->view('t33_pembayaran/t33_pembayaran_form', $data, true);
 
@@ -222,7 +223,6 @@ class T30_bkm extends CI_Controller
             't30_bkm' => $t30_bkm,
             't31_bkm_detail' => $t31_bkm_detail,
             't33_pembayaran' => $t33_pembayaran,
-            // 'kembali' => $kembali,
         );
         $this->load->view('t30_bkm/t30_bkm_list', $data);
 
