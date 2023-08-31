@@ -26,9 +26,11 @@ $this->load->view('dist/_partials/header');
                         Import Data
                     </a>
                     <?php } ?>
+                    <?php if ($this->uri->segment(2) != 'pembayaran') { ?>
                     <a href="<?= site_url($kembali) ?>" class="btn btn-secondary d-none d-sm-inline-block">
                         Kembali
                     </a>
+                    <?php } ?>
                 </div>
             </div>
             <!-- Message -->
