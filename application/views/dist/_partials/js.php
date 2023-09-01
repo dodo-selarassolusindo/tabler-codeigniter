@@ -4,6 +4,8 @@
         <script src="<?= base_url() ?>/dist/libs/jsvectormap/dist/maps/world.js?1684106062" defer></script>
         <script src="<?= base_url() ?>/dist/libs/jsvectormap/dist/maps/world-merc.js?1684106062" defer></script>
 
+        <script src="<?= base_url() ?>/dist/libs/tom-select/dist/js/tom-select.base.min.js?1684106062" defer></script>
+
         <!-- Tabler Core -->
         <script src="<?= base_url() ?>/dist/js/tabler.min.js?1684106062" defer></script>
         <script src="<?= base_url() ?>/dist/js/demo.min.js?1684106062" defer></script>
@@ -616,6 +618,33 @@
         </script>
 
         <?php } ?>
+
+        <script>
+        // @formatter:off
+        document.addEventListener("DOMContentLoaded", function () {
+            var el;
+            window.TomSelect && (new TomSelect(el = document.getElementById('select-states'), {
+                copyClassesToDropdown: false,
+                dropdownParent: 'body',
+                controlInput: '<input>',
+                render:{
+                    item: function(data,escape) {
+                        if( data.customProperties ){
+                            return '<div><span class="dropdown-item-indicator">' + data.customProperties + '</span>' + escape(data.text) + '</div>';
+                        }
+                        return '<div>' + escape(data.text) + '</div>';
+                    },
+                    option: function(data,escape){
+                        if( data.customProperties ){
+                            return '<div><span class="dropdown-item-indicator">' + data.customProperties + '</span>' + escape(data.text) + '</div>';
+                        }
+                        return '<div>' + escape(data.text) + '</div>';
+                    },
+                },
+            }));
+        });
+        // @formatter:on
+        </script>
 
         <script type="text/javascript">
         // In your Javascript (external .js resource or <script> tag)
