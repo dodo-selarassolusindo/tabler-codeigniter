@@ -660,8 +660,12 @@
             {
                 $.ajax({
                     type: "POST", //we are using POST method to submit the data to the server side
-                    url: '<?php echo site_url() ?>t30_bkm/hitung_price_list', // get the route value
-                    data: {bkm_detail: $('#list_bkm_detail').val()}, // our serialized array data for server side
+                    url: '<?php echo site_url() ?>t30_bkm/hitung_selisih', // get the route value
+                    data: {
+                        bkm_detail: $('#list_bkm_detail').val(),
+                        rate_usd: $('#rate_usd').val(),
+                        rate_aud: $('#rate_aud').val(),
+                    }, // our serialized array data for server side
                     success: function (response) {//once the request successfully process to the server side it will return result here
                         document.getElementById('selisih_jumlah').value = response;
                     },

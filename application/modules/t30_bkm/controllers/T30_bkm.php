@@ -73,13 +73,13 @@ class T30_bkm extends CI_Controller
 
     }
 
-    public function hitung_price_list()
+    public function hitung_selisih()
     {
         // code...
         // echo $this->T45_invvendor_model->getNewNomorInvvendor($_POST['tgl']);
         // pre($_POST['bkm_detail']);
         // echo '<script>alert("g")</script>';
-        echo $this->T31_bkm_detail_model->get_price_list($_POST['bkm_detail']);
+        echo $this->T31_bkm_detail_model->get_price_list($_POST['bkm_detail']) * $_POST['rate_usd'];
     }
 
     public function detail($bkm)
@@ -171,6 +171,9 @@ class T30_bkm extends CI_Controller
 
         // bkm master
         $t30_bkm = $this->T30_bkm_model->get_by_id($bkm);
+        // pre($t30_bkm); exit;
+        $rate_usd = $t30_bkm->rate_usd;
+        $rate_aud = $t30_bkm->rate_aud;
         $data = array(
             't30_bkm_data' => $t30_bkm,
             'start' => $start,
@@ -232,6 +235,8 @@ class T30_bkm extends CI_Controller
             'tamu_terbayar' => $tamu_terbayar,
             // 'tamu_bayar_sendiri' => $tamu_bayar_sendiri,
             'arr_bayar' => $arr_bayar,
+            'rate_usd' => $rate_usd,
+            'rate_aud' => $rate_aud,
         );
         $t33_pembayaran = $this->load->view('t33_pembayaran/t33_pembayaran_form', $data, true);
 

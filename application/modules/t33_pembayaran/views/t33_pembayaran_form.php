@@ -98,6 +98,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </div>
                                 </div> -->
                                 <input type="hidden" name="selisih_mata_uang" value="1">
+                                <input type="hidden" name="" value="<?= $rate_usd ?>" id="rate_usd">
+                                <input type="hidden" name="" value="<?= $rate_aud ?>" id="rate_aud">
                                 <div class="col-md-2">
                                     <div class="mb-3 input-group">
                                         <label class="col-form-label pe-2">Rp. </label>
