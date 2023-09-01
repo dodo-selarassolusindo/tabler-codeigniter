@@ -9,12 +9,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <!-- tamu terpilih -->
                             <div class="row row-cards">
                                 <div class="col-md-1">
-                                    <div class="mb-3"><label class="form-label"><strong>No</strong></label>1</div>
+                                    <div class="mb-3"><label class="form-label"><strong>No</strong></label><label class="col-form-label">1</label></div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="mb-3">
                                         <label class="form-label"><strong>Name</strong></label>
+                                        <label class="col-form-label">
                                         <?= $this->T31_bkm_detail_model->get_by_id($t33_pembayaran_1->bkm_detail)->name ?>
+                                        </label>
                                         <input type="hidden" name="bkm_detail" value="<?= $t33_pembayaran_1->bkm_detail ?>">
                                     </div>
                                 </div>
@@ -31,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <input type="hidden" name="mata_uang" value="1">
 
                                 <div class="col-md-2">
-                                    <div class="mb-3 row">
+                                    <div class="mb-3">
                                         <label class="form-label"><strong>Jumlah</strong></label>
                                         <div class="col input-group">
                                             <label class="col-form-label pe-2">Rp. </label>
@@ -45,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <!-- tamu yang dibayari oleh tamu terpilih -->
                             <div class="row row-cards">
                                 <div class="col-md-1">
-                                    <div class="mb-3">2</div>
+                                    <div class="mb-3"><label class="col-form-label">2</label></div>
                                 </div>
                                 <div class="col-md-11">
                                     <div class="mb-3">
@@ -72,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <!-- selisih -->
                             <div class="row row-cards">
                                 <div class="col-md-1">
-                                    <div class="mb-3">3</div>
+                                    <div class="mb-3"><label class="col-form-label">3</label></div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="mb-3">
@@ -84,18 +86,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <!-- <div class="col-md-2">
                                     <div class="mb-3">
                                         <select class="form-control select2" name="selisih_mata_uang">
-                                            <!-- <option value=""></option> -->
                                         <?php foreach($this->T00_mata_uang_model->get_all() as $row) { ?>
                                             <option value="<?= $row->id ?>" <?= $row->id == $t33_pembayaran_1->selisih_mata_uang ? 'selected' : '' ?>><?= $row->kode ?></option>
                                         <?php } ?>
                                         </select>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-md-2">
-                                    <div class="mb-3">
+                                    <div class="mb-3 input-group">
+                                        <label class="col-form-label pe-2">Rp. </label>
                                         <input type="text" class="form-control" name="selisih_jumlah" id="selisih_jumlah" value="<?= $t33_pembayaran_1->selisih_jumlah ?>" />
                                     </div>
                                 </div>
