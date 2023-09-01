@@ -3,7 +3,6 @@
         <script src="<?= base_url() ?>/dist/libs/jsvectormap/dist/js/jsvectormap.min.js?1684106062" defer></script>
         <script src="<?= base_url() ?>/dist/libs/jsvectormap/dist/maps/world.js?1684106062" defer></script>
         <script src="<?= base_url() ?>/dist/libs/jsvectormap/dist/maps/world-merc.js?1684106062" defer></script>
-
         <script src="<?= base_url() ?>/dist/libs/tom-select/dist/js/tom-select.base.min.js?1684106062" defer></script>
 
         <!-- Tabler Core -->
@@ -619,6 +618,7 @@
 
         <?php } ?>
 
+        <?php if ($this->uri->segment(2) == 'pembayaran') { ?>
         <script>
         // @formatter:off
         document.addEventListener("DOMContentLoaded", function () {
@@ -645,6 +645,7 @@
         });
         // @formatter:on
         </script>
+        <?php } ?>
 
         <script type="text/javascript">
         // In your Javascript (external .js resource or <script> tag)
@@ -653,6 +654,18 @@
             $('.select2-selisih').select2({
                 placeholder: 'Selisih',
                 allowClear: true,
+            });
+
+            $('#list_bkm_detail').on('change', function()
+            {
+                $.ajax({
+                    type: "POST", //we are using POST method to submit the data to the server side
+                    url: '<?php echo site_url() ?>t30_bkm/hitung_price_list', // get the route value
+                    data: {bkm_detail: $('#list_bkm_detail').val()}, // our serialized array data for server side
+                    success: function (response) {//once the request successfully process to the server side it will return result here
+                        document.getElementById('selisih_jumlah').value = response;
+                    },
+                });
             });
         });
         </script>

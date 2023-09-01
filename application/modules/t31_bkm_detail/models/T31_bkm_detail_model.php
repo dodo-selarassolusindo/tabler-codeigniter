@@ -13,6 +13,13 @@ class T31_bkm_detail_model extends CI_Model
         parent::__construct();
     }
 
+    function get_price_list($bkm_detail)
+    {
+        $this->db->where_in('id', $bkm_detail);
+        $this->db->select_sum('price');
+        return $this->db->get($this->table)->row()->price;
+    }
+
     // get all by bkm but not this bkm_detail
     function get_all_by_bkm_not_bkm_detail($bkm, $bkm_detail)
     {

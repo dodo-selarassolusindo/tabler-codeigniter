@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </div>
                                 <div class="col-md-11">
                                     <div class="mb-3">
-                                        <select class="form-control select2" name="bkm_detail_for[]" multiple="multiple">
+                                        <select class="form-control select2" name="bkm_detail_for[]" multiple="multiple" id="list_bkm_detail">
                                             <?php //pre($arr_bayar); exit; ?>
                                             <?php foreach($t31_bkm_detail_all_data as $row) { ?>
                                                 <?php $arr_check = array_search($row->id, array_column($arr_bayar, 'bkm_detail')) ?>
@@ -97,6 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </select>
                                     </div>
                                 </div> -->
+                                <input type="hidden" name="selisih_mata_uang" value="1">
                                 <div class="col-md-2">
                                     <div class="mb-3 input-group">
                                         <label class="col-form-label pe-2">Rp. </label>
