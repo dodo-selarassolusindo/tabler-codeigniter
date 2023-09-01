@@ -18,23 +18,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <input type="hidden" name="bkm_detail" value="<?= $t33_pembayaran_1->bkm_detail ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <!-- <div class="col-md-2">
                                     <div class="mb-3">
                                         <label class="form-label"><strong>Mata Uang</strong></label>
                                         <select class="form-control select2" name="mata_uang">
-                                            <option value="-1">-</option>
                                         <?php foreach($this->T00_mata_uang_model->get_all() as $row) { ?>
                                             <option value="<?= $row->id ?>" <?= $row->id == $t33_pembayaran_1->mata_uang ? 'selected' : '' ?>><?= $row->kode ?></option>
                                         <?php } ?>
                                         </select>
                                     </div>
-                                </div>
+                                </div> -->
+                                <input type="hidden" name="mata_uang" value="1">
+
                                 <div class="col-md-2">
-                                    <div class="mb-3">
+                                    <div class="mb-3 row">
                                         <label class="form-label"><strong>Jumlah</strong></label>
-                                        <input type="text" class="form-control" name="jumlah" id="jumlah" value="<?= $t33_pembayaran_1->jumlah ?>" />
+                                        <div class="col input-group">
+                                            <label class="col-form-label pe-2">Rp. </label>
+                                            <input type="text" class="form-control" name="jumlah" id="jumlah" value="<?= $t33_pembayaran_1->jumlah ?>" />
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
 
                             <!-- tamu yang dibayari oleh tamu terpilih -->
