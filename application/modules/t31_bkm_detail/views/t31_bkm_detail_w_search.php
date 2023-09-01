@@ -57,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <?php
                                 if ($this->T33_pembayaran_model->get_by_bkm_detail($t31_bkm_detail->id)) {
                                     if ($this->T33_pembayaran_model->get_by_bkm_detail($t31_bkm_detail->id)->dibayar_oleh == $t31_bkm_detail->id) {
-                                        echo anchor(site_url('t30_bkm/pembayaran/'.$t31_bkm_detail->bkm.'/'.$t31_bkm_detail->id),'Bayar','class="btn btn-primary btn-sm"');
+                                        echo anchor(site_url('t30_bkm/pembayaran/'.$t31_bkm_detail->bkm.'/'.$t31_bkm_detail->id),'Edit Bayar','class="btn btn-primary btn-sm"');
                                         echo ' ';
                                     }
                                 } else {
