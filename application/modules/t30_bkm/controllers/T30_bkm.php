@@ -207,7 +207,7 @@ class T30_bkm extends CI_Controller
                 'jumlah' => $jumlah,
                 'selisih' => -1,
                 'selisih_mata_uang' => -1,
-                'selisih_jumlah' => $selisih_jumlah
+                'selisih_jumlah' => $selisih_jumlah,
             );
         }
 
