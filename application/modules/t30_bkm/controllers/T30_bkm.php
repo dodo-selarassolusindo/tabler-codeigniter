@@ -195,35 +195,32 @@ class T30_bkm extends CI_Controller
         $arr_bayar = $this->T33_pembayaran_model->get_bayar($bkm);
 
         // pembayaran dirinya sendiri
+        $jumlah = 0;
+        $selisih_jumlah = 0;
         $t33_pembayaran_1 = $this->T33_pembayaran_model->get_by_bkm_detail($bkm_detail);
         if (!$t33_pembayaran_1) {
+            $jumlah = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud);
+            $selisih_jumlah = $jumlah - $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud);
             $t33_pembayaran_1 = (object) array(
                 'bkm_detail' => $bkm_detail,
                 'mata_uang' => -1,
-                'jumlah' => 0,
+                'jumlah' => $jumlah,
                 'selisih' => -1,
                 'selisih_mata_uang' => -1,
-                'selisih_jumlah' => 0
+                'selisih_jumlah' => $selisih_jumlah
             );
         }
 
         // array "dibayar oleh" tamu terpilih
+        $total_terbayar = 0;
         $tamu_terbayar = array();
         $t33_pembayaran_2 = $this->T33_pembayaran_model->get_all_by_dibayar_oleh($bkm_detail);
         if ($t33_pembayaran_2) {
             foreach($t33_pembayaran_2 as $row) {
                 $tamu_terbayar[] = $row->bkm_detail;
+                $total_terbayar += $this->T31_bkm_detail_model->get_by_id($row->bkm_detail)->price * $rate_usd;
             }
         }
-
-        // // array tamu sudah bayar sendiri
-        // $tamu_bayar_sendiri = array();
-        // $t33_pembayaran_3 = $this->T33_pembayaran_model->get_all_by_tamu_bayar_sendiri($bkm);
-        // if ($t33_pembayaran_3) {
-        //     foreach($t33_pembayaran_3 as $row) {
-        //         $tamu_bayar_sendiri[] = $row->bkm_detail;
-        //      }
-        // }
 
         $kembali = 't30_bkm/detail/'.$bkm;
 
@@ -233,10 +230,10 @@ class T30_bkm extends CI_Controller
             't31_bkm_detail_all_data' => $this->T31_bkm_detail_model->get_all_by_bkm_not_bkm_detail($bkm, $bkm_detail),
             'kembali' => $kembali,
             'tamu_terbayar' => $tamu_terbayar,
-            // 'tamu_bayar_sendiri' => $tamu_bayar_sendiri,
             'arr_bayar' => $arr_bayar,
             'rate_usd' => $rate_usd,
             'rate_aud' => $rate_aud,
+            'total_terbayar' => $total_terbayar,
         );
         $t33_pembayaran = $this->load->view('t33_pembayaran/t33_pembayaran_form', $data, true);
 
