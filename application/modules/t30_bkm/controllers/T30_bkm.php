@@ -216,7 +216,8 @@ class T30_bkm extends CI_Controller
                 'selisih_jumlah' => $selisih_jumlah,
             );
         } else {
-            $t33_pembayaran_1->selisih_jumlah = $selisih_jumlah;
+            // $t33_pembayaran_1->selisih_jumlah = $selisih_jumlah;
+            $t33_pembayaran_1->selisih_jumlah = $t33_pembayaran_1->jumlah - ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->price) * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud);
         }
 
         // array "dibayar oleh" tamu terpilih
