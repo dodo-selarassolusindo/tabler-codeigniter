@@ -198,9 +198,15 @@ class T30_bkm extends CI_Controller
         $jumlah = 0;
         $selisih_jumlah = 0;
         $t33_pembayaran_1 = $this->T33_pembayaran_model->get_by_bkm_detail($bkm_detail);
+        // pre($t33_pembayaran_1); exit;
+
+        // $jumlah = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud);
+        $jumlah = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud);
+        $selisih_jumlah = ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->price - $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value) * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud);
+
         if (!$t33_pembayaran_1) {
-            $jumlah = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud);
-            $selisih_jumlah = ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->price - $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value) * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud);
+            // $jumlah = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud);
+            // $selisih_jumlah = ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->price - $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value) * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud);
             $t33_pembayaran_1 = (object) array(
                 'bkm_detail' => $bkm_detail,
                 'mata_uang' => -1,
@@ -209,6 +215,8 @@ class T30_bkm extends CI_Controller
                 'selisih_mata_uang' => -1,
                 'selisih_jumlah' => $selisih_jumlah,
             );
+        } else {
+            $t33_pembayaran_1->selisih_jumlah = $selisih_jumlah;
         }
 
         // array "dibayar oleh" tamu terpilih
