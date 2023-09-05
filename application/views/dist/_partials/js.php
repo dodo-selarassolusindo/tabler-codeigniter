@@ -11,6 +11,7 @@
 
         <script src="<?= base_url() ?>/assets/js/jquery-1.11.2.min.js"></script>
         <script src="<?= base_url() ?>/assets/select2/js/select2.min.js"></script>
+        <script src="<?= base_url() ?>/assets/js/jquery.inputmask.bundle.js"></script>
 
         <?php if ($this->uri->segment(1) == '') { ?>
         <script>
@@ -670,6 +671,16 @@
                         document.getElementById('selisih_jumlah').value = response;
                     },
                 });
+            });
+
+            $(".rupiah").inputmask({
+                // prefix : 'Rp. ',
+                radixPoint: '.',
+                groupSeparator: ",",
+                alias: "numeric",
+                autoGroup: true,
+                unmaskAsNumber: true,
+                // digits: 0
             });
         });
         </script>

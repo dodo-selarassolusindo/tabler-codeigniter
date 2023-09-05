@@ -37,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <label class="form-label"><strong>Jumlah</strong></label>
                                         <div class="col input-group">
                                             <label class="col-form-label pe-2">Rp. </label>
-                                            <input type="text" class="form-control" name="jumlah" id="jumlah" value="<?= $t33_pembayaran_1->jumlah ?>" />
+                                            <input type="text" class="form-control rupiah" name="jumlah" id="jumlah" value="<?= $t33_pembayaran_1->jumlah ?>" />
                                         </div>
                                     </div>
                                 </div>
@@ -103,7 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-md-2">
                                     <div class="mb-3 input-group">
                                         <label class="col-form-label pe-2">Rp. </label>
-                                        <input type="text" class="form-control" name="selisih_jumlah" id="selisih_jumlah" value="<?= $t33_pembayaran_1->selisih_jumlah ?>" />
+                                        <input type="text" class="form-control rupiah" name="selisih_jumlah" id="selisih_jumlah" value="<?= $t33_pembayaran_1->selisih_jumlah ?>" />
                                         <!-- <input type="text" name="" value="<?= $total_terbayar ?>"> -->
                                     </div>
                                 </div>
