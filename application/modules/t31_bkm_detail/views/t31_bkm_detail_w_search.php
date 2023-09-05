@@ -25,21 +25,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="table-responsive">
                         <table class="table card-table table-vcenter text-nowrap datatable">
                             <tr>
-                                <th>No</th>
-                                <th>Name</th>
-                                <th>Package</th>
-                                <th>Night</th>
-                                <th>Check In</th>
-                                <th>Check Out</th>
-                                <th>Agent</th>
-                                <th>Price List</th>
-                                <th>Price</th>
-                                <th>Fee Taman Nasional</th>
-                                <th>Pay</th>
-                                <th>Remarks</th>
-                                <th>Proses Data</th>
+                                <th rowspan="2">No</th>
+                                <th rowspan="2">Name</th>
+                                <th rowspan="2">Package</th>
+                                <th rowspan="2">Night</th>
+                                <th rowspan="2">Check In</th>
+                                <th rowspan="2">Check Out</th>
+                                <th rowspan="2">Agent</th>
+                                <th rowspan="2">Price List</th>
+                                <th rowspan="2">Price #1</th>
+                                <th rowspan="2">Fee Taman Nasional</th>
+                                <th rowspan="2">Price #2</th>
+                                <th rowspan="2">Remarks</th>
+                                <th colspan="8" class="text-center">Payment</th>
+                                <th rowspan="2">Proses Data</th>
+                            </tr>
+                            <tr>
+                                <?php foreach($this->T07_kolom_payment_model->get_all() as $row) { ?>
+                                <th class="text-center"><?= $row->nama ?></th>
+                                <?php } ?>
                             </tr>
                             <?php foreach ($t31_bkm_detail_data as $t31_bkm_detail) { ?>
+                                <?php //pre($t31_bkm_detail); //exit; ?>
                             <tr>
                                 <td><?= ++$start ?></td>
                                 <td><?= $t31_bkm_detail->name ?></td>
@@ -53,6 +60,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?= ($t31_bkm_detail->fee_tanas_value != '' ? (substr(trim($t31_bkm_detail->fee_tanas), 0, 4) == '[$00' ? 'USD ' : 'AUD ') . number_format($t31_bkm_detail->fee_tanas_value, 0) : '') ?></td>
                                 <td><?= $t31_bkm_detail->price_2 ?></td>
                                 <td><?= $t31_bkm_detail->remarks ?></td>
+                                <?php foreach($this->T07_kolom_payment_model->get_all() as $row) { ?>
+                                    <?php $var = 'echo $t31_bkm_detail->kolom_payment_id_'.$row->id.' == 0 ? "" : number_format($t31_bkm_detail->kolom_payment_id_'.$row->id.', 0);' ?>
+                                    <td class="text-right"><?php eval($var) ?></td>
+                                <?php } ?>
                                 <td>
                                 <?php
                                 if ($this->T33_pembayaran_model->get_by_bkm_detail($t31_bkm_detail->id)) {

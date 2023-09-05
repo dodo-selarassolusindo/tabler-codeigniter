@@ -6,7 +6,7 @@ class T07_kolom_payment_model extends CI_Model
 
     public $table = 't07_kolom_payment';
     public $id = 'id';
-    public $order = 'DESC';
+    public $order = 'ASC';
 
     function __construct()
     {

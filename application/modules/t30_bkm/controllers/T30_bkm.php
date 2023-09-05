@@ -103,7 +103,9 @@ class T30_bkm extends CI_Controller
 
         $config['total_rows'] = $this->T31_bkm_detail_model->total_rows($q, $bkm);
         $t30_bkm = $this->T30_bkm_model->get_by_id($bkm);
-        $t31_bkm_detail = $this->T31_bkm_detail_model->get_limit_data($config['per_page'], $start, $q, $bkm);
+        $t31_bkm_detail = $this->T31_bkm_detail_model->get_limit_data_2($config['per_page'], $start, $q, $bkm);
+        // $t31_bkm_detail = $this->T31_bkm_detail_model->get_limit_data($config['per_page'], $start, $q, $bkm);
+        // pre($t31_bkm_detail); exit;
 
         $config['num_tag_open'] = '<li class="page-item">';
         $config['num_tag_close'] = '</li>';
@@ -181,7 +183,7 @@ class T30_bkm extends CI_Controller
         $t30_bkm = $this->load->view('t30_bkm/t30_bkm_wo_search', $data, true);
 
         // bkm detail
-        $t31_bkm_detail = $this->T31_bkm_detail_model->get_by_id($bkm_detail);
+        $t31_bkm_detail = $this->T31_bkm_detail_model->get_by_id_2($bkm_detail);
         $data = array(
             't31_bkm_detail_data' => $t31_bkm_detail,
             'start' => $start,
