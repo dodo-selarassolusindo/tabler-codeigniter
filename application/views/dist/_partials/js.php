@@ -675,11 +675,12 @@
 
             $(".rupiah").inputmask({
                 // prefix : 'Rp. ',
-                radixPoint: '.',
-                groupSeparator: ",",
+                // radixPoint: '.',
+                // groupSeparator: ",",
                 alias: "numeric",
-                autoGroup: true,
-                unmaskAsNumber: true,
+                // autoGroup: true,
+                // unmaskAsNumber: true,
+                // autoUnmask: true,
                 // digits: 0
             });
         });
