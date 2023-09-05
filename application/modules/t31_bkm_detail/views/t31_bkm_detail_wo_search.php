@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
                     <div class="table-responsive">
-                        <table class="table card-table table-vcenter text-nowrap datatable">
+                        <table class="table card-table table-vcenter text-nowrap datatable bkm_detail">
                             <tr>
                                 <!-- <th>No</th> -->
                                 <th rowspan="2">Name</th>

@@ -683,5 +683,16 @@
                 // autoUnmask: true,
                 // digits: 0
             });
+
+            // $(".bkm_detail").dataTable({
+            //     //"ordering": true,
+            //     // "columnDefs": [
+            //     //     { "targets": '_all', "className": 'dt-body-nowrap' }
+            //     // ],
+            //     "fixedColumns": {
+            //         left: 4
+            //     },
+            //     // scrollCollapse: true,
+            // });
         });
         </script>
