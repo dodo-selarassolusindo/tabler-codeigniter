@@ -80,7 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="mb-3">
                                         <!-- <select class="form-control select2-selisih" name="selisih"> -->
                                         <!-- <select class="form-control select2-selisih" name="selisih"> -->
-                                        <select class="form-control" name="selisih" id="select-users">
+                                        <select class="form-control" name="selisih" id="select-users" placeholder="Selisih">
                                             <option value=""></option>
                                         <?php foreach($this->T02_jenis_selisih_pembayaran_model->get_all() as $row) { ?>
                                             <option value="<?= $row->id ?>" <?= $row->id == $t33_pembayaran_1->selisih ? 'selected' : '' ?>><?= $row->nama ?></option>
