@@ -80,6 +80,7 @@ class T30_bkm extends CI_Controller
         // pre($_POST['bkm_detail']);
         // echo '<script>alert("g")</script>';
         echo $this->T31_bkm_detail_model->get_price_list($_POST['bkm_detail']) * $_POST['rate_usd'];
+        // echo $this->T31_bkm_detail_model->get_price_list($_POST['bkm_detail']);
     }
 
     public function detail($bkm)
@@ -203,8 +204,9 @@ class T30_bkm extends CI_Controller
         // pre($t33_pembayaran_1); exit;
 
         // $jumlah = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud);
-        $jumlah = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud);
-        $selisih_jumlah = ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->price - $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value) * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud);
+        $jumlah = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud);
+        // $selisih_jumlah = ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->price - $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value) * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud);
+        $selisih_jumlah =  ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud));
 
         if (!$t33_pembayaran_1) {
             // $jumlah = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud);
@@ -212,14 +214,15 @@ class T30_bkm extends CI_Controller
             $t33_pembayaran_1 = (object) array(
                 'bkm_detail' => $bkm_detail,
                 'mata_uang' => -1,
-                'jumlah' => $jumlah,
+                // 'jumlah' => $jumlah,
+                'jumlah' => 0,
                 'selisih' => -1,
                 'selisih_mata_uang' => -1,
-                'selisih_jumlah' => $selisih_jumlah,
+                'selisih_jumlah' => -$selisih_jumlah,
             );
         } else {
             // $t33_pembayaran_1->selisih_jumlah = $selisih_jumlah;
-            $t33_pembayaran_1->selisih_jumlah = $t33_pembayaran_1->jumlah - ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->price) * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud);
+            $t33_pembayaran_1->selisih_jumlah = $t33_pembayaran_1->jumlah - ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value) * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud);
         }
 
         // array "dibayar oleh" tamu terpilih

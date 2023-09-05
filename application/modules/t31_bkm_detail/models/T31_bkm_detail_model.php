@@ -196,9 +196,10 @@ class T31_bkm_detail_model extends CI_Model
 
     function get_price_list($bkm_detail)
     {
+        // pre($bkm_detail); exit;
         $this->db->where_in('id', $bkm_detail);
-        $this->db->select_sum('price');
-        return $this->db->get($this->table)->row()->price;
+        $this->db->select_sum('price_1_value');
+        return $this->db->get($this->table)->row()->price_1_value;
     }
 
     // get all by bkm but not this bkm_detail
