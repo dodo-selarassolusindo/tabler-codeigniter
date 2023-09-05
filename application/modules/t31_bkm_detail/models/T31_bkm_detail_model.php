@@ -6,7 +6,7 @@ class T31_bkm_detail_model extends CI_Model
 
     public $table = 't31_bkm_detail';
     public $id = 'id';
-    public $order = 'DESC';
+    public $order = 'ASC';
 
     function __construct()
     {
