@@ -4,13 +4,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     <?php // $t33_pembayaran = $t33_pembayaran_data ?>
                     <form class="card" action="<?= $action ?>" method="post">
+                        <div class="card-header">
+                            <h3 class="card-title">PEMBAYARAN</h3>
+                        </div>
                         <div class="card-body">
 
                             <!-- tamu terpilih -->
                             <div class="row row-cards">
-                                <div class="col-md-1">
+                                <!-- <div class="col-md-1">
                                     <div class="mb-3"><label class="form-label"><strong>No</strong></label><label class="col-form-label">1</label></div>
-                                </div>
+                                </div> -->
                                 <div class="col-md-2">
                                     <div class="mb-3">
                                         <label class="form-label"><strong>Name</strong></label>
@@ -46,9 +49,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                             <!-- tamu yang dibayari oleh tamu terpilih -->
                             <div class="row row-cards">
-                                <div class="col-md-1">
+                                <!-- <div class="col-md-1">
                                     <div class="mb-3"><label class="col-form-label">2</label></div>
-                                </div>
+                                </div> -->
                                 <div class="col-md-11">
                                     <div class="mb-3">
                                         <select class="form-control select2" name="bkm_detail_for[]" multiple="multiple" id="list_bkm_detail">
@@ -73,9 +76,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                             <!-- selisih -->
                             <div class="row row-cards">
-                                <div class="col-md-1">
+                                <!-- <div class="col-md-1">
                                     <div class="mb-3"><label class="col-form-label">3</label></div>
-                                </div>
+                                </div> -->
                                 <div class="col-md-2">
                                     <div class="mb-3">
                                         <!-- <select class="form-control select2-selisih" name="selisih"> -->

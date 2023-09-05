@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="table-responsive">
                         <table class="table card-table table-vcenter text-nowrap datatable">
                             <tr>
-                                <th>No</th>
+                                <!-- <th>No</th> -->
                                 <th>Name</th>
                                 <th>Package</th>
                                 <th>Night</th>
@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <?php $t31_bkm_detail = $t31_bkm_detail_data ?>
                             <?php // foreach ($t31_bkm_detail_data as $t31_bkm_detail) { ?>
                             <tr>
-                                <td><?= ++$start ?></td>
+                                <!-- <td><?= ++$start ?></td> -->
                                 <td><?= $t31_bkm_detail->name ?></td>
                                 <td><?= $t31_bkm_detail->package ?></td>
                                 <td><?= $t31_bkm_detail->night ?></td>
