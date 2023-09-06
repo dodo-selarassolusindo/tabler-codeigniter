@@ -21,6 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <?= $this->T31_bkm_detail_model->get_by_id($t33_pembayaran_1->bkm_detail)->name ?>
                                         </label>
                                         <input type="hidden" name="bkm_detail" id="bkm_detail_utama" value="<?= $t33_pembayaran_1->bkm_detail ?>">
+                                        <input type="hidden" name="price_rp_utama" id="price_rp_utama" value="<?= $price_rp_utama ?>">
                                     </div>
                                 </div>
                                 <!-- <div class="col-md-2">

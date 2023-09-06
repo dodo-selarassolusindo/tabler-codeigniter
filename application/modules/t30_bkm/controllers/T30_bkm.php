@@ -231,7 +231,7 @@ class T30_bkm extends CI_Controller
 
         $price = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value;
         $rate = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud;
-        $price_rp = $price * $rate;
+        $price_rp_utama = $price * $rate;
 
         if (!$t33_pembayaran_1) {
             /**
@@ -260,7 +260,7 @@ class T30_bkm extends CI_Controller
                 /**
                  * jika sudah ada data pembayaran tapi belum ada data selisih
                  */
-                $t33_pembayaran_1->selisih_jumlah = $jumlah - $price_rp;
+                $t33_pembayaran_1->selisih_jumlah = $jumlah - $price_rp_utama;
             }
         }
 
@@ -296,6 +296,7 @@ class T30_bkm extends CI_Controller
             'rate_usd' => $rate_usd,
             'rate_aud' => $rate_aud,
             'price_rp' => $price_rp,
+            'price_rp_utama' => $price_rp_utama,
         );
         $t33_pembayaran = $this->load->view('t33_pembayaran/t33_pembayaran_form', $data, true);
 
