@@ -107,7 +107,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="mb-3 input-group">
                                         <label class="col-form-label pe-2">Rp. </label>
                                         <input type="text" class="form-control rupiah" name="selisih_jumlah" id="selisih_jumlah" value="<?= $t33_pembayaran_1->selisih_jumlah ?>" />
-                                        <!-- <input type="text" name="" value="<?= $total_terbayar ?>"> -->
+                                        <!-- <input type="text" name="" value="<?= $price_rp ?>"> -->
                                     </div>
                                 </div>
                             </div>

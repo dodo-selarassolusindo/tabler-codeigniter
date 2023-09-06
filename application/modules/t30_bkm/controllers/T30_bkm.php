@@ -217,6 +217,7 @@ class T30_bkm extends CI_Controller
 
         // pembayaran dirinya sendiri
         $price = 0; // price
+        $price_rp = 0; // price rupiah
         $jumlah = 0; // payment
         $selisih_jumlah = 0; // selisih antara price dan payment
 
@@ -227,12 +228,17 @@ class T30_bkm extends CI_Controller
          *
          */
 
+        $price = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value;
+        $rate = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud;
+        $price_rp = $price * $rate;
+
         if (!$t33_pembayaran_1) {
             /**
              * jika belum ada data pembayaran
              */
-            $price = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value;
-            $rate = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud;
+            // $price = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value;
+            // $rate = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud;
+            // $price_rp = $price * $rate;
             $jumlah = 0; // payment
             $selisih_jumlah = 0; // selisih antara price dan payment
             $t33_pembayaran_1 = (object) array(
@@ -246,40 +252,36 @@ class T30_bkm extends CI_Controller
                 'selisih_jumlah' => -($price * $rate),
             );
         } else {
-            $price = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value;
-            $rate = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud;
+            // $price = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value;
+            // $rate = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud;
             $jumlah = $t33_pembayaran_1->jumlah;
             if ($t33_pembayaran_1->selisih === null) {
                 /**
                  * jika sudah ada data pembayaran tapi belum ada data selisih
                  */
-                $t33_pembayaran_1->selisih_jumlah = $jumlah - ($price * $rate);
+                $t33_pembayaran_1->selisih_jumlah = $jumlah - $price_rp;
             }
         }
 
         // array "dibayar oleh" tamu terpilih
-        $total_terbayar = 0;
         $tamu_terbayar = array();
         $t33_pembayaran_2 = $this->T33_pembayaran_model->get_all_by_dibayar_oleh($bkm_detail);
-
-        // $price = $this->T31_bkm_detail_model->get_by_id($row->bkm_detail)->price_1_value;
-        $rate = $this->T31_bkm_detail_model->get_by_id($row->bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud;
-        $jumlah = 0;
-        $selisih_jumlah = 0;
 
         if ($t33_pembayaran_2) {
             /**
              * jika sudah ada data tamu yang dibayarkan oleh tamu terpilih
              */
             foreach($t33_pembayaran_2 as $row) {
-                $price += $this->T31_bkm_detail_model->get_by_id($row->bkm_detail)->price_1_value;
+                $price = $this->T31_bkm_detail_model->get_by_id($row->bkm_detail)->price_1_value;
                 $rate = $this->T31_bkm_detail_model->get_by_id($row->bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud;
-                $jumlah = 0;
+                $price_rp += ($price * $rate);
+                $jumlah += ($price * $rate);
                 $selisih_jumlah = 0;
                 $tamu_terbayar[] = $row->bkm_detail;
-                $total_terbayar += $price * $rate;
             }
         }
+
+        // $price_rp += $price * $rate;
 
         $kembali = 't30_bkm/detail/'.$bkm;
 
@@ -292,7 +294,7 @@ class T30_bkm extends CI_Controller
             'arr_bayar' => $arr_bayar,
             'rate_usd' => $rate_usd,
             'rate_aud' => $rate_aud,
-            'total_terbayar' => $total_terbayar,
+            'price_rp' => $price_rp,
         );
         $t33_pembayaran = $this->load->view('t33_pembayaran/t33_pembayaran_form', $data, true);
 
