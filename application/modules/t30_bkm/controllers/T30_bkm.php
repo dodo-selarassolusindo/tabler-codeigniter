@@ -231,14 +231,19 @@ class T30_bkm extends CI_Controller
             /**
              * jika belum ada data pembayaran
              */
+            $price = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value;
+            $rate = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud;
+            $jumlah = 0; // payment
+            $selisih_jumlah = 0; // selisih antara price dan payment
             $t33_pembayaran_1 = (object) array(
                 'bkm_detail' => $bkm_detail,
                 'mata_uang' => -1,
                 // 'jumlah' => $jumlah,
-                'jumlah' => 0,
+                'price' => $price,
+                'jumlah' => $jumlah,
                 'selisih' => -1,
                 'selisih_mata_uang' => -1,
-                'selisih_jumlah' => -($this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud)),
+                'selisih_jumlah' => -($price * $rate),
             );
         } else {
             if ($t33_pembayaran_1->selisih === null) {
@@ -255,10 +260,14 @@ class T30_bkm extends CI_Controller
         $total_terbayar = 0;
         $tamu_terbayar = array();
         $t33_pembayaran_2 = $this->T33_pembayaran_model->get_all_by_dibayar_oleh($bkm_detail);
+
         if ($t33_pembayaran_2) {
+            /**
+             * jika sudah ada data tamu yang dibayarkan oleh tamu terpilih
+             */
             foreach($t33_pembayaran_2 as $row) {
                 $tamu_terbayar[] = $row->bkm_detail;
-                $total_terbayar += $this->T31_bkm_detail_model->get_by_id($row->bkm_detail)->price * $rate_usd;
+                $total_terbayar += $this->T31_bkm_detail_model->get_by_id($row->bkm_detail)->price_1_value * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud);
             }
         }
 
