@@ -327,6 +327,9 @@ class T30_bkm extends CI_Controller
                 $data = array(
                     'mata_uang' => $this->input->post('mata_uang',TRUE),
                     'jumlah' => $this->input->post('jumlah',TRUE),
+                    'selisih' => $this->input->post('selisih',TRUE) === -1 ? null : $this->input->post('selisih',TRUE),
+                    'selisih_mata_uang' => $this->input->post('selisih',TRUE) === -1 ? null : 1,
+                    'selisih_jumlah' => $this->input->post('selisih',TRUE) === -1 ? null : $this->input->post('selisih_jumlah',TRUE),
                 );
                 $this->T33_pembayaran_model->update_by_bkm_detail($this->input->post('bkm_detail', TRUE), $data);
                 $this->session->set_flashdata('message', 'Update Data Success');
@@ -339,6 +342,9 @@ class T30_bkm extends CI_Controller
                 'dibayar_oleh' => $this->input->post('bkm_detail',TRUE),
                 'mata_uang' => $this->input->post('mata_uang',TRUE),
                 'jumlah' => $this->input->post('jumlah',TRUE),
+                'selisih' => $this->input->post('selisih',TRUE) == -1 ? null : $this->input->post('selisih',TRUE),
+                'selisih_mata_uang' => $this->input->post('selisih',TRUE) == -1 ? null : 1,
+                'selisih_jumlah' => $this->input->post('selisih',TRUE) == -1 ? null : $this->input->post('selisih_jumlah',TRUE),
             );
             $this->T33_pembayaran_model->insert($data);
             $this->session->set_flashdata('message', 'Insert Data Success');
