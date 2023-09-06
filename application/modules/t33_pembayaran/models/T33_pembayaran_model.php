@@ -37,6 +37,7 @@ class T33_pembayaran_model extends CI_Model
         //     $arr_bayar_sendiri[] = $row->bkm_detail;
         // }
         // pre($arr_bayar_sendiri); exit;
+        pre($arr_bayar); exit;
         return $arr_bayar;
     }
 
