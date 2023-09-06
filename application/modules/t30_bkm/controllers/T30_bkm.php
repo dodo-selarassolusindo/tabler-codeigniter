@@ -246,13 +246,14 @@ class T30_bkm extends CI_Controller
                 'selisih_jumlah' => -($price * $rate),
             );
         } else {
+            $price = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value;
+            $rate = $this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud;
+            $jumlah = $t33_pembayaran_1->jumlah;
             if ($t33_pembayaran_1->selisih === null) {
                 /**
                  * jika sudah ada data pembayaran tapi belum ada data selisih
                  */
-                $t33_pembayaran_1->selisih_jumlah =
-                    $t33_pembayaran_1->jumlah -
-                    ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->price_1_value) * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud);
+                $t33_pembayaran_1->selisih_jumlah = $jumlah - ($price * $rate);
             }
         }
 
