@@ -79,7 +79,8 @@ class T30_bkm extends CI_Controller
         // echo $this->T45_invvendor_model->getNewNomorInvvendor($_POST['tgl']);
         // pre($_POST['bkm_detail']);
         // echo '<script>alert("g")</script>';
-        echo $this->T31_bkm_detail_model->get_price_list($_POST['bkm_detail']) * $_POST['rate_usd'];
+        echo $_POST['jumlah'] - (($this->T31_bkm_detail_model->get_price_list($_POST['bkm_detail']) * $_POST['rate_usd']) +
+            ($this->T31_bkm_detail_model->get_price_list($_POST['bkm_detail_utama']) * $_POST['rate_usd']));
         // echo $this->T31_bkm_detail_model->get_price_list($_POST['bkm_detail']);
     }
 

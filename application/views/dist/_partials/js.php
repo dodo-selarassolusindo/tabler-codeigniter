@@ -663,6 +663,8 @@
                     type: "POST", //we are using POST method to submit the data to the server side
                     url: '<?php echo site_url() ?>t30_bkm/hitung_selisih', // get the route value
                     data: {
+                        jumlah: $('#jumlah').val(),
+                        bkm_detail_utama: $('#bkm_detail_utama').val(),
                         bkm_detail: $('#list_bkm_detail').val(),
                         rate_usd: $('#rate_usd').val(),
                         rate_aud: $('#rate_aud').val(),
