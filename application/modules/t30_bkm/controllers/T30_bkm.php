@@ -262,13 +262,22 @@ class T30_bkm extends CI_Controller
         $tamu_terbayar = array();
         $t33_pembayaran_2 = $this->T33_pembayaran_model->get_all_by_dibayar_oleh($bkm_detail);
 
+        // $price = $this->T31_bkm_detail_model->get_by_id($row->bkm_detail)->price_1_value;
+        $rate = $this->T31_bkm_detail_model->get_by_id($row->bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud;
+        $jumlah = 0;
+        $selisih_jumlah = 0;
+
         if ($t33_pembayaran_2) {
             /**
              * jika sudah ada data tamu yang dibayarkan oleh tamu terpilih
              */
             foreach($t33_pembayaran_2 as $row) {
+                $price += $this->T31_bkm_detail_model->get_by_id($row->bkm_detail)->price_1_value;
+                $rate = $this->T31_bkm_detail_model->get_by_id($row->bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud;
+                $jumlah = 0;
+                $selisih_jumlah = 0;
                 $tamu_terbayar[] = $row->bkm_detail;
-                $total_terbayar += $this->T31_bkm_detail_model->get_by_id($row->bkm_detail)->price_1_value * ($this->T31_bkm_detail_model->get_by_id($bkm_detail)->mata_uang == 'USD' ? $rate_usd : $rate_aud);
+                $total_terbayar += $price * $rate;
             }
         }
 
