@@ -688,15 +688,9 @@
 
             $('#jumlah').on('change', function()
             {
-                // alert('a')
                 var jumlah = $(this).val()
                 var price_rp_utama = $('#price_rp_utama').val()
-                // console.log(jumlah)
-                // console.log(price_rp_utama)
-                // $('#selisih_jumlah').value = (parseFloat(jumlah) - parseFloat(price_rp_utama))
                 document.getElementById('selisih_jumlah').value = (parseFloat(jumlah) - parseFloat(price_rp_utama))
-                // console.log($('#selisih_jumlah').val())
-                // console.log(parseFloat(jumlah) - parseFloat(price_rp_utama))
             })
 
             // $(".bkm_detail").dataTable({
