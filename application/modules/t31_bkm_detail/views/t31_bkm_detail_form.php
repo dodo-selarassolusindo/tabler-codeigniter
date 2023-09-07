@@ -34,24 +34,31 @@ $this->load->view('dist/_partials/header');
                 <div class="card">
                     <form action="<?php echo $action; ?>" method="post" class="card">
                         <div class="card-body">
-                            <div class="mb-3">
+                            <!-- <div class="mb-3">
                                 <label class="form-label required" for="bkm">Bkm <?php echo form_error('bkm') ?></label>
                                 <div><input type="text" class="form-control" name="bkm" id="bkm" placeholder="Bkm" value="<?php echo $bkm; ?>" /></div>
-                            </div>
+                            </div> -->
+                            <input type="hidden" name="bkm" value="<?php echo $bkm; ?>" />
                             <div class="mb-3">
                                 <label class="form-label required" for="name">Name <?php echo form_error('name') ?></label>
                                 <div><input type="text" class="form-control" name="name" id="name" placeholder="Name" value="<?php echo $name; ?>" /></div>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label required" for="mf">Mf <?php echo form_error('mf') ?></label>
-                                <div><input type="text" class="form-control" name="mf" id="mf" placeholder="Mf" value="<?php echo $mf; ?>" /></div>
+                                <label class="form-label required" for="mf">Male/Female <?php echo form_error('mf') ?></label>
+                                <div>
+                                    <!-- <input type="text" class="form-control" name="mf" id="mf" placeholder="Mf" value="<?php echo $mf; ?>" /> -->
+                                    <select class="form-control" name="mf" id="mf">
+                                        <option value="Male" <?= $mf == 'Male' ? 'selected' : '' ?>>Male</option>
+                                        <option value="Female" <?= $mf == 'Female' ? 'selected' : '' ?>>Female</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label required" for="country">Country <?php echo form_error('country') ?></label>
                                 <div><input type="text" class="form-control" name="country" id="country" placeholder="Country" value="<?php echo $country; ?>" /></div>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label required" for="id_number">Id Number <?php echo form_error('id_number') ?></label>
+                                <label class="form-label required" for="id_number">ID Number <?php echo form_error('id_number') ?></label>
                                 <div><input type="text" class="form-control" name="id_number" id="id_number" placeholder="Id Number" value="<?php echo $id_number; ?>" /></div>
                             </div>
                             <div class="mb-3">
