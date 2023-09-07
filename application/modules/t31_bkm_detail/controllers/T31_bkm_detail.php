@@ -168,6 +168,15 @@ class T31_bkm_detail extends CI_Controller
     {
         $row = $this->T31_bkm_detail_model->get_by_id($id);
         if ($row) {
+            // master bkm
+            $t30_bkm = $this->T30_bkm_model->get_by_id($row->bkm);
+            $data = array(
+                't30_bkm_data' => $t30_bkm,
+                // 'start' => $start,
+            );
+            $t30_bkm = $this->load->view('t30_bkm/t30_bkm_wo_search', $data, true);
+
+            // detail bkm
             $data = array(
                 'button' => 'Update',
                 'action' => site_url('t31_bkm_detail/update_action'),
@@ -197,6 +206,7 @@ class T31_bkm_detail extends CI_Controller
                 'fee_tanas' => set_value('fee_tanas', $row->fee_tanas),
                 'fee_tanas_value' => set_value('fee_tanas_value', $row->fee_tanas_value),
                 'price_2' => set_value('price_2', $row->price_2),
+                't30_bkm' => $t30_bkm,
             );
             $this->load->view('t31_bkm_detail/t31_bkm_detail_form', $data);
         } else {

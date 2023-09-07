@@ -25,6 +25,13 @@ $this->load->view('dist/_partials/header');
         <div class="row row-cards">
             <div class="col-12">
                 <div class="card">
+                    <?= $t30_bkm ?>
+                </div>
+            </div>
+        </div>
+        <div class="row row-cards">
+            <div class="col-12">
+                <div class="card">
                     <form action="<?php echo $action; ?>" method="post" class="card">
                         <div class="card-body">
                             <div class="mb-3">
