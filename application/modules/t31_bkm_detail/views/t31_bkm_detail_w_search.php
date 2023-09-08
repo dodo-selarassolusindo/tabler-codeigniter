@@ -33,20 +33,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <th rowspan="2">Name</th>
                                     <th rowspan="2">Package</th>
                                     <th rowspan="2">Night</th>
-                                    <th>&nbsp;</th>
-                                    <!-- <th rowspan="2">Check In</th>
-                                    <th rowspan="2">Check Out</th>
-                                    <th rowspan="2">Agent</th>
-                                    <th rowspan="2">Price List</th>
-                                    <th rowspan="2">Price #1</th>
-                                    <th rowspan="2">Fee Taman Nasional</th>
-                                    <th rowspan="2">Price #2</th>
-                                    <th rowspan="2">Remarks</th>
-                                    <th colspan="8" class="text-center">Payment</th>
-                                    <th rowspan="2">Proses Data</th> -->
+                                    <!-- <th>&nbsp;</th> -->
+                                    <th style="padding-right: 0px;padding-left: 0px;width: 1px;">&nbsp;</th>
                                 </tr>
                                 <tr>
-                                    <td>&nbsp;</td>
+                                    <!-- <td>&nbsp;</td> -->
+                                    <td style="padding-right: 0px;padding-left: 0px;width: 1px;">&nbsp;</td>
                                 </tr>
                                 <!-- <tr>
                                     <?php foreach($this->T07_kolom_payment_model->get_all() as $row) { ?>
@@ -60,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <td><?= $t31_bkm_detail->name ?></td>
                                     <td><?= $t31_bkm_detail->package ?></td>
                                     <td><?= $t31_bkm_detail->night ?></td>
+                                    <td style="padding-right: 0px;padding-left: 0px;width: 1px;">&nbsp;</td>
                                     <!-- <td><?= date_dmy($t31_bkm_detail->check_in) ?></td>
                                     <td><?= date_dmy($t31_bkm_detail->check_out) ?></td>
                                     <td><?= $t31_bkm_detail->agent ?></td>
