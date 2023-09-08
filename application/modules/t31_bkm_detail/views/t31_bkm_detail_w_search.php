@@ -95,10 +95,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="table-responsive">
                             <table class="table card-table table-vcenter text-nowrap datatable bkm_detail">
                                 <tr>
-                                    <th rowspan="2">No</th>
-                                    <th rowspan="2">Name</th>
-                                    <th rowspan="2">Package</th>
-                                    <th rowspan="2">Night</th>
+                                    <!-- <th rowspan="2">No</th> -->
+                                    <!-- <th rowspan="2">Name</th> -->
+                                    <!-- <th rowspan="2">Package</th> -->
+                                    <!-- <th rowspan="2">Night</th> -->
                                     <th rowspan="2">Check In</th>
                                     <th rowspan="2">Check Out</th>
                                     <th rowspan="2">Agent</th>
@@ -115,13 +115,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <th class="text-center"><?= $row->nama ?></th>
                                     <?php } ?>
                                 </tr>
+                                <?php
+                                $style = 'style="padding-top: 0px; padding-bottom: 0px; border-bottom-width: 0px; border-top-width: 0px; "'?>
                                 <?php foreach ($t31_bkm_detail_data as $t31_bkm_detail) { ?>
                                     <?php //pre($t31_bkm_detail); //exit; ?>
                                 <tr>
-                                    <td><?= ++$start ?></td>
-                                    <td><?= $t31_bkm_detail->name ?></td>
-                                    <td><?= $t31_bkm_detail->package ?></td>
-                                    <td><?= $t31_bkm_detail->night ?></td>
+                                    <!-- <td><?= ++$start ?></td> -->
+                                    <!-- <td><?= $t31_bkm_detail->name ?></td> -->
+                                    <!-- <td><?= $t31_bkm_detail->package ?></td> -->
+                                    <!-- <td><?= $t31_bkm_detail->night ?></td> -->
                                     <td><?= date_dmy($t31_bkm_detail->check_in) ?></td>
                                     <td><?= date_dmy($t31_bkm_detail->check_out) ?></td>
                                     <td><?= $t31_bkm_detail->agent ?></td>
@@ -135,19 +137,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <td class="text-right"><?php eval($var) ?></td>
                                     <?php } ?>
                                     <td>
-                                    <!-- <?php
+                                    <?php
                                     if ($this->T33_pembayaran_model->get_by_bkm_detail($t31_bkm_detail->id)) {
                                         if ($this->T33_pembayaran_model->get_by_bkm_detail($t31_bkm_detail->id)->dibayar_oleh == $t31_bkm_detail->id) {
-                                            echo anchor(site_url('t30_bkm/pembayaran/'.$t31_bkm_detail->bkm.'/'.$t31_bkm_detail->id),'Edit Bayar','class="btn btn-primary btn-sm"');
+                                            echo anchor(site_url('t30_bkm/pembayaran/'.$t31_bkm_detail->bkm.'/'.$t31_bkm_detail->id),'Edit Bayar','class="btn btn-primary btn-sm m-0" '.$style);
                                             echo ' ';
                                         }
                                     } else {
-                                        echo anchor(site_url('t30_bkm/pembayaran/'.$t31_bkm_detail->bkm.'/'.$t31_bkm_detail->id),'Bayar','class="btn btn-primary btn-sm"');
+                                        echo anchor(site_url('t30_bkm/pembayaran/'.$t31_bkm_detail->bkm.'/'.$t31_bkm_detail->id),'Bayar','class="btn btn-primary btn-sm m-0" '.$style);
                                         echo ' ';
                                     }
-                                    echo anchor(site_url('t31_bkm_detail/update/'.$t31_bkm_detail->id),'Ubah','class="btn btn-primary btn-sm"');
-                                    ?> -->
-                                    &nbsp;
+                                    echo anchor(site_url('t31_bkm_detail/update/'.$t31_bkm_detail->id),'Ubah','class="btn btn-primary btn-sm m-0" '.$style);
+                                    ?>
+
                                     </td>
                                 </tr>
                                 <?php } ?>
