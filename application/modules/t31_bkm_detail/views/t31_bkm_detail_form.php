@@ -93,7 +93,7 @@ $this->load->view('dist/_partials/header');
                             <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="check_in">Check In <?php echo form_error('check_in') ?></label>
                                 <div class="col">
-                                    <input type="text" class="form-control date_dmy" name="check_in" id="check_in" placeholder="Check In" value="<?= date_dmy($check_in) ?>" />
+                                    <input readonly type="text" class="form-control date_dmy" name="check_in" id="check_in" placeholder="Check In" value="<?= date_dmy($check_in) ?>" />
                                 </div>
                             </div>
 
