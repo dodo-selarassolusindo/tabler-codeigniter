@@ -17,10 +17,6 @@ class T04_package_model extends CI_Model
     function get_all_by_periode($id)
     {
         $this->db->where($this->id, $id);
-        // $row = $this->db->get($this->table)->row();
-        // pre($id); exit;
-        // $periode = ;
-
         $this->db->where('periode', $this->db->get($this->table)->row()->periode);
         $this->db->order_by($this->id, $this->order);
         return $this->db->get($this->table)->result();
