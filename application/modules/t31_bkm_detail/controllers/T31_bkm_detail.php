@@ -10,6 +10,7 @@ class T31_bkm_detail extends CI_Controller
         $this->load->model('T31_bkm_detail_model');
         $this->load->library('form_validation');
         $this->load->model('t30_bkm/T30_bkm_model');
+        $this->load->model('t04_package/T04_package_model');
     }
 
     public function index()
@@ -207,6 +208,8 @@ class T31_bkm_detail extends CI_Controller
                 'fee_tanas_value' => set_value('fee_tanas_value', $row->fee_tanas_value),
                 'price_2' => set_value('price_2', $row->price_2),
                 't30_bkm' => $t30_bkm,
+                'kembali' => 't30_bkm/detail/' . $row->bkm,
+                't04_package_data' => $this->T04_package_model->get_all_by_periode($row->package_id),
             );
             $this->load->view('t31_bkm_detail/t31_bkm_detail_form', $data);
         } else {
@@ -229,8 +232,8 @@ class T31_bkm_detail extends CI_Controller
                 'id_number' => $this->input->post('id_number',TRUE),
                 'package' => $this->input->post('package',TRUE),
                 'night' => $this->input->post('night',TRUE),
-                'check_in' => $this->input->post('check_in',TRUE),
-                'check_out' => $this->input->post('check_out',TRUE),
+                'check_in' => date_ymd($this->input->post('check_in',TRUE)),
+                'check_out' => date_ymd($this->input->post('check_out',TRUE)),
                 'agent' => $this->input->post('agent',TRUE),
                 'mata_uang' => $this->input->post('mata_uang',TRUE),
                 'price' => $this->input->post('price',TRUE),

@@ -12,6 +12,7 @@
         <script src="<?= base_url() ?>/assets/js/jquery-1.11.2.min.js"></script>
         <script src="<?= base_url() ?>/assets/select2/js/select2.min.js"></script>
         <script src="<?= base_url() ?>/assets/js/jquery.inputmask.bundle.js"></script>
+        <script src="<?= base_url() ?>/assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 
         <?php if ($this->uri->segment(1) == '') { ?>
         <script>
@@ -693,15 +694,12 @@
                 document.getElementById('selisih_jumlah').value = (parseFloat(jumlah) - parseFloat(price_rp_utama))
             })
 
-            // $(".bkm_detail").dataTable({
-            //     //"ordering": true,
-            //     // "columnDefs": [
-            //     //     { "targets": '_all', "className": 'dt-body-nowrap' }
-            //     // ],
-            //     "fixedColumns": {
-            //         left: 4
-            //     },
-            //     // scrollCollapse: true,
-            // });
+            $('.date_dmy').datepicker({
+                format: "dd-mm-yyyy",
+                todayBtn: "linked",
+                autoclose: true,
+                todayHighlight: true
+            });
+
         });
         </script>
