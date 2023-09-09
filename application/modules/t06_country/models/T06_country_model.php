@@ -6,7 +6,7 @@ class T06_country_model extends CI_Model
 
     public $table = 't06_country';
     public $id = 'id_country';
-    public $order = 'DESC';
+    public $order = 'ASC';
 
     function __construct()
     {
@@ -16,7 +16,8 @@ class T06_country_model extends CI_Model
     // get all
     function get_all()
     {
-        $this->db->order_by($this->id, $this->order);
+        // $this->db->order_by($this->id, $this->order);
+        $this->db->order_by('country_name', $this->order);
         return $this->db->get($this->table)->result();
     }
 

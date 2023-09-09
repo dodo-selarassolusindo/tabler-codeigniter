@@ -11,6 +11,7 @@ class T31_bkm_detail extends CI_Controller
         $this->load->library('form_validation');
         $this->load->model('t30_bkm/T30_bkm_model');
         $this->load->model('t04_package/T04_package_model');
+        $this->load->model('t06_country/T06_country_model');
     }
 
     public function index()
@@ -210,6 +211,7 @@ class T31_bkm_detail extends CI_Controller
                 't30_bkm' => $t30_bkm,
                 'kembali' => 't30_bkm/detail/' . $row->bkm,
                 't04_package_data' => $this->T04_package_model->get_all_by_periode($row->package_id),
+                't06_country_data' => $this->T06_country_model->get_all(),
             );
             $this->load->view('t31_bkm_detail/t31_bkm_detail_form', $data);
         } else {

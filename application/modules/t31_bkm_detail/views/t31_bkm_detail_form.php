@@ -41,7 +41,7 @@ $this->load->view('dist/_partials/header');
                             <input type="hidden" name="bkm" value="<?php echo $bkm; ?>" />
 
                             <div class="mb-3 row">
-                                <label class="col-2 col-form-label required">Name <?php echo form_error('name') ?></label>
+                                <label class="col-2 col-form-label required" for="name">Name <?php echo form_error('name') ?></label>
                                 <div class="col"><input type="text" class="form-control" name="name" id="name" placeholder="Name" value="<?php echo $name; ?>"></div>
                             </div>
 
@@ -57,12 +57,20 @@ $this->load->view('dist/_partials/header');
 
                             <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="country">Country <?php echo form_error('country') ?></label>
-                                <div class="col"><input type="text" class="form-control" name="country" id="country" placeholder="Country" value="<?php echo $country; ?>" /></div>
+                                <div class="col">
+                                    <!-- <input type="text" class="form-control" name="country" id="country" placeholder="Country" value="<?php echo $country; ?>" /> -->
+                                    <select class="form-control" name="country" id="country">
+                                        <option value="-1">-</option>
+                                        <?php foreach($t06_country_data as $row) { ?>
+                                        <option value="<?= $row->id_country ?>" <?= $row->id_country == $country ? 'selected' : '' ?>><?= $row->country_name ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="id_number">ID Number <?php echo form_error('id_number') ?></label>
-                                <div class="col"><input type="text" class="form-control" name="id_number" id="id_number" placeholder="Id Number" value="<?php echo $id_number; ?>" /></div>
+                                <div class="col"><input type="text" class="form-control" name="id_number" id="id_number" placeholder="ID Number" value="<?php echo $id_number; ?>" /></div>
                             </div>
 
                             <div class="mb-3 row">
