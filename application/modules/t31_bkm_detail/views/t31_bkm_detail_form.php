@@ -88,16 +88,14 @@ $this->load->view('dist/_partials/header');
                             <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="night">Night <?php echo form_error('night') ?></label>
                                 <div class="col">
-                                    <input disabled type="text" class="form-control" id="night" placeholder="Night" value="<?= $night ?>" />
-                                    <input type="hidden" name="night" value="<?= $night ?>" />
+                                    <input type="text" class="form-control" name="night" id="night" placeholder="Night" value="<?= $night ?>" />
                                 </div>
                             </div>
 
                             <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="check_in">Check In <?php echo form_error('check_in') ?></label>
                                 <div class="col">
-                                    <input disabled type="text" class="form-control" id="check_in" placeholder="Check In" value="<?= date_dmy($check_in) ?>" />
-                                    <input type="hidden" name="check_in" value="<?= date_dmy($check_in) ?>" />
+                                    <input disabled type="text" class="form-control" name="check_in" id="check_in" placeholder="Check In" value="<?= date_dmy($check_in) ?>" />
                                 </div>
                             </div>
 

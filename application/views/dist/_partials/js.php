@@ -742,10 +742,18 @@
 
         function ubah_check_in()
         {
-            var night = $('#night-bdf').val()
-            var check_out = new Date($('#check_out-bdf').val().split('-').reverse().join('-'))
+            var night = $('#night').val()
+            var check_out = new Date($('#check_out').val().split('-').reverse().join('-'))
             var check_in = new Date(check_out.getTime() - (night * (1000 * 3600 * 24)))
             let format_tgl = appendLeadingZeroes(check_in.getDate()) + "-" + appendLeadingZeroes(check_in.getMonth() + 1) + "-" + check_in.getFullYear()
             $('#check_in').val(format_tgl)
+        }
+
+        function appendLeadingZeroes(n)
+        {
+            if (n <= 9) {
+                return "0" + n;
+            }
+            return n
         }
         </script>
