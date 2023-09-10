@@ -79,7 +79,7 @@ $this->load->view('dist/_partials/header');
                                     <!-- <input type="text" class="form-control" name="package" id="package" placeholder="Package" value="<?php echo $package; ?>" /> -->
                                     <select class="form-control" name="package" id="package">
                                         <?php foreach($t04_package_data as $row) { ?>
-                                        <option value="<?= $row->id ?>" <?= $row->id == $package ? 'selected' : '' ?>><?= $row->nama ?></option>
+                                        <option value="<?= $row->id ?>" <?= $row->id == $package_id ? 'selected' : '' ?>><?= $row->nama ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -93,7 +93,7 @@ $this->load->view('dist/_partials/header');
                             <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="check_in">Check In <?php echo form_error('check_in') ?></label>
                                 <div class="col">
-                                    <input readonly type="text" class="form-control date_dmy" name="check_in" id="check_in" placeholder="Check In" value="<?= date_dmy($check_in) ?>" />
+                                    <input readonly type="text" class="form-control" name="check_in" id="check_in" placeholder="Check In" value="<?= date_dmy($check_in) ?>" />
                                 </div>
                             </div>
 
@@ -104,17 +104,29 @@ $this->load->view('dist/_partials/header');
 
                             <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="agent">Agent <?php echo form_error('agent') ?></label>
-                                <div class="col"><input type="text" class="form-control" name="agent" id="agent" placeholder="Agent" value="<?php echo $agent; ?>" /></div>
+                                <div class="col">
+                                    <!-- <input type="text" class="form-control" name="agent" id="agent" placeholder="Agent" value="<?php echo $agent; ?>" /> -->
+                                    <select class="form-control" name="agent" id="agent">
+                                        <option value="-1">-</option>
+                                        <?php foreach($t05_agent_data as $row) { ?>
+                                        <option value="<?= $row->id ?>" <?= $row->id == $agent ? 'selected' : '' ?>><?= $row->nama ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
                             </div>
 
-                            <div class="mb-3 row">
+                            <!-- <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="mata_uang">Mata Uang <?php echo form_error('mata_uang') ?></label>
                                 <div class="col"><input type="text" class="form-control" name="mata_uang" id="mata_uang" placeholder="Mata Uang" value="<?php echo $mata_uang; ?>" /></div>
-                            </div>
+                            </div> -->
 
                             <div class="mb-3 row">
-                                <label class="col-2 col-form-label required" for="price">Price <?php echo form_error('price') ?></label>
-                                <div class="col"><input type="text" class="form-control" name="price" id="price" placeholder="Price" value="<?php echo $price; ?>" /></div>
+                                <label class="col-2 col-form-label required" for="price">Price List <?php echo form_error('price') ?></label>
+                                <div class="col">
+                                    <input disabled type="text" class="form-control" id="price" placeholder="Price" value="<?= $mata_uang . ' ' . $price ?>">
+                                    <input type="hidden" name="mata_uang" value="<?= $mata_uang ?>">
+                                    <input type="hidden" name="price" value="<?= $price ?>">
+                                </div>
                             </div>
 
                             <div class="mb-3 row">

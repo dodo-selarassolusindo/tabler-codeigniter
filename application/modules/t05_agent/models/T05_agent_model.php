@@ -6,7 +6,7 @@ class T05_agent_model extends CI_Model
 
     public $table = 't05_agent';
     public $id = 'id';
-    public $order = 'DESC';
+    public $order = 'ASC';
 
     function __construct()
     {
@@ -23,7 +23,8 @@ class T05_agent_model extends CI_Model
     // get all
     function get_all()
     {
-        $this->db->order_by($this->id, $this->order);
+        // $this->db->order_by($this->id, $this->order);
+        $this->db->order_by('nama', $this->order);
         return $this->db->get($this->table)->result();
     }
 

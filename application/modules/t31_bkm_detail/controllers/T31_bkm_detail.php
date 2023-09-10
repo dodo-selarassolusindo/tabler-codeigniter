@@ -12,6 +12,7 @@ class T31_bkm_detail extends CI_Controller
         $this->load->model('t30_bkm/T30_bkm_model');
         $this->load->model('t04_package/T04_package_model');
         $this->load->model('t06_country/T06_country_model');
+        $this->load->model('t05_agent/T05_agent_model');
     }
 
     public function index()
@@ -187,7 +188,7 @@ class T31_bkm_detail extends CI_Controller
                 'name' => set_value('name', $row->name),
                 'mf' => set_value('mf', $row->mf),
                 'country' => set_value('country', $row->country),
-                'id_number' => set_value('id_number', $row->id_number),
+                'id_number' => set_value('id_number', ($row->id_number == null ? '-' : $row->id_number)),
                 'package' => set_value('package', $row->package),
                 'night' => set_value('night', $row->night),
                 'check_in' => set_value('check_in', $row->check_in),
@@ -212,6 +213,8 @@ class T31_bkm_detail extends CI_Controller
                 'kembali' => 't30_bkm/detail/' . $row->bkm,
                 't04_package_data' => $this->T04_package_model->get_all_by_periode($row->package_id),
                 't06_country_data' => $this->T06_country_model->get_all(),
+                't05_agent_data' => $this->T05_agent_model->get_all(),
+                'package_id' => $row->package_id,
             );
             $this->load->view('t31_bkm_detail/t31_bkm_detail_form', $data);
         } else {
