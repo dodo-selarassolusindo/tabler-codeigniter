@@ -806,7 +806,7 @@
         const count = pluginLis.length;
         const pluginsString = pluginLis.join('');
         const html = '<p><b>' + global$1.translate([
-          'Plugins installed ({0}):',
+          'Plugins installed ([0]):',
           count
         ]) + '</b></p>' + '<ul>' + pluginsString + '</ul>';
         return html;
@@ -841,7 +841,7 @@
       const htmlPanel = {
         type: 'htmlpanel',
         html: '<p>' + global$1.translate([
-          'You are using {0}',
+          'You are using [0]',
           changeLogLink
         ]) + '</p>',
         presets: 'document'

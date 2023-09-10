@@ -114,7 +114,7 @@ if ( ! function_exists('mdate'))
 		$datestr = str_replace(
 			'%\\',
 			'',
-			preg_replace('/([a-z]+?){1}/i', '\\\\\\1', $datestr)
+			preg_replace('/([a-z]+?)[1]/i', '\\\\\\1', $datestr)
 		);
 
 		return date($datestr, $time);
@@ -462,7 +462,7 @@ if ( ! function_exists('human_to_unix'))
 
 		$datestr = preg_replace('/\040+/', ' ', trim($datestr));
 
-		if ( ! preg_match('/^(\d{2}|\d{4})\-[0-9]{1,2}\-[0-9]{1,2}\s[0-9]{1,2}:[0-9]{1,2}(?::[0-9]{1,2})?(?:\s[AP]M)?$/i', $datestr))
+		if ( ! preg_match('/^(\d[2]|\d[4])\-[0-9]{1,2}\-[0-9]{1,2}\s[0-9]{1,2}:[0-9]{1,2}(?::[0-9]{1,2})?(?:\s[AP]M)?$/i', $datestr))
 		{
 			return FALSE;
 		}
@@ -514,7 +514,7 @@ if ( ! function_exists('nice_date'))
 		}
 
 		// Date like: YYYYMM
-		if (preg_match('/^\d{6}$/i', $bad_date))
+		if (preg_match('/^\d[6]$/i', $bad_date))
 		{
 			if (in_array(substr($bad_date, 0, 2), array('19', '20')))
 			{
@@ -531,13 +531,13 @@ if ( ! function_exists('nice_date'))
 		}
 
 		// Date Like: YYYYMMDD
-		if (preg_match('/^\d{8}$/i', $bad_date, $matches))
+		if (preg_match('/^\d[8]$/i', $bad_date, $matches))
 		{
 			return DateTime::createFromFormat('Ymd', $bad_date)->format($format);
 		}
 
 		// Date Like: MM-DD-YYYY __or__ M-D-YYYY (or anything in between)
-		if (preg_match('/^(\d{1,2})-(\d{1,2})-(\d{4})$/i', $bad_date, $matches))
+		if (preg_match('/^(\d{1,2})-(\d{1,2})-(\d[4])$/i', $bad_date, $matches))
 		{
 			return date($format, strtotime($matches[3].'-'.$matches[1].'-'.$matches[2]));
 		}

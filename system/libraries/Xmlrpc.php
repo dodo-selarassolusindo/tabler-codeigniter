@@ -1016,7 +1016,7 @@ class XML_RPC_Response
 	{
 		// Return a time in the localtime, or UTC
 		$t = 0;
-		if (preg_match('/([0-9]{4})([0-9]{2})([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})/', $time, $regs))
+		if (preg_match('/([0-9][4])([0-9][2])([0-9][2])T([0-9][2]):([0-9][2]):([0-9][2])/', $time, $regs))
 		{
 			$fnc = ($utc === TRUE) ? 'gmmktime' : 'mktime';
 			$t = $fnc($regs[4], $regs[5], $regs[6], $regs[2], $regs[3], $regs[1]);

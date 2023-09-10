@@ -3537,12 +3537,12 @@ const defaults = {
     download: null,
     vimeo: {
       sdk: 'https://player.vimeo.com/api/player.js',
-      iframe: 'https://player.vimeo.com/video/{0}?{1}',
-      api: 'https://vimeo.com/api/oembed.json?url={0}'
+      iframe: 'https://player.vimeo.com/video/[0]?[1]',
+      api: 'https://vimeo.com/api/oembed.json?url=[0]'
     },
     youtube: {
       sdk: 'https://www.youtube.com/iframe_api',
-      api: 'https://noembed.com/embed?url=https://www.youtube.com/watch?v={0}'
+      api: 'https://noembed.com/embed?url=https://www.youtube.com/watch?v=[0]'
     },
     googleIMA: {
       sdk: 'https://imasdk.googleapis.com/js/sdkloader/ima3.js'
@@ -3627,8 +3627,8 @@ const defaults = {
   },
   // Class hooks added to the player in different states
   classNames: {
-    type: 'plyr--{0}',
-    provider: 'plyr--{0}',
+    type: 'plyr--[0]',
+    provider: 'plyr--[0]',
     video: 'plyr__video-wrapper',
     embed: 'plyr__video-embed',
     videoFixedRatio: 'plyr__video-wrapper--fixed-ratio',
@@ -6206,15 +6206,15 @@ const media = {
     }
 
     // Add type class
-    toggleClass(this.elements.container, this.config.classNames.type.replace('{0}', this.type), true);
+    toggleClass(this.elements.container, this.config.classNames.type.replace('[0]', this.type), true);
 
     // Add provider class
-    toggleClass(this.elements.container, this.config.classNames.provider.replace('{0}', this.provider), true);
+    toggleClass(this.elements.container, this.config.classNames.provider.replace('[0]', this.provider), true);
 
     // Add video class for embeds
     // This will require changes if audio embeds are added
     if (this.isEmbed) {
-      toggleClass(this.elements.container, this.config.classNames.type.replace('{0}', 'video'), true);
+      toggleClass(this.elements.container, this.config.classNames.type.replace('[0]', 'video'), true);
     }
 
     // Inject the player wrapper
@@ -6827,7 +6827,7 @@ const parseVtt = vttDataString => {
     lines.forEach(line => {
       if (!is.number(result.startTime)) {
         // The line with start and end times on it is the first line of interest
-        const matchTimes = line.match(/([0-9]{2})?:?([0-9]{2}):([0-9]{2}).([0-9]{2,3})( ?--> ?)([0-9]{2})?:?([0-9]{2}):([0-9]{2}).([0-9]{2,3})/); // Note that this currently ignores caption formatting directives that are optionally on the end of this line - fine for non-captions VTT
+        const matchTimes = line.match(/([0-9][2])?:?([0-9][2]):([0-9][2]).([0-9]{2,3})( ?--> ?)([0-9][2])?:?([0-9][2]):([0-9][2]).([0-9]{2,3})/); // Note that this currently ignores caption formatting directives that are optionally on the end of this line - fine for non-captions VTT
 
         if (matchTimes) {
           result.startTime = Number(matchTimes[1] || 0) * 60 * 60 + Number(matchTimes[2]) * 60 + Number(matchTimes[3]) + Number(`0.${matchTimes[4]}`);

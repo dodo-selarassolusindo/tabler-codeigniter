@@ -9872,7 +9872,7 @@
 		 *      $('#example').dataTable( {
 		 *        "formatNumber": function ( toFormat ) {
 		 *          return toFormat.toString().replace(
-		 *            /\B(?=(\d{3})+(?!\d))/g, "'"
+		 *            /\B(?=(\d[3])+(?!\d))/g, "'"
 		 *          );
 		 *        };
 		 *      } );
@@ -9880,7 +9880,7 @@
 		 */
 		"fnFormatNumber": function ( toFormat ) {
 			return toFormat.toString().replace(
-				/\B(?=(\d{3})+(?!\d))/g,
+				/\B(?=(\d[3])+(?!\d))/g,
 				this.oLanguage.sInfoThousands
 			);
 		},

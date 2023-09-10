@@ -1853,7 +1853,7 @@
 	  }
 	  _insertThousandsSeparators(value) {
 	    const parts = value.split(this.radix);
-	    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, this.thousandsSeparator);
+	    parts[0] = parts[0].replace(/\B(?=(\d[3])+(?!\d))/g, this.thousandsSeparator);
 	    return parts.join(this.radix);
 	  }
 	  doPrepare(ch) {
@@ -7511,7 +7511,7 @@
 
 	var prefix = 'tblr-';
 	var hexToRgba = function hexToRgba(hex, opacity) {
-	  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+	  var result = /^#?([a-f\d][2])([a-f\d][2])([a-f\d][2])$/i.exec(hex);
 	  return result ? "rgba(".concat(parseInt(result[1], 16), ", ").concat(parseInt(result[2], 16), ", ").concat(parseInt(result[3], 16), ", ").concat(opacity, ")") : null;
 	};
 	var getColor = function getColor(color) {

@@ -469,7 +469,7 @@ class CI_Image_lib {
 				{
 					if (in_array($key, array('wm_font_color', 'wm_shadow_color'), TRUE))
 					{
-						if (preg_match('/^#?([0-9a-f]{3}|[0-9a-f]{6})$/i', $val, $matches))
+						if (preg_match('/^#?([0-9a-f][3]|[0-9a-f][6])$/i', $val, $matches))
 						{
 							/* $matches[1] contains our hex color value, but it might be
 							 * both in the full 6-length format or the shortened 3-length

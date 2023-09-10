@@ -1403,7 +1403,7 @@
           pattern: RegExp(/(^|[^\w$])/.source + '(?:' + (/NaN|Infinity/.source + '|' + /0[bB][01]+(?:_[01]+)*n?/.source + '|' + /0[oO][0-7]+(?:_[0-7]+)*n?/.source + '|' + /0[xX][\dA-Fa-f]+(?:_[\dA-Fa-f]+)*n?/.source + '|' + /\d+(?:_\d+)*n/.source + '|' + /(?:\d+(?:_\d+)*(?:\.(?:\d+(?:_\d+)*)?)?|\.\d+(?:_\d+)*)(?:[Ee][+-]?\d+(?:_\d+)*)?/.source) + ')' + /(?![\w$])/.source),
           lookbehind: true
         },
-        'operator': /--|\+\+|\*\*=?|=>|&&=?|\|\|=?|[!=]==|<<=?|>>>?=?|[-+*/%&|^!=<>]=?|\.{3}|\?\?=?|\?\.?|[~:]/
+        'operator': /--|\+\+|\*\*=?|=>|&&=?|\|\|=?|[!=]==|<<=?|>>>?=?|[-+*/%&|^!=<>]=?|\.[3]|\?\?=?|\?\.?|[~:]/
       });
       Prism.languages.javascript['class-name'][0].pattern = /(\b(?:class|extends|implements|instanceof|interface|new)\s+)[\w.\\]+/;
       Prism.languages.insertBefore('javascript', 'keyword', {
@@ -1465,7 +1465,7 @@
               alias: 'string'
             },
             'interpolation': {
-              pattern: /((?:^|[^\\])(?:\\{2})*)\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
+              pattern: /((?:^|[^\\])(?:\\[2])*)\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
               lookbehind: true,
               inside: {
                 'interpolation-punctuation': {
@@ -1666,7 +1666,7 @@
           /\b[A-Z_][A-Z0-9_]*\b(?!\s*\()/
         ];
         var number = /\b0b[01]+(?:_[01]+)*\b|\b0o[0-7]+(?:_[0-7]+)*\b|\b0x[\da-f]+(?:_[\da-f]+)*\b|(?:\b\d+(?:_\d+)*\.?(?:\d+(?:_\d+)*)?|\B\.\d+)(?:e[+-]?\d+)?/i;
-        var operator = /<?=>|\?\?=?|\.{3}|\??->|[!=]=?=?|::|\*\*=?|--|\+\+|&&|\|\||<<|>>|[?~]|[/^|%*&<>.+-]=?/;
+        var operator = /<?=>|\?\?=?|\.[3]|\??->|[!=]=?=?|::|\*\*=?|--|\+\+|&&|\|\||<<|>>|[?~]|[/^|%*&<>.+-]=?/;
         var punctuation = /[{}\[\](),:;]/;
         Prism.languages.php = {
           'delimiter': {
@@ -2036,7 +2036,7 @@
           }
         });
         var interpolation = {
-          pattern: /((?:^|[^\\])(?:\\{2})*)#\{(?:[^{}]|\{[^{}]*\})*\}/,
+          pattern: /((?:^|[^\\])(?:\\[2])*)#\{(?:[^{}]|\{[^{}]*\})*\}/,
           lookbehind: true,
           inside: {
             'content': {

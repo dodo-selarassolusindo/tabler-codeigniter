@@ -247,13 +247,13 @@ class T31_bkm_detail extends CI_Controller
                 'mata_uang' => $this->input->post('mata_uang',TRUE),
                 'price' => $this->input->post('price',TRUE),
                 'remarks' => $this->input->post('remarks',TRUE),
-                'usd' => $this->input->post('usd',TRUE),
-                'aud' => $this->input->post('aud',TRUE),
-                'paypal' => $this->input->post('paypal',TRUE),
-                'bca_dollar' => $this->input->post('bca_dollar',TRUE),
-                'rp' => $this->input->post('rp',TRUE),
-                'cc_bca' => $this->input->post('cc_bca',TRUE),
-                'cc_mandiri' => $this->input->post('cc_mandiri',TRUE),
+                // 'usd' => $this->input->post('usd',TRUE),
+                // 'aud' => $this->input->post('aud',TRUE),
+                // 'paypal' => $this->input->post('paypal',TRUE),
+                // 'bca_dollar' => $this->input->post('bca_dollar',TRUE),
+                // 'rp' => $this->input->post('rp',TRUE),
+                // 'cc_bca' => $this->input->post('cc_bca',TRUE),
+                // 'cc_mandiri' => $this->input->post('cc_mandiri',TRUE),
                 'price_1' => $this->input->post('price_1',TRUE),
                 'price_1_value' => $this->input->post('price_1_value',TRUE),
                 'fee_tanas' => $this->input->post('fee_tanas',TRUE),
@@ -294,13 +294,13 @@ class T31_bkm_detail extends CI_Controller
         $this->form_validation->set_rules('mata_uang', 'mata uang', 'trim|required');
         $this->form_validation->set_rules('price', 'price', 'trim|required|numeric');
         $this->form_validation->set_rules('remarks', 'remarks', 'trim|required');
-        $this->form_validation->set_rules('usd', 'usd', 'trim|required|numeric');
-        $this->form_validation->set_rules('aud', 'aud', 'trim|required|numeric');
-        $this->form_validation->set_rules('paypal', 'paypal', 'trim|required|numeric');
-        $this->form_validation->set_rules('bca_dollar', 'bca dollar', 'trim|required|numeric');
-        $this->form_validation->set_rules('rp', 'rp', 'trim|required|numeric');
-        $this->form_validation->set_rules('cc_bca', 'cc bca', 'trim|required|numeric');
-        $this->form_validation->set_rules('cc_mandiri', 'cc mandiri', 'trim|required|numeric');
+        // $this->form_validation->set_rules('usd', 'usd', 'trim|required|numeric');
+        // $this->form_validation->set_rules('aud', 'aud', 'trim|required|numeric');
+        // $this->form_validation->set_rules('paypal', 'paypal', 'trim|required|numeric');
+        // $this->form_validation->set_rules('bca_dollar', 'bca dollar', 'trim|required|numeric');
+        // $this->form_validation->set_rules('rp', 'rp', 'trim|required|numeric');
+        // $this->form_validation->set_rules('cc_bca', 'cc bca', 'trim|required|numeric');
+        // $this->form_validation->set_rules('cc_mandiri', 'cc mandiri', 'trim|required|numeric');
         $this->form_validation->set_rules('price_1', 'price 1', 'trim|required');
         $this->form_validation->set_rules('price_1_value', 'price 1 value', 'trim|required');
         $this->form_validation->set_rules('fee_tanas', 'fee tanas', 'trim|required');

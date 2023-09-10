@@ -16405,7 +16405,7 @@
         this.settings = settings;
         const baseUri = settings.base_uri;
         const self = this;
-        if (/^([\w\-]+):([^\/]{2})/i.test(url) || /^\s*#/.test(url)) {
+        if (/^([\w\-]+):([^\/][2])/i.test(url) || /^\s*#/.test(url)) {
           self.source = url;
           return;
         }
@@ -19151,7 +19151,7 @@
     };
     const uploadError = (editor, message) => {
       displayError(editor, I18n.translate([
-        'Failed to upload image: {0}',
+        'Failed to upload image: [0]',
         message
       ]));
     };
@@ -19177,7 +19177,7 @@
     };
     const pluginInitError = (editor, name, err) => {
       const message = I18n.translate([
-        'Failed to initialize plugin: {0}',
+        'Failed to initialize plugin: [0]',
         name
       ]);
       fireError(editor, 'PluginLoadError', { message });

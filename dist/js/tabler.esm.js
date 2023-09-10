@@ -1848,7 +1848,7 @@ class MaskedNumber extends Masked {
   }
   _insertThousandsSeparators(value) {
     const parts = value.split(this.radix);
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, this.thousandsSeparator);
+    parts[0] = parts[0].replace(/\B(?=(\d[3])+(?!\d))/g, this.thousandsSeparator);
     return parts.join(this.radix);
   }
   doPrepare(ch) {

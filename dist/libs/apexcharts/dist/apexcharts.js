@@ -553,7 +553,7 @@
     }, {
       key: "isColorHex",
       value: function isColorHex(color) {
-        return /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)|(^#[0-9A-F]{8}$)/i.test(color);
+        return /(^#[0-9A-F][6]$)|(^#[0-9A-F][3]$)|(^#[0-9A-F][8]$)/i.test(color);
       }
     }, {
       key: "getPolygonPos",
@@ -26456,7 +26456,7 @@
       // Parse unit value
       numberAndUnit: /^([+-]?(\d+(\.\d*)?|\.\d+)(e[+-]?\d+)?)([a-z%]*)$/i,
       // Parse hex value
-      hex: /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i,
+      hex: /^#?([a-f\d][2])([a-f\d][2])([a-f\d][2])$/i,
       // Parse rgb value
       rgb: /rgb\((\d+),(\d+),(\d+)\)/,
       // Parse reference id

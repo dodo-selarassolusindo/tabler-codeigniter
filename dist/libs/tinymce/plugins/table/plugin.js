@@ -1482,7 +1482,7 @@
 
     const hexColour = value => ({ value: normalizeHex(value) });
     const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-    const longformRegex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
+    const longformRegex = /^#?([a-f\d][2])([a-f\d][2])([a-f\d][2])$/i;
     const isHexString = hex => shorthandRegex.test(hex) || longformRegex.test(hex);
     const normalizeHex = hex => removeLeading(hex, '#').toUpperCase();
     const fromString$1 = hex => isHexString(hex) ? Optional.some({ value: normalizeHex(hex) }) : Optional.none();

@@ -10101,7 +10101,7 @@
 
     const hexColour = value => ({ value: normalizeHex(value) });
     const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-    const longformRegex = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
+    const longformRegex = /^#?([a-f\d][2])([a-f\d][2])([a-f\d][2])$/i;
     const isHexString = hex => shorthandRegex.test(hex) || longformRegex.test(hex);
     const normalizeHex = hex => removeLeading(hex, '#').toUpperCase();
     const fromString$1 = hex => isHexString(hex) ? Optional.some({ value: normalizeHex(hex) }) : Optional.none();
@@ -10650,7 +10650,7 @@
           api.close();
         } else {
           editor.windowManager.alert(editor.translate([
-            'Invalid hex color code: {0}',
+            'Invalid hex color code: [0]',
             hex
           ]));
         }
@@ -14310,7 +14310,7 @@
             });
             return optHex.map(hex => '#' + removeLeading(hex, '#')).getOr('');
           }, (comp, newValue) => {
-            const pattern = /^#([a-fA-F0-9]{3}(?:[a-fA-F0-9]{3})?)/;
+            const pattern = /^#([a-fA-F0-9][3](?:[a-fA-F0-9][3])?)/;
             const valOpt = Optional.from(pattern.exec(newValue)).bind(matches => get$h(matches, 1));
             const picker = memPicker.get(comp);
             const optRgbForm = Composing.getCurrent(picker);
@@ -25497,7 +25497,7 @@
 
     const renderWordCount = (editor, providersBackstage) => {
       const replaceCountText = (comp, count, mode) => Replacing.set(comp, [text$2(providersBackstage.translate([
-          '{0} ' + mode,
+          '[0] ' + mode,
           count[mode]
         ]))]);
       return Button.sketch({
@@ -25570,7 +25570,7 @@
                   'rel': 'noopener',
                   'target': '_blank',
                   'aria-label': global$8.translate([
-                    'Powered by {0}',
+                    'Powered by [0]',
                     'Tiny'
                   ])
                 },
