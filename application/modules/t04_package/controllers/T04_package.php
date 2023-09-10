@@ -10,7 +10,7 @@ class T04_package extends CI_Controller
         $this->load->model('T04_package_model');
         $this->load->library('form_validation');
     }
-    
+
     public function index()
     {
         $q = urldecode($this->input->get('q', TRUE));
@@ -49,7 +49,15 @@ class T04_package extends CI_Controller
         );
         $this->load->view('t04_package/t04_package_list', $data);
     }
-    
+
+    public function get_price()
+    {
+        header('Content-Type: application/json');
+        // echo $this->T04_package_model->get_price($this->input->post('id'), $this->input->post('night'));
+        echo $this->T04_package_model->get_price($this->input->post('id'), $this->input->post('night'));
+        // pre($this->T04_package_model->get_price($this->input->post('id'), $this->input->post('night'))); exit;
+    }
+
     public function read($id)
     {
         $row = $this->T04_package_model->get_by_id($id);
@@ -214,7 +222,7 @@ class T04_package extends CI_Controller
         $this->form_validation->set_rules('id', 'id', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
-    
+
 }
 
 /* End of file T04_package.php */

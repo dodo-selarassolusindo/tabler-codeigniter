@@ -701,5 +701,51 @@
                 todayHighlight: true
             });
 
+            $('#package').on('change', function() {
+                ubah_price()
+            })
+
+            $('#night').on('keyup', function() {
+                ubah_price()
+                ubah_check_in()
+            })
+
+            $('#check_out').on('change', function() {
+                ubah_check_in()
+            })
+
         });
+
+        function ubah_price()
+        {
+            var id = $('#package').val() // id di tabel master package
+            var night = $('#night').val()
+            if (night == '' || id == '-1') {
+                $('#price').val('0')
+            } else {
+                $.ajax({
+                    type: "POST",
+                    // url: $('#site_url').val() + 't04_package/get_price',
+                    url: `<?= site_url('t04_package/get_price') ?>`,
+                    data: {
+                        id: id,
+                        night: night
+                    },
+                    success: function (response) {
+                        $('#price').val(response['price_n_kode'])
+                        $('#price_only').val(response['price_only'])
+                        // console.log(response['price_only'])
+                    },
+                })
+            }
+        }
+
+        function ubah_check_in()
+        {
+            var night = $('#night-bdf').val()
+            var check_out = new Date($('#check_out-bdf').val().split('-').reverse().join('-'))
+            var check_in = new Date(check_out.getTime() - (night * (1000 * 3600 * 24)))
+            let format_tgl = appendLeadingZeroes(check_in.getDate()) + "-" + appendLeadingZeroes(check_in.getMonth() + 1) + "-" + check_in.getFullYear()
+            $('#check_in').val(format_tgl)
+        }
         </script>

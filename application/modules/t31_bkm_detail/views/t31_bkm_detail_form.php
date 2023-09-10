@@ -129,7 +129,7 @@ $this->load->view('dist/_partials/header');
                                 <div class="col">
                                     <input disabled type="text" class="form-control" id="price" placeholder="Price" value="<?= $mata_uang . ' ' . $price ?>">
                                     <input type="hidden" name="mata_uang" value="<?= $mata_uang ?>">
-                                    <input type="hidden" name="price" value="<?= $price ?>">
+                                    <input type="hidden" name="price" id="price_only" value="<?= $price ?>">
                                 </div>
                             </div>
 

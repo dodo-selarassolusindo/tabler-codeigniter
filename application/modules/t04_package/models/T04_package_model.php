@@ -13,6 +13,40 @@ class T04_package_model extends CI_Model
         parent::__construct();
     }
 
+    function get_price($id, $night)
+    {
+        // code...
+        $package_row = $this->get_by_id($id);
+
+        switch ($night) {
+            case 3:
+                $mata_uang = $package_row->ln3n_mata_uang;
+                $price = $package_row->ln3n_harga;
+                break;
+            case 6:
+                $mata_uang = $package_row->ln6n_mata_uang;
+                $price = $package_row->ln6n_harga;
+                break;
+            case 1:
+                $mata_uang = $package_row->ln1n_mata_uang;
+                $price = $package_row->ln1n_harga * $night;
+                break;
+            default:
+                $mata_uang = $package_row->ln1n_mata_uang;
+                $price = $package_row->ln1n_harga * $night;
+        }
+
+        $this->db->where('id', $mata_uang);
+        $t00_mata_uang_data = $this->db->get('t00_mata_uang')->row();
+        // pre($t00_mata_uang_data); exit;
+
+        return json_encode(array(
+            'price_n_kode' => $t00_mata_uang_data->kode . ' ' . $price,
+            'price_only' => $price
+        ));
+        // return $mata_uang;
+    }
+
     // get_all_by_periode
     function get_all_by_periode($id)
     {
