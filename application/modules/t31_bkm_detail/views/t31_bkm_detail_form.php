@@ -58,7 +58,6 @@ $this->load->view('dist/_partials/header');
                             <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="country">Country <?php echo form_error('country') ?></label>
                                 <div class="col">
-                                    <!-- <input type="text" class="form-control" name="country" id="country" placeholder="Country" value="<?php echo $country; ?>" /> -->
                                     <select class="form-control" name="country" id="country">
                                         <option value="-1">-</option>
                                         <?php foreach($t06_country_data as $row) { ?>
@@ -76,7 +75,6 @@ $this->load->view('dist/_partials/header');
                             <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="package">Package <?php echo form_error('package') ?></label>
                                 <div class="col">
-                                    <!-- <input type="text" class="form-control" name="package" id="package" placeholder="Package" value="<?php echo $package; ?>" /> -->
                                     <select class="form-control" name="package" id="package">
                                         <?php foreach($t04_package_data as $row) { ?>
                                         <option value="<?= $row->id ?>" <?= $row->id == $package_id ? 'selected' : '' ?>><?= $row->nama ?></option>
@@ -87,16 +85,12 @@ $this->load->view('dist/_partials/header');
 
                             <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="night">Night <?php echo form_error('night') ?></label>
-                                <div class="col">
-                                    <input type="text" class="form-control" name="night" id="night" placeholder="Night" value="<?= $night ?>" />
-                                </div>
+                                <div class="col"><input type="text" class="form-control" name="night" id="night" placeholder="Night" value="<?= $night ?>" /></div>
                             </div>
 
                             <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="check_in">Check In <?php echo form_error('check_in') ?></label>
-                                <div class="col">
-                                    <input disabled type="text" class="form-control" name="check_in" id="check_in" placeholder="Check In" value="<?= date_dmy($check_in) ?>" />
-                                </div>
+                                <div class="col"><input disabled type="text" class="form-control" name="check_in" id="check_in" placeholder="Check In" value="<?= date_dmy($check_in) ?>" /></div>
                             </div>
 
                             <div class="mb-3 row">
@@ -107,7 +101,6 @@ $this->load->view('dist/_partials/header');
                             <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="agent">Agent <?php echo form_error('agent') ?></label>
                                 <div class="col">
-                                    <!-- <input type="text" class="form-control" name="agent" id="agent" placeholder="Agent" value="<?php echo $agent; ?>" /> -->
                                     <select class="form-control" name="agent" id="agent">
                                         <option value="-1">-</option>
                                         <?php foreach($t05_agent_data as $row) { ?>
@@ -116,11 +109,6 @@ $this->load->view('dist/_partials/header');
                                     </select>
                                 </div>
                             </div>
-
-                            <!-- <div class="mb-3 row">
-                                <label class="col-2 col-form-label required" for="mata_uang">Mata Uang <?php echo form_error('mata_uang') ?></label>
-                                <div class="col"><input type="text" class="form-control" name="mata_uang" id="mata_uang" placeholder="Mata Uang" value="<?php echo $mata_uang; ?>" /></div>
-                            </div> -->
 
                             <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="price">Price List <?php echo form_error('price') ?></label>
@@ -206,28 +194,25 @@ $this->load->view('dist/_partials/header');
 
                             <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="fee_tanas">Fee Tanas <?php echo form_error('fee_tanas') ?></label>
-                                <!-- <div class="col"> -->
-                                    <!-- <textarea class="form-control" rows="3" name="fee_tanas" id="fee_tanas" placeholder="Fee Tanas"><?php echo $fee_tanas; ?></textarea> -->
-                                    <div class="col-2">
-                                        <select class="form-control" name="fee_tanas" id="fee_tanas">
-                                            <option value="-1">-</option>
-                                            <?php foreach($t00_mata_uang_data as $row) { ?>
-                                            <option
-                                                value="<?= $row->id ?>"
-                                                <?= ($fee_tanas != null ?
-                                                    $row->kode == (substr(trim($fee_tanas), 0, 4) == '[$00' ? 'USD' : 'AUD') ? 'selected' : ''
-                                                    :
-                                                    '') ?>
-                                                >
-                                                <?= $row->kode ?>
-                                            </option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                    <div class="col-8">
-                                        <input type="text" class="form-control" name="fee_tanas_value" id="fee_tanas_value" placeholder="Fee Tanas" value="<?= $fee_tanas_value ?>">
-                                    </div>
-                                <!-- </div> -->
+                                <div class="col-2">
+                                    <select class="form-control" name="fee_tanas" id="fee_tanas">
+                                        <option value="-1">-</option>
+                                        <?php foreach($t00_mata_uang_data as $row) { ?>
+                                        <option
+                                            value="<?= $row->id ?>"
+                                            <?= ($fee_tanas != null ?
+                                                $row->kode == (substr(trim($fee_tanas), 0, 4) == '[$00' ? 'USD' : 'AUD') ? 'selected' : ''
+                                                :
+                                                '') ?>
+                                            >
+                                            <?= $row->kode ?>
+                                        </option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" class="form-control" name="fee_tanas_value" id="fee_tanas_value" placeholder="Fee Tanas" value="<?= $fee_tanas_value ?>">
+                                </div>
                             </div>
 
                             <!-- <div class="mb-3 row">
