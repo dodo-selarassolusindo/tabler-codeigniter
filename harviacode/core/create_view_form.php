@@ -28,29 +28,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class=\"row row-cards\">
             <div class=\"col-12\">
                 <div class=\"card\">
-                    <form action=\"<?php echo \$action; ?>\" method=\"post\" class=\"card\">
+                    <form action=\"<?= \$action; ?>\" method=\"post\" class=\"card\">
                         <div class=\"card-body\">";
                         foreach ($non_pk as $row) {
                             if ($row["data_type"] == 'text') {
                                 $string2 .= "
                             <div class=\"mb-3\">
-                                <label class=\"form-label required\" for=\"".$row["column_name"]."\">".label($row["column_name"])." <?php echo form_error('".$row["column_name"]."') ?></label>
-                                <div><textarea class=\"form-control\" rows=\"3\" name=\"".$row["column_name"]."\" id=\"".$row["column_name"]."\" placeholder=\"".label($row["column_name"])."\"><?php echo $".$row["column_name"]."; ?></textarea></div>
+                                <label class=\"form-label required\" for=\"".$row["column_name"]."\">".label($row["column_name"])." <?= form_error('".$row["column_name"]."') ?></label>
+                                <div><textarea class=\"form-control\" rows=\"3\" name=\"".$row["column_name"]."\" id=\"".$row["column_name"]."\" placeholder=\"".label($row["column_name"])."\"><?= $".$row["column_name"]."; ?></textarea></div>
                             </div>";
                             } else {
                                 $string2 .= "
                             <div class=\"mb-3\">
-                                <label class=\"form-label required\" for=\"".$row["column_name"]."\">".label($row["column_name"])." <?php echo form_error('".$row["column_name"]."') ?></label>
-                                <div><input type=\"text\" class=\"form-control\" name=\"".$row["column_name"]."\" id=\"".$row["column_name"]."\" placeholder=\"".label($row["column_name"])."\" value=\"<?php echo $".$row["column_name"]."; ?>\" /></div>
+                                <label class=\"form-label required\" for=\"".$row["column_name"]."\">".label($row["column_name"])." <?= form_error('".$row["column_name"]."') ?></label>
+                                <div><input type=\"text\" class=\"form-control\" name=\"".$row["column_name"]."\" id=\"".$row["column_name"]."\" placeholder=\"".label($row["column_name"])."\" value=\"<?= $".$row["column_name"]."; ?>\" /></div>
                             </div>";
                             }
                         }
                         $string2 .= "
-                            <input type=\"hidden\" name=\"".$pk."\" value=\"<?php echo $".$pk."; ?>\" />
+                            <input type=\"hidden\" name=\"".$pk."\" value=\"<?= $".$pk."; ?>\" />
                         </div>
                         <div class=\"card-footer\">
                             <button type=\"submit\" class=\"btn btn-primary\"><?= \$button ?></button>
-                    	    <a href=\"<?php echo site_url('".$c_url."') ?>\" class=\"btn btn-secondary\">Batal</a>
+                    	    <a href=\"<?= site_url('".$c_url."') ?>\" class=\"btn btn-secondary\">Batal</a>
                         </div>
                     </form>
                 </div>
@@ -65,7 +65,7 @@ $string = "<!doctype html>
 <html>
     <head>
         <title>harviacode.com - codeigniter crud generator</title>
-        <link rel=\"stylesheet\" href=\"<?php echo base_url('assets/bootstrap/css/bootstrap.min.css') ?>\"/>
+        <link rel=\"stylesheet\" href=\"<?= base_url('assets/bootstrap/css/bootstrap.min.css') ?>\"/>
         <style>
             body{
                 padding: 15px;
@@ -73,26 +73,26 @@ $string = "<!doctype html>
         </style>
     </head>
     <body>
-        <h2 style=\"margin-top:0px\">".ucfirst($table_name)." <?php echo \$button ?></h2>
-        <form action=\"<?php echo \$action; ?>\" method=\"post\">";
+        <h2 style=\"margin-top:0px\">".ucfirst($table_name)." <?= \$button ?></h2>
+        <form action=\"<?= \$action; ?>\" method=\"post\">";
 foreach ($non_pk as $row) {
     if ($row["data_type"] == 'text')
     {
     $string .= "\n\t    <div class=\"form-group\">
-            <label for=\"".$row["column_name"]."\">".label($row["column_name"])." <?php echo form_error('".$row["column_name"]."') ?></label>
-            <textarea class=\"form-control\" rows=\"3\" name=\"".$row["column_name"]."\" id=\"".$row["column_name"]."\" placeholder=\"".label($row["column_name"])."\"><?php echo $".$row["column_name"]."; ?></textarea>
+            <label for=\"".$row["column_name"]."\">".label($row["column_name"])." <?= form_error('".$row["column_name"]."') ?></label>
+            <textarea class=\"form-control\" rows=\"3\" name=\"".$row["column_name"]."\" id=\"".$row["column_name"]."\" placeholder=\"".label($row["column_name"])."\"><?= $".$row["column_name"]."; ?></textarea>
         </div>";
     } else
     {
     $string .= "\n\t    <div class=\"form-group\">
-            <label for=\"".$row["column_name"]."\">".label($row["column_name"])." <?php echo form_error('".$row["column_name"]."') ?></label>
-            <input type=\"text\" class=\"form-control\" name=\"".$row["column_name"]."\" id=\"".$row["column_name"]."\" placeholder=\"".label($row["column_name"])."\" value=\"<?php echo $".$row["column_name"]."; ?>\" />
+            <label for=\"".$row["column_name"]."\">".label($row["column_name"])." <?= form_error('".$row["column_name"]."') ?></label>
+            <input type=\"text\" class=\"form-control\" name=\"".$row["column_name"]."\" id=\"".$row["column_name"]."\" placeholder=\"".label($row["column_name"])."\" value=\"<?= $".$row["column_name"]."; ?>\" />
         </div>";
     }
 }
-$string .= "\n\t    <input type=\"hidden\" name=\"".$pk."\" value=\"<?php echo $".$pk."; ?>\" /> ";
-$string .= "\n\t    <button type=\"submit\" class=\"btn btn-primary\"><?php echo \$button ?></button> ";
-$string .= "\n\t    <a href=\"<?php echo site_url('".$c_url."') ?>\" class=\"btn btn-default\">Cancel</a>";
+$string .= "\n\t    <input type=\"hidden\" name=\"".$pk."\" value=\"<?= $".$pk."; ?>\" /> ";
+$string .= "\n\t    <button type=\"submit\" class=\"btn btn-primary\"><?= \$button ?></button> ";
+$string .= "\n\t    <a href=\"<?= site_url('".$c_url."') ?>\" class=\"btn btn-default\">Cancel</a>";
 $string .= "\n\t</form>
     </body>
 </html>";
