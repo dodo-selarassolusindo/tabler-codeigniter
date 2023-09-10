@@ -139,6 +139,29 @@ $this->load->view('dist/_partials/header');
                             </div>
 
                             <div class="mb-3 row">
+                                <label class="col-2 col-form-label required" for="price_1">Price #1 <?php echo form_error('price_1') ?></label>
+                                <div class="col-2">
+                                    <select class="form-control" name="price_1" id="price_1">
+                                        <option value="-1">-</option>
+                                        <?php foreach($t00_mata_uang_data as $row) { ?>
+                                        <option
+                                            value="<?= $row->id ?>"
+                                            <?= ($price_1 != null ?
+                                                $row->kode == (substr(trim($price_1), 0, 4) == '[$00' ? 'USD' : 'AUD') ? 'selected' : ''
+                                                :
+                                                '') ?>
+                                            >
+                                            <?= $row->kode ?>
+                                        </option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" class="form-control" name="price_1_value" id="price_1_value" placeholder="Price" value="<?= $price_1_value ?>">
+                                </div>
+                            </div>
+
+                            <!-- <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="usd">Usd <?php echo form_error('usd') ?></label>
                                 <div class="col"><input type="text" class="form-control" name="usd" id="usd" placeholder="Usd" value="<?php echo $usd; ?>" /></div>
                             </div>
@@ -171,30 +194,51 @@ $this->load->view('dist/_partials/header');
                             <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="cc_mandiri">Cc Mandiri <?php echo form_error('cc_mandiri') ?></label>
                                 <div class="col"><input type="text" class="form-control" name="cc_mandiri" id="cc_mandiri" placeholder="Cc Mandiri" value="<?php echo $cc_mandiri; ?>" /></div>
-                            </div>
+                            </div> -->
 
-                            <div class="mb-3 row">
+                            <!-- <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="price_1">Price 1 <?php echo form_error('price_1') ?></label>
                                 <div class="col"><textarea class="form-control" rows="3" name="price_1" id="price_1" placeholder="Price 1"><?php echo $price_1; ?></textarea></div>
-                            </div>
+                            </div> -->
 
-                            <div class="mb-3 row">
+                            <!-- <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="price_1_value">Price 1 Value <?php echo form_error('price_1_value') ?></label>
                                 <div class="col"><textarea class="form-control" rows="3" name="price_1_value" id="price_1_value" placeholder="Price 1 Value"><?php echo $price_1_value; ?></textarea></div>
-                            </div>
+                            </div> -->
 
                             <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="fee_tanas">Fee Tanas <?php echo form_error('fee_tanas') ?></label>
-                                <div class="col"><textarea class="form-control" rows="3" name="fee_tanas" id="fee_tanas" placeholder="Fee Tanas"><?php echo $fee_tanas; ?></textarea></div>
+                                <!-- <div class="col"> -->
+                                    <!-- <textarea class="form-control" rows="3" name="fee_tanas" id="fee_tanas" placeholder="Fee Tanas"><?php echo $fee_tanas; ?></textarea> -->
+                                    <div class="col-2">
+                                        <select class="form-control" name="fee_tanas" id="fee_tanas">
+                                            <option value="-1">-</option>
+                                            <?php foreach($t00_mata_uang_data as $row) { ?>
+                                            <option
+                                                value="<?= $row->id ?>"
+                                                <?= ($fee_tanas != null ?
+                                                    $row->kode == (substr(trim($fee_tanas), 0, 4) == '[$00' ? 'USD' : 'AUD') ? 'selected' : ''
+                                                    :
+                                                    '') ?>
+                                                >
+                                                <?= $row->kode ?>
+                                            </option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-8">
+                                        <input type="text" class="form-control" name="fee_tanas_value" id="fee_tanas_value" placeholder="Fee Tanas" value="<?= $fee_tanas_value ?>">
+                                    </div>
+                                <!-- </div> -->
                             </div>
 
-                            <div class="mb-3 row">
+                            <!-- <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="fee_tanas_value">Fee Tanas Value <?php echo form_error('fee_tanas_value') ?></label>
                                 <div class="col"><textarea class="form-control" rows="3" name="fee_tanas_value" id="fee_tanas_value" placeholder="Fee Tanas Value"><?php echo $fee_tanas_value; ?></textarea></div>
-                            </div>
+                            </div> -->
 
                             <div class="mb-3 row">
-                                <label class="col-2 col-form-label required" for="price_2">Price 2 <?php echo form_error('price_2') ?></label>
+                                <label class="col-2 col-form-label required" for="price_2">Price #2 <?php echo form_error('price_2') ?></label>
                                 <div class="col"><textarea class="form-control" rows="3" name="price_2" id="price_2" placeholder="Price 2"><?php echo $price_2; ?></textarea></div>
                             </div>
 

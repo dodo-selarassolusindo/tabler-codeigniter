@@ -16,7 +16,8 @@ class T07_kolom_payment_model extends CI_Model
     // get all
     function get_all()
     {
-        $this->db->order_by($this->id, $this->order);
+        // $this->db->order_by($this->id, $this->order);
+        $this->db->order_by('urutan', $this->order);
         return $this->db->get($this->table)->result();
     }
 

@@ -13,6 +13,8 @@ class T31_bkm_detail extends CI_Controller
         $this->load->model('t04_package/T04_package_model');
         $this->load->model('t06_country/T06_country_model');
         $this->load->model('t05_agent/T05_agent_model');
+        $this->load->model('t07_kolom_payment/T07_kolom_payment_model');
+        $this->load->model('t00_mata_uang/T00_mata_uang_model');
     }
 
     public function index()
@@ -215,6 +217,8 @@ class T31_bkm_detail extends CI_Controller
                 't06_country_data' => $this->T06_country_model->get_all(),
                 't05_agent_data' => $this->T05_agent_model->get_all(),
                 'package_id' => $row->package_id,
+                // 't07_kolom_payment_data' => $this->T07_kolom_payment_model->get_all(),
+                't00_mata_uang_data' => $this->T00_mata_uang_model->get_all(),
             );
             $this->load->view('t31_bkm_detail/t31_bkm_detail_form', $data);
         } else {
