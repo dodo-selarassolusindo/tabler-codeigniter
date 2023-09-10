@@ -238,6 +238,7 @@ class T31_bkm_detail_model extends CI_Model
         $this->db->select(
             $this->table.'.*
             , '.$this->table.'.package as package_id
+            , '.$this->table.'.mata_uang as mata_uang_id
             , t04_package.nama as package
             , t05_agent.nama as agent
             , t00_mata_uang.kode as mata_uang

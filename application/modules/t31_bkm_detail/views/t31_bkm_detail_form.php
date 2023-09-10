@@ -90,7 +90,10 @@ $this->load->view('dist/_partials/header');
 
                             <div class="mb-3 row">
                                 <label class="col-2 col-form-label required" for="check_in">Check In <?php echo form_error('check_in') ?></label>
-                                <div class="col"><input disabled type="text" class="form-control" name="check_in" id="check_in" placeholder="Check In" value="<?= date_dmy($check_in) ?>" /></div>
+                                <div class="col">
+                                    <input disabled type="text" class="form-control" id="check_in" placeholder="Check In" value="<?= date_dmy($check_in) ?>" />
+                                    <input type="hidden" name="check_in" id="check_in_only" value="<?= date_dmy($check_in) ?>" />
+                                </div>
                             </div>
 
                             <div class="mb-3 row">
@@ -114,7 +117,7 @@ $this->load->view('dist/_partials/header');
                                 <label class="col-2 col-form-label required" for="price">Price List <?php echo form_error('price') ?></label>
                                 <div class="col">
                                     <input disabled type="text" class="form-control" id="price" placeholder="Price" value="<?= $mata_uang . ' ' . $price ?>">
-                                    <input type="hidden" name="mata_uang" value="<?= $mata_uang ?>">
+                                    <input type="hidden" name="mata_uang" id="mata_uang" value="<?= $mata_uang_id ?>">
                                     <input type="hidden" name="price" id="price_only" value="<?= $price ?>">
                                 </div>
                             </div>

@@ -734,6 +734,7 @@
                     success: function (response) {
                         $('#price').val(response['price_n_kode'])
                         $('#price_only').val(response['price_only'])
+                        $('#mata_uang').val(response['mata_uang'])
                         // console.log(response['price_only'])
                     },
                 })
@@ -747,6 +748,7 @@
             var check_in = new Date(check_out.getTime() - (night * (1000 * 3600 * 24)))
             let format_tgl = appendLeadingZeroes(check_in.getDate()) + "-" + appendLeadingZeroes(check_in.getMonth() + 1) + "-" + check_in.getFullYear()
             $('#check_in').val(format_tgl)
+            $('#check_in_only').val(format_tgl)
         }
 
         function appendLeadingZeroes(n)

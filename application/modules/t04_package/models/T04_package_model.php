@@ -42,7 +42,8 @@ class T04_package_model extends CI_Model
 
         return json_encode(array(
             'price_n_kode' => $t00_mata_uang_data->kode . ' ' . $price,
-            'price_only' => $price
+            'price_only' => $price,
+            'mata_uang' => $mata_uang,
         ));
         // return $mata_uang;
     }

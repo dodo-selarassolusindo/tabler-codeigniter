@@ -219,6 +219,7 @@ class T31_bkm_detail extends CI_Controller
                 'package_id' => $row->package_id,
                 // 't07_kolom_payment_data' => $this->T07_kolom_payment_model->get_all(),
                 't00_mata_uang_data' => $this->T00_mata_uang_model->get_all(),
+                'mata_uang_id' => $row->mata_uang_id,
             );
             $this->load->view('t31_bkm_detail/t31_bkm_detail_form', $data);
         } else {
@@ -254,15 +255,15 @@ class T31_bkm_detail extends CI_Controller
                 // 'rp' => $this->input->post('rp',TRUE),
                 // 'cc_bca' => $this->input->post('cc_bca',TRUE),
                 // 'cc_mandiri' => $this->input->post('cc_mandiri',TRUE),
-                'price_1' => $this->input->post('price_1',TRUE),
+                'price_1' => ($this->input->post('price_1',TRUE) == '2' ? '[$00' : '[$am'),
                 'price_1_value' => $this->input->post('price_1_value',TRUE),
-                'fee_tanas' => $this->input->post('fee_tanas',TRUE),
+                'fee_tanas' => ($this->input->post('fee_tanas',TRUE) == '2' ? '[$00' : '[$am'),
                 'fee_tanas_value' => $this->input->post('fee_tanas_value',TRUE),
                 'price_2' => $this->input->post('price_2',TRUE),
             );
             $this->T31_bkm_detail_model->update($this->input->post('id', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
-            redirect(site_url('t31_bkm_detail'));
+            redirect(site_url('t30_bkm/detail/' . $this->input->post('bkm',TRUE)));
         }
     }
 
@@ -288,7 +289,7 @@ class T31_bkm_detail extends CI_Controller
         $this->form_validation->set_rules('id_number', 'id number', 'trim|required');
         $this->form_validation->set_rules('package', 'package', 'trim|required');
         $this->form_validation->set_rules('night', 'night', 'trim|required');
-        $this->form_validation->set_rules('check_in', 'check in', 'trim|required');
+        // $this->form_validation->set_rules('check_in', 'check in', 'trim|required');
         $this->form_validation->set_rules('check_out', 'check out', 'trim|required');
         $this->form_validation->set_rules('agent', 'agent', 'trim|required');
         $this->form_validation->set_rules('mata_uang', 'mata uang', 'trim|required');
