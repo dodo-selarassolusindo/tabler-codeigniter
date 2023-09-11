@@ -6,7 +6,7 @@ class T01_jenis_pembayaran_model extends CI_Model
 
     public $table = 't01_jenis_pembayaran';
     public $id = 'id';
-    public $order = 'DESC';
+    public $order = 'ASC';
 
     function __construct()
     {
