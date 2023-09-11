@@ -702,16 +702,16 @@
             });
 
             $('#package').on('change', function() {
-                ubah_price()
+                // ubah_price()
             })
 
             $('#night').on('keyup', function() {
-                ubah_price()
-                ubah_check_in()
+                // ubah_price()
+                // ubah_check_in()
             })
 
             $('#check_out').on('change', function() {
-                ubah_check_in()
+                // ubah_check_in()
             })
 
         });

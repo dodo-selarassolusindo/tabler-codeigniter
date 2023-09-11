@@ -180,6 +180,7 @@ class T31_bkm_detail extends CI_Controller
                 // 'start' => $start,
             );
             $t30_bkm = $this->load->view('t30_bkm/t30_bkm_wo_search', $data, true);
+            // pre($row);
 
             // detail bkm
             $data = array(
@@ -206,9 +207,9 @@ class T31_bkm_detail extends CI_Controller
                 'rp' => set_value('rp', $row->rp),
                 'cc_bca' => set_value('cc_bca', $row->cc_bca),
                 'cc_mandiri' => set_value('cc_mandiri', $row->cc_mandiri),
-                'price_1' => set_value('price_1', $row->price_1),
+                'price_1' => set_value('price_1', (substr(trim($row->price_1), 0, 4) == '[$00' ? 2 : -1)),
                 'price_1_value' => set_value('price_1_value', ($row->price_1_value == null ? 0 : $row->price_1_value)),
-                'fee_tanas' => set_value('fee_tanas', $row->fee_tanas),
+                'fee_tanas' => set_value('fee_tanas', (substr(trim($row->fee_tanas), 0, 4) == '[$00' ? 2 : -1)),
                 'fee_tanas_value' => set_value('fee_tanas_value', $row->fee_tanas_value),
                 'price_2' => set_value('price_2', $row->price_2),
                 't30_bkm' => $t30_bkm,
@@ -233,7 +234,9 @@ class T31_bkm_detail extends CI_Controller
         $this->_rules();
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id', TRUE));
+            // pre($this->input->post());
         } else {
+
             $data = array(
                 'bkm' => $this->input->post('bkm',TRUE),
                 'name' => $this->input->post('name',TRUE),
@@ -245,7 +248,7 @@ class T31_bkm_detail extends CI_Controller
                 'check_in' => date_ymd($this->input->post('check_in',TRUE)),
                 'check_out' => date_ymd($this->input->post('check_out',TRUE)),
                 'agent' => $this->input->post('agent',TRUE),
-                'mata_uang' => $this->input->post('mata_uang',TRUE),
+                'mata_uang' => $this->input->post('mata_uang_id',TRUE),
                 'price' => $this->input->post('price',TRUE),
                 'remarks' => $this->input->post('remarks',TRUE),
                 // 'usd' => $this->input->post('usd',TRUE),
@@ -255,9 +258,9 @@ class T31_bkm_detail extends CI_Controller
                 // 'rp' => $this->input->post('rp',TRUE),
                 // 'cc_bca' => $this->input->post('cc_bca',TRUE),
                 // 'cc_mandiri' => $this->input->post('cc_mandiri',TRUE),
-                'price_1' => ($this->input->post('price_1',TRUE) == '2' ? '[$00' : '[$am'),
+                'price_1' => ($this->input->post('price_1',TRUE) == 2 ? '[$00' : '[$99'),
                 'price_1_value' => $this->input->post('price_1_value',TRUE),
-                'fee_tanas' => ($this->input->post('fee_tanas',TRUE) == '2' ? '[$00' : '[$am'),
+                'fee_tanas' => ($this->input->post('fee_tanas',TRUE) == 2 ? '[$00' : '[$99'),
                 'fee_tanas_value' => $this->input->post('fee_tanas_value',TRUE),
                 'price_2' => $this->input->post('price_2',TRUE),
             );

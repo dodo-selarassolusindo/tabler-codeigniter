@@ -71,8 +71,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <td><?= date_dmy($t31_bkm_detail->check_out) ?></td>
                                         <td><?= $t31_bkm_detail->agent ?></td>
                                         <td><?= $t31_bkm_detail->mata_uang.' '.$t31_bkm_detail->price ?></td>
-                                        <td><?= ($t31_bkm_detail->price_1_value != '' ? (substr(trim($t31_bkm_detail->price_1), 0, 4) == '[$00' ? 'USD ' : 'AUD ') . number_format($t31_bkm_detail->price_1_value, 0) : '') ?></td>
-                                        <td><?= ($t31_bkm_detail->fee_tanas_value != '' ? (substr(trim($t31_bkm_detail->fee_tanas), 0, 4) == '[$00' ? 'USD ' : 'AUD ') . number_format($t31_bkm_detail->fee_tanas_value, 0) : '') ?></td>
+                                        <td><?= ($t31_bkm_detail->price_1_value != '' ? (substr(trim($t31_bkm_detail->price_1), 0, 4) == '[$00' ? 'USD ' : (substr(trim($t31_bkm_detail->price_1), 0, 4) == '[$am' ? 'AUD ' : '')) . number_format($t31_bkm_detail->price_1_value, 0) : '') ?></td>
+                                        <td><?= ($t31_bkm_detail->fee_tanas_value != '' ? (substr(trim($t31_bkm_detail->fee_tanas), 0, 4) == '[$00' ? 'USD ' : (substr(trim($t31_bkm_detail->fee_tanas), 0, 4) == '[$am' ? 'AUD ' : '')) . number_format($t31_bkm_detail->fee_tanas_value, 0) : '') ?></td>
                                         <td><?= $t31_bkm_detail->price_2 ?></td>
                                         <td><?= $t31_bkm_detail->remarks ?></td>
                                         <?php foreach($this->T07_kolom_payment_model->get_all() as $row) { ?>

@@ -117,7 +117,8 @@ $this->load->view('dist/_partials/header');
                                 <label class="col-2 col-form-label required" for="price">Price List <?php echo form_error('price') ?></label>
                                 <div class="col">
                                     <input disabled type="text" class="form-control" id="price" placeholder="Price" value="<?= $mata_uang . ' ' . $price ?>">
-                                    <input type="hidden" name="mata_uang" id="mata_uang" value="<?= $mata_uang_id ?>">
+                                    <input type="hidden" name="mata_uang_id" id="mata_uang_id" value="<?= $mata_uang_id ?>">
+                                    <input type="hidden" name="mata_uang" id="mata_uang" value="<?= $mata_uang ?>">
                                     <input type="hidden" name="price" id="price_only" value="<?= $price ?>">
                                 </div>
                             </div>
@@ -133,15 +134,7 @@ $this->load->view('dist/_partials/header');
                                     <select class="form-control" name="price_1" id="price_1">
                                         <option value="-1">-</option>
                                         <?php foreach($t00_mata_uang_data as $row) { ?>
-                                        <option
-                                            value="<?= $row->id ?>"
-                                            <?= ($price_1 != null ?
-                                                $row->kode == (substr(trim($price_1), 0, 4) == '[$00' ? 'USD' : 'AUD') ? 'selected' : ''
-                                                :
-                                                '') ?>
-                                            >
-                                            <?= $row->kode ?>
-                                        </option>
+                                        <option value="<?= $row->id ?>" <?= $row->id == $price_1 ? 'selected' : '' ?>><?= $row->kode ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -201,15 +194,7 @@ $this->load->view('dist/_partials/header');
                                     <select class="form-control" name="fee_tanas" id="fee_tanas">
                                         <option value="-1">-</option>
                                         <?php foreach($t00_mata_uang_data as $row) { ?>
-                                        <option
-                                            value="<?= $row->id ?>"
-                                            <?= ($fee_tanas != null ?
-                                                $row->kode == (substr(trim($fee_tanas), 0, 4) == '[$00' ? 'USD' : 'AUD') ? 'selected' : ''
-                                                :
-                                                '') ?>
-                                            >
-                                            <?= $row->kode ?>
-                                        </option>
+                                            <option value="<?= $row->id ?>" <?= $row->id == $fee_tanas ? 'selected' : '' ?>><?= $row->kode ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
