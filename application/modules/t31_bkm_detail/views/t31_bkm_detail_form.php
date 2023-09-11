@@ -129,7 +129,7 @@ $this->load->view('dist/_partials/header');
                             </div>
 
                             <div class="mb-3 row">
-                                <label class="col-2 col-form-label required" for="price_1">Price #1 <?php echo form_error('price_1') ?></label>
+                                <label class="col-2 col-form-label required" for="price_1">Price #1 <?= form_error('price_1') . ' ' . form_error('price_1_value') ?></label>
                                 <div class="col-2">
                                     <select class="form-control" name="price_1" id="price_1">
                                         <option value="-1">-</option>
